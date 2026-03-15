@@ -1,0 +1,322 @@
+#divBody {
+  position:RELATIVE;
+  left:0px;
+  top:0px;
+  width:100%;
+  height:100%;  
+  overflow:scroll;
+  background-color:#eff9ff;
+}
+
+#divDtlTable {
+//  position:RELATIVE;
+  left:0px;
+  top:0px;
+  width:100%;
+  height:100%;
+//    Z-INDEX: 100;   
+//    z-order:5;  
+  overflow:scroll;
+}
+
+#divSpread {
+background-color: orange;
+color: red;
+//z-index: 0;
+}
+
+BODY {
+  margin:0px; 
+  background-color:#eff9ff;
+  text: #000000;
+  font-size:8pt;
+  font-family:"Arial, Helvetica, sans-serif";
+  scrollbar-arrow-color:#006699;
+  scrollbar-face-color:#FFFFFF;
+  scrollbar-track-color:"#eeeeee";
+  scrollbar-shadow-color:#006699;
+  scrollbar-highlight-color:'#006699';
+  scrollbar-3dlight-color:'#FFFFFF';
+  scrollbar-darkshadow-Color:'#FFFFFF';
+
+}
+
+INPUT 
+{
+  text: #000000;
+  font-size:8pt;
+  font-family:"Arial, Helvetica, sans-serif";
+}
+
+TEXTAREA
+{
+  text: #000000;
+  font-size:8pt;
+  font-family:"Arial, Helvetica, sans-serif";
+  scrollbar-arrow-color:#006699;
+  scrollbar-face-color:#FFFFFF;
+  scrollbar-track-color:"#eeeeee";
+  scrollbar-shadow-color:#006699;
+  scrollbar-highlight-color:'#006699';
+  scrollbar-3dlight-color:'#FFFFFF';
+  scrollbar-darkshadow-Color:'#FFFFFF';
+}
+
+TABLE {
+  border-collapse:separate;
+  border-spacing:0px 0px;
+  border: 0px;
+  padding:0px;
+  width:100%;
+  font-size:8pt;
+  font-family:"Arial, Helvetica, sans-serif";
+
+}
+
+.BannerText
+{
+color:black;
+font-size:15pt;
+text-align:right;
+font-family:"Arial, Helvetica, sans-serif";
+//background-color:"#d9ecff";
+}
+
+.mainHeader
+{
+color:black;
+font-size:10pt;
+text-align:center;
+font-weight:bold;
+font-family:"verdana, Arial, Helvetica, sans-serif";
+background-color:#eff9ff;
+}
+
+
+.subHeader
+{
+color :black;
+font-size:8pt;
+font-weight:bold;
+text-align:left;
+font-family:"verdana,Arial, Helvetica, sans-serif";
+}
+
+.labelText
+{ 
+color:black;
+font-size:8pt;
+text-align:right;
+font-weight:normal;
+font-family:"verdana, Arial, Helvetica, sans-serif";
+padding:7px;
+}
+
+
+.labelLeftAlign
+{ 
+color:black;
+font-size:8pt;
+text-align:left;
+font-weight:normal;
+font-family:"verdana, Arial, Helvetica, sans-serif";
+padding:7px;
+}
+
+/*For radio button text (left align) */
+.radioText
+{ 
+color:black;
+font-size:10pt;
+text-align:left;
+font-weight:normal;
+font-family:"verdana, Arial, Helvetica, sans-serif";
+}
+
+.actTabText
+{  
+cursor:default;
+color:yellow;
+font-size:8pt;
+text-align:right;
+font-weight:bold;
+font-family:"verdana, Arial, Helvetica, sans-serif";
+}
+
+.disTabText
+{  
+cursor:hand;
+color:#e0e0e0;
+font-size:8pt;
+text-align:right;
+font-weight:normal;
+font-family:"verdana, Arial, Helvetica, sans-serif";
+}
+
+.screenStatus
+{  
+cursor:default;
+color:white;
+font-size:8pt;
+text-align:left;
+font-weight:normal;
+font-family:"verdana, Arial, Helvetica, sans-serif";
+}
+
+
+.userText
+{ 
+color:#993300;
+font-size:8pt;
+text-align:right;
+font-weight:normal;
+font-family:"verdana, Arial, Helvetica, sans-serif";
+background-color:#eff9ff;
+
+}
+.bottomBarText
+{ 
+color:black;
+font-size:8pt;
+text-align:center;
+font-weight:normal;
+font-family:"verdana, Arial, Helvetica, sans-serif";
+}
+
+.navText
+{ 
+color:navy;
+font-size:8pt;
+text-align:center;
+font-weight:normal;
+font-family:"verdana, Arial, Helvetica, sans-serif";
+} 
+
+.dtlNavText
+{ 
+color:navy;
+font-size:8pt;
+text-align:right;
+v-align:center;
+font-weight:normal;
+font-family:"verdana, Arial, Helvetica, sans-serif";
+} 
+
+.tableHeader
+{ 
+color:white;
+font-size:8pt;
+text-align:center;
+font-weight:normal;
+//background:"#4682B4";
+font-family:"verdana, Arial, Helvetica, sans-serif";
+//Z-INDEX: 20; 
+TOP: expression(document.getElementById("divDtlTable").scrollTop); 
+POSITION: relative; 
+}
+
+.tableTOP
+{ 
+TOP: expression(document.getElementById("divDtlTable").scrollTop); 
+POSITION: relative; 
+}
+
+.tableText
+{ 
+color:black;
+font-size:10pt;
+text-align:center;
+font-weight:normal;
+font-family:"verdana, Arial, Helvetica, sans-serif";
+//z-order:0;
+}
+
+.required
+{
+  background: #ffffd3;
+  font-size=8pt;
+  
+  border-right: #699bb3 1px solid;
+  border-top: #699bb3 1px solid;
+  border-left:#699bb3 1px solid;
+  border-bottom:#699bb3 1px solid;
+} 
+
+.optional
+{
+  background: #ffffff;
+  font-size=8pt;
+  
+  border-right: #699bb3 1px solid;
+  border-top: #699bb3 1px solid;
+  border-left:#699bb3 1px solid;
+  border-bottom:#699bb3 1px solid;
+} 
+
+.icon
+{
+cursor:hand;
+}
+
+.locked
+{
+  background: #e0e0e0;
+  font-size=8pt;
+  
+  border-right: #c0c0c0 1px solid;
+  border-top: #c0c0c0 1px solid;
+  border-left:#c0c0c0 1px solid;
+  border-bottom:#c0c0c0 1px solid;
+} 
+
+.lov
+{
+border-right: #395f9b 1px solid;
+border-top: #395f9b 1px solid;
+font-weight:normal;
+border-left:#395f9b 1px solid;
+color: black;
+font-size:10pt;
+border-bottom:#395f9b 1px solid;
+font-family:verdana;
+background-color:#ecebdb;
+}
+
+
+A:hover {color: orange;}
+a{ color: white; text-decoration: underline; font-family:verdana; font-size:12}
+A:hover {color: orange;}
+
+
+.lbutto{
+background-color :"#0080c0";
+highlight-color:"blue";
+color :white;
+hover:yellow;
+border-width:1;
+border-style:outset;
+border-color:white;
+font-weight:normal;
+}
+
+.searchField
+{
+  background: #eff9ff;
+  font-size:8pt;
+  
+  border-right: #eff9ff 1px solid;
+  border-top:#eff9ff 1px solid;
+  border-left:#eff9ff 1px solid;
+  border-bottom:#eff9ff 1px solid;
+}
+
+.blueBar
+{
+  background: #4682B4;
+  font-size:8pt;
+  font-family:"verdana, Arial, Helvetica, sans-serif";
+}
+.icon
+{
+cursor:hand;
+}

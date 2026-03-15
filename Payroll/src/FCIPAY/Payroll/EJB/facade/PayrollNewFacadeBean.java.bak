@@ -1,0 +1,2111 @@
+package FCIPAY.Payroll.EJB.facade;
+
+import FCIPAY.Payroll.DATAACCESSTIER.VO.BasicHistDetailInfo;
+//Added By Amresh For nEWSPAPER aLLOWANCE
+import FCIPAY.Payroll.EJB.business.EmpNewspaperAllowanceBusinessObject;
+import FCIPAY.Payroll.DATAACCESSTIER.VO.EmpNewspaperAllowanceQueryVO;
+
+import FCIPAY.Payroll.EJB.business.EmpLocalTravelAllowanceBusinessObject;
+import FCIPAY.Payroll.DATAACCESSTIER.VO.EmpLocalTravelAllowanceQueryVO;
+
+import FCIPAY.Payroll.EJB.business.EmpTravelReimbursementBusinessObject;
+import FCIPAY.Payroll.DATAACCESSTIER.VO.EmpTravelReimbursementQueryVO;
+
+import FCIPAY.Payroll.EJB.business.EmpMobileReimbursementBusinessObject;
+import FCIPAY.Payroll.DATAACCESSTIER.VO.EmpMobileReimbursementQueryVO;
+
+import FCIPAY.Payroll.EJB.business.EmpLaptopReimbursementBusinessObject;
+import FCIPAY.Payroll.DATAACCESSTIER.VO.EmpLaptopReimbursementQueryVO;
+
+import FCIPAY.Payroll.EJB.business.EmpTelephoneDataReimbursementBusinessObject;
+import FCIPAY.Payroll.DATAACCESSTIER.VO.EmpTelephoneDataReimbursementQueryVO;
+
+import FCIPAY.Payroll.EJB.business.EmpBriefcaseReimbursementBusinessObject;
+import FCIPAY.Payroll.DATAACCESSTIER.VO.EmpBriefcaseReimbursementQueryVO;
+
+import FCIPAY.Payroll.EJB.business.EmpLiveriesReimbursementBusinessObject;
+import FCIPAY.Payroll.DATAACCESSTIER.VO.EmpLiveriesReimbursementQueryVO;
+
+import FCIPAY.Payroll.EJB.business.EmpMiscellaneousReimbursementBusinessObject;
+import FCIPAY.Payroll.DATAACCESSTIER.VO.EmpMiscellaneousReimbursementQueryVO;
+
+import FCIPAY.Payroll.EJB.business.EmpLtcHomeReimbursementBusinessObject;
+import FCIPAY.Payroll.DATAACCESSTIER.VO.EmpLtcHomeReimbursementQueryVO;
+
+import javax.ejb.SessionBean;
+import FCIPAY.Payroll.DATAACCESSTIER.VO.EmpAttanLeaveDetailInfo;
+import FCIPAY.Payroll.DATAACCESSTIER.VO.DummyQueryVO;
+import FCIPAY.Payroll.EJB.business.AnnIncBusinessObject;
+import FCIPAY.Payroll.UTILITY.DummyHeaderBean;
+import FCIPAY.Payroll.UTILITY.MaintAdhocPayBean;
+import FCIPAY.Payroll.UTILITY.MaintDetIncHeaderBean; //added by yogesh
+import java.rmi.RemoteException;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Iterator;
+import javax.ejb.CreateException;
+import javax.ejb.SessionContext;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import FCIPAY.Payroll.common.exception.EnrgiseApplicationException;
+import FCIPAY.Payroll.common.exception.EnrgiseSystemException;
+import FCIPAY.Payroll.DATAACCESSTIER.VO.MaintAnnIncQueryVO;
+import FCIPAY.Payroll.common.utility.RecordMetaInfo;
+import FCIPAY.Payroll.EJB.business.DetIncBusinessObject;
+import FCIPAY.Payroll.common.bean.BaseHeaderBean;
+import FCIPAY.Payroll.UTILITY.MaintEmpPromotionBean6Pay;
+import FCIPAY.Payroll.WEBTIER.Form.MaintEmpPromotionForm6Pay;
+import FCIPAY.Payroll.EJB.business.EmpPromotionBusinessObject6Pay;     // added by yogesh on 13 sep 2010
+import FCIPAY.Payroll.common.vo.LovQueryVO;
+import FCIPAY.Payroll.common.vo.LovVO;
+import FCIPAY.Payroll.EJB.business.SupplimentaryPayBusinessObject; // added by Swapnendun Dt 29 -Sep 2010.
+import FCIPAY.Payroll.EJB.business.ComFinalBusinessObject; //added by manish dt 2-dec-2015
+import FCIPAY.Payroll.DATAACCESSTIER.VO.SupplPayQueryVO;
+import FCIPAY.Payroll.DATAACCESSTIER.VO.SupplPayDetailInfo; //added by swapnendu Dt 05 -Oct 2010
+import FCIPAY.Payroll.common.vo.BaseDetailInfo;
+import FCIPAY.Payroll.UTILITY.SupplimentaryPayHeaderBean;
+import FCIPAY.Payroll.UTILITY.EmpDpndntNomHeaderBean;                    // added by dushyant on 13-10-2010
+import FCIPAY.Payroll.EJB.business.EmpNomineeDpndntBusinessObject;       // added by dushyant on 13-10-2010
+import FCIPAY.Payroll.EJB.business.MiscScheduleReportBusinessObject;        // added by dushyant on 13-10-2010
+import FCIPAY.Payroll.EJB.business.CheckPayCodeBusinessObject;             // added by sonia on 25-10-2010
+import FCIPAY.Payroll.EJB.business.OnlinePayReportBusinessObject;
+import FCIPAY.Payroll.UTILITY.OnlineDummyHeaderBean;
+import FCIPAY.Payroll.EJB.business.CPFStopBusinessObject;   //added by swapnendu Dt 26 -Oct 2010 
+import FCIPAY.Payroll.UTILITY.CPFStopHeaderBean;   //added by swapnendu Dt 27 -Oct 2010 
+import FCIPAY.Payroll.DATAACCESSTIER.VO.CPFStopQueryVO; //added by swapnendu Dt 27 -Oct 2010
+import FCIPAY.Payroll.EJB.business.MaintSixPayCodeBusinessObject;
+import FCIPAY.Payroll.DATAACCESSTIER.VO.MaintSixPayCodesDetailInfo;
+import FCIPAY.Payroll.UTILITY.MaintSixPayCodesHeaderBean;  //added by sonia
+import FCIPAY.Payroll.EJB.business.MonthEndUpdateBusinessObject;    // added by Swapnendu On 15 Feb 2011.
+import FCIPAY.Payroll.EJB.business.EmpPaymentSixPayBusinessObject;
+import FCIPAY.Payroll.DATAACCESSTIER.VO.EmpPaySixDetailInfo;
+import FCIPAY.Payroll.UTILITY.EmpPaySixHeaderBean;
+import FCIPAY.Payroll.DATAACCESSTIER.VO.EmpPaySixQueryVO;
+import FCIPAY.Payroll.DATAACCESSTIER.VO.MaintPfDtlComboVO;
+import FCIPAY.Payroll.EJB.business.MaintPFDtlBusinessObject;
+import FCIPAY.Payroll.DATAACCESSTIER.VO.MaintPFDetailQueryVO;
+import FCIPAY.Payroll.EJB.business.EmpPromotionBusinessObject; // added by sonia On 08 Apr 2011.
+import FCIPAY.Payroll.DATAACCESSTIER.VO.SpclCmpnstryComboVOSixPay; //added by swapnendu Dt 07-Dec 2010.
+import FCIPAY.Payroll.EJB.business.SpclCmpnstryAllowBusinessObject; //added by swapnendu Dt 07-Dec 2010.
+import FCIPAY.Payroll.DATAACCESSTIER.VO.SpclCmpnstryAllowSixPayQueryVO; //added by swapnendu Dt 07-Dec 2010.
+import FCIPAY.Payroll.DATAACCESSTIER.VO.SpclCmpnstryAllowSixPayDetailInfo; //added by swapnendu Dt 23 -Dec 2010
+import FCIPAY.Payroll.UTILITY.SpclCmpnstryAllowSixPayHeaderBean; //added by swapnendu Dt 23 -Dec 2010
+import FCIPAY.Payroll.EJB.business.MiscAllow6PayBusinessObject; //added by swapnendu Dt 30 -Mar 2011
+import FCIPAY.Payroll.EJB.business.MediReimbursDtlsAllBusinessObject;
+import FCIPAY.Payroll.DATAACCESSTIER.VO.MiscAllowanceComboVOSixPay; //added by swapnendu Dt 30-Mar 2011.
+import FCIPAY.Payroll.UTILITY.MiscAllowanceSixPayHeaderBean; //added by swapnendu Dt 11-Apr 2011.
+import FCIPAY.Payroll.DATAACCESSTIER.VO.MiscAllowanceSixPayQueryVO; //added by swapnendu Dt 11-Apr 2011.
+import FCIPAY.Payroll.DATAACCESSTIER.VO.MiscAllowanceSixPayDetailInfo;
+import FCIPAY.Payroll.UTILITY.OverNAboveArrearHeaderBean;
+import FCIPAY.Payroll.EJB.business.OverNAboveBusinessObject;
+import FCIPAY.Payroll.EJB.business.InitPayBusinessObject;
+import FCIPAY.Payroll.DATAACCESSTIER.VO.LeaveEncashQueryVO;
+import FCIPAY.Payroll.EJB.business.LeaveEncashBusinessObject;
+import FCIPAY.Payroll.DATAACCESSTIER.VO.OTAPymntQueryVO;
+import FCIPAY.Payroll.DATAACCESSTIER.VO.PayOverAboveQueryVO;
+import FCIPAY.Payroll.DATAACCESSTIER.VO.LTCEncashQueryVO;
+import FCIPAY.Payroll.DATAACCESSTIER.VO.EmpMediBillsQueryVO;
+import FCIPAY.Payroll.EJB.business.LTCEncashBusinessObject;
+import FCIPAY.Payroll.EJB.business.OTAPymntBusinessObject;
+import FCIPAY.Payroll.EJB.business.PayOverAboveBusinessObject;
+import FCIPAY.Payroll.DATAACCESSTIER.VO.EmpSuspensionQueryVO;
+import FCIPAY.Payroll.DATAACCESSTIER.VO.EmpSuspInvDtlsComboVO;
+import FCIPAY.Payroll.EJB.business.EmpSuspensionBusinessObject;
+import FCIPAY.Payroll.EJB.business.EmpTrnsfrBusinessObject;
+import FCIPAY.Payroll.DATAACCESSTIER.VO.EmpTrnsfrQueryVO;
+import FCIPAY.Payroll.DATAACCESSTIER.VO.EmpTrnsfrInvDtlsComboVO;
+import FCIPAY.Payroll.EJB.business.LoanDtlsBusinessObject;
+import FCIPAY.Payroll.EJB.business.PostYrEndRemitAPBusinessObject;
+import FCIPAY.Payroll.EJB.business.PayReportBusinessObject;
+import FCIPAY.Payroll.EJB.business.TransportRebateBusinessObject;
+import FCIPAY.Payroll.DATAACCESSTIER.VO.MaintTransportSubsideQueryVO;
+import FCIPAY.Payroll.DATAACCESSTIER.VO.MaintTransportSubsideDetailInfo;
+import FCIPAY.Payroll.UTILITY.MaintTransportSubsideHeaderBean;
+import FCIPAY.Payroll.UTILITY.EmpTrnsfrHeaderBean; //added by swapnendu Dt 20-06-2012.
+import FCIPAY.Payroll.DATAACCESSTIER.VO.EmpPenalityComboVO;
+import FCIPAY.Payroll.DATAACCESSTIER.VO.EmpPenalityQueryVO;
+import FCIPAY.Payroll.EJB.business.EmpPenalityBusinessObject;
+import FCIPAY.Payroll.UTILITY.MaintEmpPenalityBean;
+import FCIPAY.Payroll.EJB.business.EmpLeaveBusinessObject;
+import FCIPAY.Payroll.EJB.business.DeptAttanLeaveBuisnessObject;
+import FCIPAY.Payroll.DATAACCESSTIER.VO.GenDAArrearQueryVO;
+import FCIPAY.Payroll.EJB.business.GetDescBusinessObject;
+import FCIPAY.Payroll.EJB.business.DirectPayrollBusinessObject;
+import FCIPAY.Payroll.DATAACCESSTIER.VO.CPFApprQueryVO;
+import FCIPAY.Payroll.UTILITY.CPFApprHeaderBean;
+import FCIPAY.Payroll.EJB.business.CPFApproveBusinessObject;
+import FCIPAY.Payroll.EJB.business.ZoneSurrBusinessObject;
+import FCIPAY.Payroll.DATAACCESSTIER.VO.CPFApprDetailInfo;
+import FCIPAY.Payroll.common.vo.BaseQueryVO;
+import FCIPAY.Payroll.DATAACCESSTIER.VO.ZoneSurrComboVO;
+import FCIPAY.Payroll.DATAACCESSTIER.VO.RespCreatUpdDetailInfo;
+import FCIPAY.Payroll.DATAACCESSTIER.VO.RespcreateQueryVO;
+import FCIPAY.Payroll.EJB.business.ResponsibilityCreationBusinessObject;
+import FCIPAY.Payroll.EJB.business.PayImageBusinessObject;
+import FCIPAY.Payroll.DATAACCESSTIER.VO.EnqPayImageQueryVO;
+import FCIPAY.Payroll.DATAACCESSTIER.VO.EnqPayImageDetailInfo;
+import FCIPAY.Payroll.DATAACCESSTIER.VO.ScreenComboVO;
+import FCIPAY.Payroll.UTILITY.CatVsPayCodeHeaderBean;
+import FCIPAY.Payroll.EJB.business.CatVsPayCodeBusinessObject;
+import FCIPAY.Payroll.DATAACCESSTIER.VO.ClassificationComboVO;
+import FCIPAY.Payroll.EJB.business.LoanAdjustmentBusinessObject;
+import FCIPAY.Payroll.DATAACCESSTIER.VO.LoanAdjustmentVO;
+import FCIPAY.Payroll.UTILITY.LoanAdjustmentHeaderBean;
+
+//added by geetika 18/12/13
+import FCIPAY.Payroll.DATAACCESSTIER.VO.CPFFinalPaymentQueryVO;
+import FCIPAY.Payroll.EJB.business.CPFFinalPymntBusinessObject;
+import FCIPAY.Payroll.EJB.business.CPFNewPymntBusinessObject;
+import FCIPAY.Payroll.UTILITY.CPFFinalPaymentBean;
+import FCIPAY.Payroll.DATAACCESSTIER.VO.CPFFinalPaymentBaseDetailInfo;
+import FCIPAY.Payroll.DATAACCESSTIER.VO.CPFFinalPayComboVO;
+
+import FCIPAY.Payroll.DATAACCESSTIER.VO.ChangeZoneDetailInfo;
+import FCIPAY.Payroll.DATAACCESSTIER.VO.LeaveTravelConcessionQueryVO;
+import FCIPAY.Payroll.EJB.business.ChangeZoneBusinessObject;
+import FCIPAY.Payroll.UTILITY.ChangeZoneHeaderBean;
+import FCIPAY.Payroll.EJB.business.EmpMediBillsBusinessObject;
+////////////////////Added By Avtar on 03-Jun-2015//////////////////////////////////////////
+import FCIPAY.Payroll.UTILITY.PLIForeclosureBean;
+import FCIPAY.Payroll.EJB.business.PLIForeclosureBusinessObject;
+import FCIPAY.Payroll.DATAACCESSTIER.VO.PLIForeclosureVO;
+
+import FCIPAY.Payroll.EJB.business.MaintPensionDtlBusinessObject;
+import FCIPAY.Payroll.EJB.business.PensionEmpShareUploadBusinessObject;
+import FCIPAY.Payroll.UTILITY.MaintPCDetailHeaderBean;
+import FCIPAY.Payroll.UTILITY.MaintPFDetailHeaderBean;
+import FCIPAY.Payroll.DATAACCESSTIER.VO.MaintPCDetailInfo;
+import FCIPAY.Payroll.DATAACCESSTIER.VO.MaintPCDetailQueryVO;
+import FCIPAY.Payroll.DATAACCESSTIER.VO.MaintPcDtlComboVO;
+import FCIPAY.Payroll.DATAACCESSTIER.VO.PLIActCancelQueryVO;
+import FCIPAY.Payroll.DATAACCESSTIER.VO.PLIPayCanDetailInfo;
+import FCIPAY.Payroll.DATAACCESSTIER.VO.PLIReportDetailInfo;
+import FCIPAY.Payroll.DATAACCESSTIER.VO.PLIReportAdjustmentQueryVO;
+import FCIPAY.Payroll.DATAACCESSTIER.VO.PensionFinalSettQueryVO;
+import FCIPAY.Payroll.EJB.business.EmpBasicHistBusinessObject;
+import FCIPAY.Payroll.EJB.business.LeaveTravelConcessionBusinessObject;
+import FCIPAY.Payroll.EJB.business.PLIAdjustmentBusinessObject;
+import FCIPAY.Payroll.EJB.business.PLICancelBusinessObject;
+import FCIPAY.Payroll.EJB.business.PensionFinalSettBusinessObject;
+import FCIPAY.Payroll.UTILITY.PLIPaymentHeaderBean;
+import FCIPAY.Payroll.UTILITY.PensionFinalSettBean;
+////////////////////Ended By Avtar on 03-Jun-2015//////////////////////////////////////////
+//Added By Amresh FOR PRMS
+import FCIPAY.Payroll.EJB.business.EmpPrmsMediBillsBusinessObject;
+import FCIPAY.Payroll.DATAACCESSTIER.VO.EmpPrmsMediBillsQueryVO;
+
+
+
+public class PayrollNewFacadeBean implements SessionBean 
+{
+  public void ejbCreate()
+  {
+  }
+
+  public void ejbActivate()
+  {
+  }
+
+  public void ejbPassivate()
+  {
+  }
+
+  public void ejbRemove()
+  {
+  }
+
+  public void setSessionContext(SessionContext ctx)
+  {
+  }
+  
+  public String saveDetInc(MaintDetIncHeaderBean oMaintDetIncHeaderBean, Timestamp oWhenPicked, String sScreenName, String sScreenMode, boolean bHeaderDataChanged,ArrayList oDetailBeanArray,boolean bDetailDataChanged, Timestamp oDetailPicked) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    DetIncBusinessObject oAnnInc = new DetIncBusinessObject();
+    String s = oAnnInc.saveData((BaseHeaderBean)oMaintDetIncHeaderBean,oWhenPicked, sScreenName, sScreenMode, bHeaderDataChanged, oDetailBeanArray, bDetailDataChanged, oDetailPicked);
+    oAnnInc = null;
+    return s;
+  }
+  
+  public RecordMetaInfo getDetIncHeaderMetaInfo(MaintAnnIncQueryVO oMaintAnnIncQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    DetIncBusinessObject oAnnInc = new DetIncBusinessObject();
+    RecordMetaInfo oRecordMetaInfo = oAnnInc.getDetIncHeaderMetaInfo(oMaintAnnIncQueryVO);
+    oAnnInc = null;
+    return oRecordMetaInfo;
+  }
+
+  public LovVO getMedClaimAgencyCodelov(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException,RemoteException
+  {
+    EmpMediBillsBusinessObject oMediBill = new EmpMediBillsBusinessObject();
+    LovVO oLovVO=oMediBill.getMedClaimAgencyCodelov(oLovQueryVO);
+    return oLovVO;
+  }
+ 
+ 
+  public LovVO getMedClaimAgencySiteCodelov(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException,RemoteException
+  {
+    EmpMediBillsBusinessObject oMediBill = new EmpMediBillsBusinessObject();
+    LovVO oLovVO=oMediBill.getMedClaimAgencySiteCodelov(oLovQueryVO);
+    return oLovVO;
+  }
+ 
+
+  public ArrayList getDetIncHeader(MaintAnnIncQueryVO oMaintAnnIncQueryVO,long lStartPosition, long lLastPosition) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    DetIncBusinessObject oAnnInc = new DetIncBusinessObject();
+    ArrayList arr = oAnnInc.getDetIncHeader(oMaintAnnIncQueryVO,lStartPosition,lLastPosition);
+    oAnnInc = null;
+    return arr;
+  } 
+
+/* employee promotion function added by yogesh on 15 th sep 2010  */
+
+ public String saveEmpPromotion6Pay(MaintEmpPromotionBean6Pay oEmpPromotionBean, Timestamp oWhenPicked, String sScreenName, String sScreenMode, boolean bHeaderDataChanged,ArrayList oDetailBeanArray,boolean bDetailDataChanged, Timestamp oDetailPicked) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    EmpPromotionBusinessObject6Pay oEmpPromotion = new EmpPromotionBusinessObject6Pay();
+    String s = oEmpPromotion.saveData((BaseHeaderBean)oEmpPromotionBean,oWhenPicked, sScreenName, sScreenMode, bHeaderDataChanged, oDetailBeanArray, bDetailDataChanged, oDetailPicked);
+    oEmpPromotion = null;
+    return s;
+  }
+  public RecordMetaInfo getEmpAttanLeaveDetailMetaInfo(String sPrimaryKey,EmpAttanLeaveDetailInfo oEmpLeaveDetailInfo) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    DeptAttanLeaveBuisnessObject oEmpLeave = new DeptAttanLeaveBuisnessObject();
+    return oEmpLeave.getEmpLeaveDetailMetaInfo(sPrimaryKey,oEmpLeaveDetailInfo);
+  }
+  public ArrayList getEmpAttanLeaveDetail(String sPrimaryKey,long lStartPosition,long lLastPosition,EmpAttanLeaveDetailInfo oEmpAttanLeaveDetailInfo) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    DeptAttanLeaveBuisnessObject oEmpLeave = new DeptAttanLeaveBuisnessObject();
+    return oEmpLeave.getEmpAttanLeaveDetails(sPrimaryKey,lStartPosition,lLastPosition,oEmpAttanLeaveDetailInfo);
+  }
+  public LovVO getQueryEmpPromotionLOVData6Pay(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    EmpPromotionBusinessObject6Pay oEmpPromotion = new EmpPromotionBusinessObject6Pay();
+    LovVO oLovVO=oEmpPromotion.getQueryEmpPromotionLOVData6Pay(oLovQueryVO);
+    oEmpPromotion = null;
+    return oLovVO;
+  }
+  public LovVO getEmpPromotionDsgnLOVData6Pay(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    EmpPromotionBusinessObject6Pay oEmpPromotion = new EmpPromotionBusinessObject6Pay();
+    LovVO oLovVO=oEmpPromotion.getEmpPromotionDsgnLOVData6Pay(oLovQueryVO);
+    oEmpPromotion = null;
+    return oLovVO;
+  }
+  
+  public LovVO getEmpPromotionLOVData6Pay(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    EmpPromotionBusinessObject6Pay oEmpPromotion = new EmpPromotionBusinessObject6Pay();
+    LovVO oLovVO=oEmpPromotion.getEmpPromotionLOVData6Pay(oLovQueryVO);
+    oEmpPromotion = null;
+    return oLovVO;
+  }
+
+    public LovVO getEmpLastPayCertifReportLOV(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+    {
+        PayReportBusinessObject oPayReportBusinessObject = new PayReportBusinessObject();
+        LovVO oLovVO=oPayReportBusinessObject.getEmpLastPayCertifReportLOV(oLovQueryVO);
+        return oLovVO;
+    }
+//=======================================================FINAL SETTLEMENT ==================================================================
+ public String deleteComFinalEntry(BaseHeaderBean oBaseHeaderBean) throws EnrgiseSystemException,EnrgiseApplicationException
+  {
+      ComFinalBusinessObject oComFinalBusinessObject = new ComFinalBusinessObject();
+     
+        return oComFinalBusinessObject.deleteComFinalEntry(oBaseHeaderBean);
+  }
+  
+public String deleteSepDtls(BaseHeaderBean oBaseHeaderBean,String buttonType) throws EnrgiseSystemException,EnrgiseApplicationException
+{
+    
+      ComFinalBusinessObject oComFinalBusinessObject = new ComFinalBusinessObject();
+     
+        return oComFinalBusinessObject.deleteSepDtls(oBaseHeaderBean,buttonType);
+}
+//======================================================OTHER PAYMENT===========================================================================
+/*
+ * Supplementary payment
+ * Added by Swapnendu Bastia
+ * Dt 29 -Sep 2010.
+ * */
+ 
+  public LovVO getSupPayEmpDtlLOVData(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    SupplimentaryPayBusinessObject oBusinessObject = new SupplimentaryPayBusinessObject();
+    LovVO oLovVO=oBusinessObject.getSupPayEmpDtlLOVData(oLovQueryVO);
+    oBusinessObject = null;
+    return oLovVO;
+  }
+
+  public LovVO getSupPayEmpDtlLOVDataQuery(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    SupplimentaryPayBusinessObject oBusinessObject = new SupplimentaryPayBusinessObject();
+    LovVO oLovVO=oBusinessObject.getSupPayEmpDtlLOVDataQuery(oLovQueryVO);
+    oBusinessObject = null;
+    return oLovVO;
+  }
+
+  public RecordMetaInfo getSupPayHeaderMetaInfo(SupplPayQueryVO oSupplPayQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    SupplimentaryPayBusinessObject oBusinessObject = new SupplimentaryPayBusinessObject();
+    RecordMetaInfo oRecordMetaInfo = oBusinessObject.getSupPayHeaderMetaInfo(oSupplPayQueryVO);
+    oBusinessObject = null;
+    return oRecordMetaInfo;
+  }
+
+  public ArrayList getSupPayHeader(SupplPayQueryVO oSupplPayQueryVO,long lStartPosition, long lLastPosition) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    SupplimentaryPayBusinessObject oBusinessObject = new SupplimentaryPayBusinessObject();
+    ArrayList arr = oBusinessObject.getSupPayHeader(oSupplPayQueryVO,lStartPosition,lLastPosition);
+    oBusinessObject = null;
+    return arr;
+  }
+  
+  public RecordMetaInfo getSupplPayDetailMetaInfo(String sPrimaryKey, BaseDetailInfo oBaseDetailInfo) throws EnrgiseSystemException, EnrgiseApplicationException, RemoteException
+  {
+    SupplimentaryPayBusinessObject oBusinessObject = new SupplimentaryPayBusinessObject();
+    RecordMetaInfo oRecordMetaInfo = oBusinessObject.getSupplPayDetailMetaInfo(sPrimaryKey, (SupplPayDetailInfo)oBaseDetailInfo);
+    oBusinessObject = null;
+    return oRecordMetaInfo;
+  }
+
+  public ArrayList getSupplPayDetail(String sPrimaryKey, long lStartPosition, long lLastPosition, BaseDetailInfo oBaseDetailInfo) throws EnrgiseSystemException, EnrgiseApplicationException, RemoteException
+  {
+    SupplimentaryPayBusinessObject oBusinessObject = new SupplimentaryPayBusinessObject();
+    ArrayList arr = oBusinessObject.getSupplPayDetail(sPrimaryKey, lStartPosition, lLastPosition, (SupplPayDetailInfo)oBaseDetailInfo);
+    oBusinessObject = null;
+    return arr;
+  }
+  
+  public String saveSupplPayDetail(SupplimentaryPayHeaderBean oDummyHeaderBean, Timestamp oWhenPicked, String sScreenName, String sScreenMode, boolean bHeaderDataChanged,ArrayList oDetailBeanArray,boolean bDetailDataChanged, Timestamp oDetailPicked) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    SupplimentaryPayBusinessObject oBusinessObject = new SupplimentaryPayBusinessObject();
+    String s = oBusinessObject.saveData(oDummyHeaderBean,oWhenPicked,sScreenName,sScreenMode,bHeaderDataChanged,oDetailBeanArray,bDetailDataChanged,oDetailPicked);
+    oBusinessObject = null;
+    return s;
+  }
+  public String populateData(SupplimentaryPayHeaderBean oDummyHeaderBean) throws EnrgiseSystemException, EnrgiseApplicationException, RemoteException
+  {
+    SupplimentaryPayBusinessObject oBusinessObject = new SupplimentaryPayBusinessObject();
+    String s = oBusinessObject.populateData(oDummyHeaderBean);
+    oBusinessObject = null;
+    return s;
+  }
+  public String sendSupplPayInvoice(SupplPayQueryVO oSupplPayQueryVO)throws EnrgiseSystemException, EnrgiseApplicationException, RemoteException
+  {
+    SupplimentaryPayBusinessObject oBusinessObject = new SupplimentaryPayBusinessObject();
+    String s = oBusinessObject.sendInvoice(oSupplPayQueryVO);
+    oBusinessObject = null;
+    return s;
+  }
+  public LovVO getPaycodeAgencycodePayCodeLOVData(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    SupplimentaryPayBusinessObject oBusinessObject = new SupplimentaryPayBusinessObject();
+    LovVO oLovVO=oBusinessObject.getPaycodeAgencycodePayCodeLOVData(oLovQueryVO);
+    oBusinessObject = null;
+    return oLovVO;
+  }
+  
+    //======================================================OTHER PAYMENT===========================================================================
+    /*
+     * PLI Adjustment
+     * Added by Vikash Singh
+     * Dt 17 -Jan 2020.
+     * */
+    public LovVO getPLIReportEmpDtlLOVData (LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+      {
+        PLIAdjustmentBusinessObject oBusinessObject = new PLIAdjustmentBusinessObject();
+        LovVO oLovVO=oBusinessObject.getPLIReportEmpDtlLOVData(oLovQueryVO);
+        oBusinessObject = null;
+        return oLovVO;
+      }
+
+      public LovVO getPLIReportEmpDtlLOVDataQuery(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+      {
+        PLIAdjustmentBusinessObject oBusinessObject = new PLIAdjustmentBusinessObject();
+        LovVO oLovVO=oBusinessObject.getPLIReportEmpDtlLOVDataQuery(oLovQueryVO);
+        oBusinessObject = null;
+        return oLovVO;
+      }
+
+      public RecordMetaInfo getPLIReportHeaderMetaInfo(PLIReportAdjustmentQueryVO oPLIReportAdjustmentQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+      {
+        PLIAdjustmentBusinessObject oBusinessObject = new PLIAdjustmentBusinessObject();
+        RecordMetaInfo oRecordMetaInfo = oBusinessObject.getPLIReportHeaderMetaInfo(oPLIReportAdjustmentQueryVO);
+        oBusinessObject = null;
+        return oRecordMetaInfo;
+      }
+
+      public ArrayList getPLIReportHeader(PLIReportAdjustmentQueryVO oPLIReportAdjustmentQueryVO,long lStartPosition, long lLastPosition) throws EnrgiseSystemException, EnrgiseApplicationException
+      {
+        PLIAdjustmentBusinessObject oBusinessObject = new PLIAdjustmentBusinessObject();
+        ArrayList arr = oBusinessObject.getPLIReportHeader(oPLIReportAdjustmentQueryVO,lStartPosition,lLastPosition);
+        oBusinessObject = null;
+        return arr;
+      }
+      
+      public RecordMetaInfo getPLIReportDetailMetaInfo(String sPrimaryKey, BaseDetailInfo oBaseDetailInfo) throws EnrgiseSystemException, EnrgiseApplicationException, RemoteException
+      {
+        PLIAdjustmentBusinessObject oBusinessObject = new PLIAdjustmentBusinessObject();
+        RecordMetaInfo oRecordMetaInfo = oBusinessObject.getPLIReportDetailMetaInfo(sPrimaryKey, (PLIReportDetailInfo)oBaseDetailInfo);
+        oBusinessObject = null;
+        return oRecordMetaInfo;
+      }
+
+      public ArrayList getPLIReportDetail(String sPrimaryKey, long lStartPosition, long lLastPosition, BaseDetailInfo oBaseDetailInfo) throws EnrgiseSystemException, EnrgiseApplicationException, RemoteException
+      {
+        PLIAdjustmentBusinessObject oBusinessObject = new PLIAdjustmentBusinessObject();
+        ArrayList arr = oBusinessObject.getPLIReportDetail(sPrimaryKey, lStartPosition, lLastPosition, (PLIReportDetailInfo)oBaseDetailInfo);
+        oBusinessObject = null;
+        return arr;
+      }
+      
+      public String savePLIReportDetail(PLIPaymentHeaderBean oDummyHeaderBean, Timestamp oWhenPicked, String sScreenName, String sScreenMode, boolean bHeaderDataChanged,ArrayList oDetailBeanArray,boolean bDetailDataChanged, Timestamp oDetailPicked) throws EnrgiseSystemException, EnrgiseApplicationException
+      {
+        PLIAdjustmentBusinessObject oBusinessObject = new PLIAdjustmentBusinessObject();
+        String s = oBusinessObject.saveData(oDummyHeaderBean,oWhenPicked,sScreenName,sScreenMode,bHeaderDataChanged,oDetailBeanArray,bDetailDataChanged,oDetailPicked);
+        oBusinessObject = null;
+        return s;
+      }
+      public String populateData1(PLIPaymentHeaderBean oDummyHeaderBean) throws EnrgiseSystemException, EnrgiseApplicationException, RemoteException
+      {
+        PLIAdjustmentBusinessObject oBusinessObject = new PLIAdjustmentBusinessObject();
+        String s = oBusinessObject.populateData1(oDummyHeaderBean);
+        oBusinessObject = null;
+        return s;
+      }
+     
+      public LovVO getPaycodeAgencycodePayCodeLOVData1(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+      {
+        PLIAdjustmentBusinessObject oBusinessObject = new PLIAdjustmentBusinessObject();
+        LovVO oLovVO=oBusinessObject.getPaycodeAgencycodePayCodeLOVData(oLovQueryVO);
+        oBusinessObject = null;
+        return oLovVO;
+      }  
+  
+// added by dushyant on 13-10-2010
+
+ public RecordMetaInfo getEmpGratuityDetailMetaInfo(String sPrimaryKey) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    EmpNomineeDpndntBusinessObject oEmpGratuity = new EmpNomineeDpndntBusinessObject();
+    RecordMetaInfo oRecordMetaInfo = oEmpGratuity.getEmpGratuityDetailMetaInfo(sPrimaryKey);
+    oEmpGratuity = null;
+    return oRecordMetaInfo;
+  }
+  
+   public ArrayList getEmpGratuityDetail(String sPrimaryKey,long lStartPosition,long lLastPosition) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    EmpNomineeDpndntBusinessObject oEmpGratuity = new EmpNomineeDpndntBusinessObject();
+    ArrayList arr = oEmpGratuity.getEmpGratuityDetail(sPrimaryKey,lStartPosition,lLastPosition);
+    oEmpGratuity = null;
+    return arr;
+  }
+  
+ public String saveGratuityDetail(EmpDpndntNomHeaderBean oHeaderBean, Timestamp oWhenPicked, String sScreenName, String sScreenMode, boolean bHeaderDataChanged,ArrayList oDetailBeanArray,boolean bDetailDataChanged, Timestamp oDetailPicked) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    EmpNomineeDpndntBusinessObject oEmpGratuity = new EmpNomineeDpndntBusinessObject();
+    String s = oEmpGratuity.saveData((BaseHeaderBean)oHeaderBean,oWhenPicked, sScreenName, sScreenMode, bHeaderDataChanged, oDetailBeanArray, bDetailDataChanged, oDetailPicked);
+    oEmpGratuity = null;
+    return s;
+  }
+  
+  // end by dushyant  
+// added by dushyant on for misllaneous.jsp on 20-10-2010
+ public LovVO getPayCodeLOVData(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    MiscScheduleReportBusinessObject oPayCode = new MiscScheduleReportBusinessObject();
+    LovVO oLovVO=oPayCode.getPayCodeLOVData(oLovQueryVO);
+    oPayCode = null;
+    return oLovVO;
+  }
+
+
+//====================================================== MISCILLANEOUS TRANSACTION ===========================================================================
+/*
+ * CPF STOP
+ * Added by Swapnendu Bastia
+ * Dt 26 -Oct 2010.
+ * */
+
+  public LovVO getCPFStopEmpLOVData(LovQueryVO oLovQueryVO)  throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    CPFStopBusinessObject oBusinessObject = new CPFStopBusinessObject();
+    return oBusinessObject.getCPFStopEmpLOVData(oLovQueryVO);
+  }
+  
+  public String saveCPFRecv(CPFStopHeaderBean oDummyHeaderBean, Timestamp oWhenPicked, String sScreenName, String sScreenMode, boolean bHeaderDataChanged,ArrayList oDetailBeanArray,boolean bDetailDataChanged, Timestamp oDetailPicked) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    CPFStopBusinessObject oBusinessObject = new CPFStopBusinessObject();
+    String s = oBusinessObject.saveData(oDummyHeaderBean,oWhenPicked,sScreenName,sScreenMode,bHeaderDataChanged,oDetailBeanArray,bDetailDataChanged,oDetailPicked);
+    oBusinessObject = null;
+    return s;
+  }
+  
+  public RecordMetaInfo getCpfRcvrHeaderMetaInfo(CPFStopQueryVO oCPFStopQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    CPFStopBusinessObject oBusinessObject = new CPFStopBusinessObject();
+    RecordMetaInfo oRecordMetaInfo = oBusinessObject.getCpfRcvrHeaderMetaInfo(oCPFStopQueryVO);
+    oBusinessObject = null;
+    return oRecordMetaInfo;
+  }
+
+  public ArrayList getCpfRcvrHeader(CPFStopQueryVO oCPFStopQueryVO,long lStartPosition, long lLastPosition) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    CPFStopBusinessObject oBusinessObject = new CPFStopBusinessObject();
+    ArrayList arr = oBusinessObject.getCpfRcvrHeader(oCPFStopQueryVO,lStartPosition,lLastPosition);
+    oBusinessObject = null;
+    return arr;
+  }
+
+  public LovVO getMediReimAllEmpLOVData(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    MediReimbursDtlsAllBusinessObject oBo = new MediReimbursDtlsAllBusinessObject();
+    LovVO oLovVO = oBo.getMediReimBulkLOVData(oLovQueryVO);
+    oBo = null;
+    return oLovVO;
+  }
+
+    public String sendInv(String empLbr, String quarter, String finYear, String medicalDate, long lUserID, long lSiteID) throws EnrgiseSystemException, EnrgiseApplicationException
+    {
+        MediReimbursDtlsAllBusinessObject oMediReimbursDtlsAllBusinessObject = new MediReimbursDtlsAllBusinessObject();
+        String s = (oMediReimbursDtlsAllBusinessObject.sendInv(empLbr, quarter, finYear, medicalDate, lUserID, lSiteID));
+        oMediReimbursDtlsAllBusinessObject = null;
+        return s;
+    }
+    
+     public String sendInvBulk(String empLbr,String finYear,String txtPayCode,long lUserID,long lSiteID) throws EnrgiseSystemException, EnrgiseApplicationException
+    {
+        MediReimbursDtlsAllBusinessObject oMediReimbursDtlsAllBusinessObject = new MediReimbursDtlsAllBusinessObject();
+        String s = (oMediReimbursDtlsAllBusinessObject.sendInvBulk(empLbr,finYear,txtPayCode,lUserID,lSiteID));
+        oMediReimbursDtlsAllBusinessObject = null;
+        return s;
+    }
+  /*
+ * Transport Subside payment
+ * Added by Swapnendu Bastia
+ * Dt 16 -May 2012.
+ * */
+ 
+  public LovVO getTransportSubsideLOVDataQ(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    TransportRebateBusinessObject oBo = new TransportRebateBusinessObject();
+    return oBo.getTransportSubsideLOVDataQ(oLovQueryVO);
+  }
+  public LovVO getTransportSubsideLOVDataN(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    TransportRebateBusinessObject oBo = new TransportRebateBusinessObject();
+    return oBo.getTransportSubsideLOVDataN(oLovQueryVO);
+  }
+
+  public RecordMetaInfo getTransportRebateHeaderMetaInfo(MaintTransportSubsideQueryVO oMaintTransportSubsideQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    TransportRebateBusinessObject oBusinessObject = new TransportRebateBusinessObject();
+    return oBusinessObject.getTransportRebateHeaderMetaInfo(oMaintTransportSubsideQueryVO);
+  }
+
+  public ArrayList getTransportRebateHeader(MaintTransportSubsideQueryVO oMaintTransportSubsideQueryVO,long lStartPosition, long lLastPosition) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    TransportRebateBusinessObject oBusinessObject = new TransportRebateBusinessObject();
+    return oBusinessObject.getTransportRebateHeader(oMaintTransportSubsideQueryVO,lStartPosition,lLastPosition);
+  }
+  
+  public RecordMetaInfo getTransportRebateDetailMetaInfo(String sPrimaryKey, BaseDetailInfo oBaseDetailInfo) throws EnrgiseSystemException, EnrgiseApplicationException, RemoteException
+  {
+    TransportRebateBusinessObject oBusinessObject = new TransportRebateBusinessObject();
+    return oBusinessObject.getTransportRebateDetailMetaInfo(sPrimaryKey, (MaintTransportSubsideDetailInfo)oBaseDetailInfo);
+  }
+
+  public ArrayList getTransportRebateDetail(String sPrimaryKey, long lStartPosition, long lLastPosition, BaseDetailInfo oBaseDetailInfo) throws EnrgiseSystemException, EnrgiseApplicationException, RemoteException
+  {
+    TransportRebateBusinessObject oBusinessObject = new TransportRebateBusinessObject();
+    return oBusinessObject.getTransportRebateDetail(sPrimaryKey, lStartPosition, lLastPosition, (MaintTransportSubsideDetailInfo)oBaseDetailInfo);
+  }
+  
+  public String saveTransportRebateDetail(MaintTransportSubsideHeaderBean oDummyHeaderBean, Timestamp oWhenPicked, String sScreenName, String sScreenMode, boolean bHeaderDataChanged,ArrayList oDetailBeanArray,boolean bDetailDataChanged, Timestamp oDetailPicked) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    TransportRebateBusinessObject oBusinessObject = new TransportRebateBusinessObject();
+    return oBusinessObject.saveData(oDummyHeaderBean,oWhenPicked,sScreenName,sScreenMode,bHeaderDataChanged,oDetailBeanArray,bDetailDataChanged,oDetailPicked);
+  }
+  public String getMaxPayYear(long lSiteID,String hdnEmpLbrFlag) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    TransportRebateBusinessObject oTransportRebateBusinessObject = new TransportRebateBusinessObject();
+    return  oTransportRebateBusinessObject.getMaxPayYear(lSiteID,hdnEmpLbrFlag);
+  }
+
+//====================================================== Six Pay Master ===========================================================================
+/*
+ * 
+ * Added by Sonia 
+ * Dt 01-Nov 2010.
+ * */
+  public String saveSixPayCode(MaintSixPayCodesHeaderBean oMaintSixPayCodesHeaderBean, Timestamp oWhenPicked, String sScreenName, String sScreenMode, boolean bHeaderDataChanged,ArrayList oDetailBeanArray,boolean bDetailDataChanged, Timestamp oDetailPicked) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    MaintSixPayCodeBusinessObject oSixPay = new MaintSixPayCodeBusinessObject();
+    String s = oSixPay.saveSixPayData((BaseHeaderBean)oMaintSixPayCodesHeaderBean, oDetailBeanArray);
+    oSixPay = null;
+    return s;
+  }
+  
+  
+  public LovVO getSixPayDsgnLOVData(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    MaintSixPayCodeBusinessObject oMaintSixPayCodeBusinessObject = new MaintSixPayCodeBusinessObject();
+    LovVO oLovVO = oMaintSixPayCodeBusinessObject.getSixPayCodeDsgnLOVData(oLovQueryVO);
+    oLovVO = null;
+    return oLovVO;
+  }
+ 
+  
+   public RecordMetaInfo getSixPayDetailMetaInfo(String sPrimaryKey, BaseDetailInfo oBaseDetailInfo) throws EnrgiseSystemException, EnrgiseApplicationException, RemoteException
+  {
+    MaintSixPayCodeBusinessObject oBusinessObject = new MaintSixPayCodeBusinessObject();
+    RecordMetaInfo oRecordMetaInfo = oBusinessObject.getSixPayDetailMetaInfo(sPrimaryKey, (MaintSixPayCodesDetailInfo)oBaseDetailInfo);
+    oBusinessObject = null;
+    return oRecordMetaInfo;
+  }
+
+  public ArrayList getSixPayCodesDetail(String sPrimaryKey, long lStartPosition, long lLastPosition, BaseDetailInfo oBaseDetailInfo) throws EnrgiseSystemException, EnrgiseApplicationException, RemoteException
+  {
+    MaintSixPayCodeBusinessObject oBusinessObject = new MaintSixPayCodeBusinessObject();
+    ArrayList arr = oBusinessObject.getSixPayDetail(sPrimaryKey, lStartPosition, lLastPosition, (MaintSixPayCodesDetailInfo)oBaseDetailInfo);
+    oBusinessObject = null;
+    return arr;
+  }
+
+    public LovVO getSixCommPayCodeLOVData(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    MaintSixPayCodeBusinessObject oBusinessObject = new MaintSixPayCodeBusinessObject();
+    LovVO oLovVO=oBusinessObject.getSixCommissionPayCodeLOVData(oLovQueryVO);
+    oBusinessObject = null;
+    return oLovVO;
+  }
+
+  public String validateUser(String txtEmpNo,String txtCPFDDYYMM,String yymm,String siteCode,String empType) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    OnlinePayReportBusinessObject onlinePayReportBusinessObject = new OnlinePayReportBusinessObject();
+    String ss = onlinePayReportBusinessObject.validateUser(txtEmpNo,txtCPFDDYYMM,yymm,siteCode,empType);
+    onlinePayReportBusinessObject = null;
+    return ss;
+  }
+
+  public ArrayList getPayCodes() throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    CheckPayCodeBusinessObject payCodeBusinessObject = new CheckPayCodeBusinessObject();
+    ArrayList paycode = payCodeBusinessObject.getPayCodes();
+    payCodeBusinessObject = null;
+    return paycode ;
+  }
+  //////added by so nia on 07-07-2011
+   public ArrayList getDepuPayCodes() throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    CheckPayCodeBusinessObject payCodeBusinessObject = new CheckPayCodeBusinessObject();
+    ArrayList paycode=payCodeBusinessObject.getDepuPayCodes();
+    payCodeBusinessObject = null;
+    return paycode;
+  }
+  ///////////end////////
+public ArrayList getInternalsavingPayCodes() throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    CheckPayCodeBusinessObject payCodeBusinessObject = new CheckPayCodeBusinessObject();
+    ArrayList paycode=payCodeBusinessObject.getInternalsavingPayCodes();
+    payCodeBusinessObject = null;
+    return paycode ;
+  }
+
+  ///////////end added by sonia//////
+  
+//====================================================== EMPLOYEE INFORMATION ===========================================================================
+/*
+ * Employee Payment
+ * Added by Swapnendu Bastia
+ * Dt 03 -Nov 2010.
+ * */
+
+    public LovVO getEmpPaymentLOVData_Q(LovQueryVO oLovQueryVO)  throws EnrgiseSystemException, EnrgiseApplicationException
+    {
+        EmpPaymentSixPayBusinessObject oBusinessObject = new EmpPaymentSixPayBusinessObject();
+        LovVO oLovVO = oBusinessObject.getEmpPaymentLOVData_Q(oLovQueryVO);
+        oBusinessObject = null;
+        return oLovVO;
+    }
+   
+    public LovVO getEmpPaymentLOVData_Super(LovQueryVO oLovQueryVO)  throws EnrgiseSystemException, EnrgiseApplicationException
+    {
+        EmpPaymentSixPayBusinessObject oBusinessObject = new EmpPaymentSixPayBusinessObject();
+        LovVO oLovVO = oBusinessObject.getEmpPaymentLOVData_Super(oLovQueryVO);
+        oBusinessObject = null;
+        return oLovVO;
+    }
+   
+   
+   
+    public LovVO getEmpPaymentLOVData_N(LovQueryVO oLovQueryVO)  throws EnrgiseSystemException, EnrgiseApplicationException
+    {
+        EmpPaymentSixPayBusinessObject oBusinessObject = new EmpPaymentSixPayBusinessObject();
+        LovVO oLovVO = oBusinessObject.getEmpPaymentLOVData_N(oLovQueryVO);
+        oBusinessObject = null;
+        return oLovVO;
+    }
+    public LovVO getEmpSixPayCodeLOVData(LovQueryVO oLovQueryVO)  throws EnrgiseSystemException, EnrgiseApplicationException
+    {
+        EmpPaymentSixPayBusinessObject oBusinessObject = new EmpPaymentSixPayBusinessObject();
+        LovVO oLovVO = oBusinessObject.getEmpSixPayCodeLOVData(oLovQueryVO);
+        oBusinessObject = null;
+        return oLovVO;
+    }
+    public RecordMetaInfo getEmpSixPayHeaderMetaInfo(EmpPaySixQueryVO oQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+    {
+        EmpPaymentSixPayBusinessObject oBusinessObject = new EmpPaymentSixPayBusinessObject();
+        RecordMetaInfo oRecordMetaInfo = oBusinessObject.getEmpSixPayHeaderMetaInfo(oQueryVO);
+        oBusinessObject = null;
+        return oRecordMetaInfo;
+    }
+    
+    public ArrayList getEmpSixPayHeader(EmpPaySixQueryVO oQueryVO,long lStartPosition, long lLastPosition) throws EnrgiseSystemException, EnrgiseApplicationException
+    {
+        EmpPaymentSixPayBusinessObject oBusinessObject = new EmpPaymentSixPayBusinessObject();
+        ArrayList arr = oBusinessObject.getEmpSixPayHeader(oQueryVO,lStartPosition,lLastPosition);
+        oBusinessObject = null;
+        return arr;
+    }
+
+    public RecordMetaInfo getEmpSixPayDetailMetaInfo(String sPrimaryKey, BaseDetailInfo oBaseDetailInfo) throws EnrgiseSystemException, EnrgiseApplicationException, RemoteException
+    {
+        EmpPaymentSixPayBusinessObject oBusinessObject = new EmpPaymentSixPayBusinessObject();
+        RecordMetaInfo oRecordMetaInfo = oBusinessObject.getEmpSixPayDetailMetaInfo(sPrimaryKey, (EmpPaySixDetailInfo)oBaseDetailInfo);
+        oBusinessObject = null;
+        return oRecordMetaInfo;
+    }
+    
+    public ArrayList getEmpSixPayDetail(String sPrimaryKey, long lStartPosition, long lLastPosition, BaseDetailInfo oBaseDetailInfo) throws EnrgiseSystemException, EnrgiseApplicationException, RemoteException
+    {
+        EmpPaymentSixPayBusinessObject oBusinessObject = new EmpPaymentSixPayBusinessObject();
+        ArrayList arr = oBusinessObject.getEmpSixPayDetail(sPrimaryKey, lStartPosition, lLastPosition, (EmpPaySixDetailInfo)oBaseDetailInfo);
+        oBusinessObject = null;
+        return arr;
+    }
+    public String saveEmpSixPayDetail(EmpPaySixHeaderBean oDummyHeaderBean, Timestamp oWhenPicked, String sScreenName, String sScreenMode, boolean bHeaderDataChanged,ArrayList oDetailBeanArray,boolean bDetailDataChanged, Timestamp oDetailPicked) throws EnrgiseSystemException, EnrgiseApplicationException
+    {
+        EmpPaymentSixPayBusinessObject oBusinessObject = new EmpPaymentSixPayBusinessObject();
+        String s = oBusinessObject.saveData(oDummyHeaderBean,oWhenPicked,sScreenName,sScreenMode,bHeaderDataChanged,oDetailBeanArray,bDetailDataChanged,oDetailPicked);
+        oBusinessObject = null;
+        return s;
+    }
+    
+    public String computeITPayAdv(BaseDetailInfo oBaseDetailInfo, ArrayList oDetailBeanArray) throws EnrgiseSystemException, EnrgiseApplicationException, RemoteException    //added by swapnendu Dt. 25 Apr 2011
+    {
+        LoanDtlsBusinessObject oLoanDtlsBusinessObject = new LoanDtlsBusinessObject();
+        return oLoanDtlsBusinessObject.computeITPayAdv(oBaseDetailInfo,oDetailBeanArray);   
+    }
+    public String sendInvLoanAdv(BaseDetailInfo oBaseDetailInfo, ArrayList oDetailBeanArray) throws EnrgiseSystemException, EnrgiseApplicationException, RemoteException    //added by swapnendu Dt. 25 Apr 2011
+    {
+        LoanDtlsBusinessObject oLoanDtlsBusinessObject = new LoanDtlsBusinessObject();
+        return oLoanDtlsBusinessObject.sendInvLoanAdv(oBaseDetailInfo,oDetailBeanArray);   
+    }
+
+    //=================================added by dushyant for maintain direct payroll Audit on 30-11-2010=========================
+    public LovVO getMainDirectPyrlAuditLOVData(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+    {
+        MiscScheduleReportBusinessObject oPayCode = new MiscScheduleReportBusinessObject();
+        LovVO oLovVO=oPayCode.getMainDirectPyrlAuditLOVData(oLovQueryVO);
+        oPayCode = null;
+        return oLovVO;
+    }
+    
+    public LovVO getMedicalRegLOVData(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+    {
+        MiscScheduleReportBusinessObject oPayCode = new MiscScheduleReportBusinessObject();
+        LovVO oLovVO=oPayCode.getMedicalRegLOVData(oLovQueryVO);
+        oPayCode = null;
+        return oLovVO;
+    }
+    
+    public LovVO getMedicalRegEmpLOVData(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+    {
+        MiscScheduleReportBusinessObject oEmpLeave = new MiscScheduleReportBusinessObject();
+        LovVO oLovVO=oEmpLeave.getMedicalRegEmpLOVData(oLovQueryVO);
+        oEmpLeave = null;
+        return oLovVO;
+    } 
+
+    //releaseIncentive() added by swapnendu Dt 20-06-2012 for releasing incentive of transffered labours.
+    public String releaseIncentive(EmpTrnsfrHeaderBean oEmpTrnsfrHeaderBean,long loginUserId,long lLoginSiteId) throws EnrgiseSystemException, EnrgiseApplicationException
+    {
+        EmpTrnsfrBusinessObject oEmpTrnsfrBusinessObject = new EmpTrnsfrBusinessObject();
+        return oEmpTrnsfrBusinessObject.releaseIncentive(oEmpTrnsfrHeaderBean,loginUserId,lLoginSiteId);
+    }
+/*
+ * CPF Approval
+ * Added by Swapnendu Bastia
+ * Dt 16 May 2013.
+ * */
+    public LovVO getCPFApprovalLOVDataQ(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+    {
+        CPFApproveBusinessObject oBusinessObject = new CPFApproveBusinessObject();
+        return oBusinessObject.getCPFApprovalLOVDataQ(oLovQueryVO);
+    }
+    public LovVO getCPFApprovalUnitLOVQ(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+    {
+        CPFApproveBusinessObject oBusinessObject = new CPFApproveBusinessObject();
+        return oBusinessObject.getCPFApprovalUnitLOVQ(oLovQueryVO);
+    }
+    public RecordMetaInfo getCPFApprHeaderMetaInfo(BaseQueryVO oQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+    {
+        CPFApproveBusinessObject oBusinessObject = new CPFApproveBusinessObject();
+        RecordMetaInfo oRecordMetaInfo = oBusinessObject.getCPFApprHeaderMetaInfo(oQueryVO);
+        oBusinessObject = null;
+        return oRecordMetaInfo;
+    }
+    public ArrayList getCPFApprHeader(BaseQueryVO oQueryVO,long lStartPosition, long lLastPosition) throws EnrgiseSystemException, EnrgiseApplicationException
+    {
+        CPFApproveBusinessObject oBusinessObject = new CPFApproveBusinessObject();
+        ArrayList arr = oBusinessObject.getCPFApprHeader(oQueryVO,lStartPosition,lLastPosition);
+        oBusinessObject = null;
+        return arr;
+    }
+    public RecordMetaInfo getCPFApprDetailMetaInfo(String sPrimaryKey, BaseDetailInfo oBaseDetailInfo) throws EnrgiseSystemException, EnrgiseApplicationException, RemoteException
+    {
+        CPFApproveBusinessObject oBusinessObject = new CPFApproveBusinessObject();
+        RecordMetaInfo oRecordMetaInfo = oBusinessObject.getCPFApprDetailMetaInfo(sPrimaryKey, (CPFApprDetailInfo)oBaseDetailInfo);
+        oBusinessObject = null;
+        return oRecordMetaInfo;
+    }
+    public ArrayList getCPFApprDetail(String sPrimaryKey, long lStartPosition, long lLastPosition, BaseDetailInfo oBaseDetailInfo) throws EnrgiseSystemException, EnrgiseApplicationException, RemoteException
+    {
+        CPFApproveBusinessObject oBusinessObject = new CPFApproveBusinessObject();
+        return oBusinessObject.getCPFApprDetail(sPrimaryKey, lStartPosition, lLastPosition, (CPFApprDetailInfo)oBaseDetailInfo);
+    }
+    public void approveRecord(CPFApprHeaderBean oDummyHeaderBean, ArrayList oDetailBeanArray) throws EnrgiseSystemException, EnrgiseApplicationException, RemoteException
+    {
+        CPFApproveBusinessObject oBusinessObject = new CPFApproveBusinessObject();
+        oBusinessObject.approveRecord(oDummyHeaderBean,oDetailBeanArray);
+    }
+    public void rejectRecord(CPFApprHeaderBean oDummyHeaderBean, ArrayList oDetailBeanArray) throws EnrgiseSystemException, EnrgiseApplicationException, RemoteException
+    {
+        CPFApproveBusinessObject oBusinessObject = new CPFApproveBusinessObject();
+        oBusinessObject.rejectRecord(oDummyHeaderBean,oDetailBeanArray);
+    }
+/*
+ * Zone Surrender
+ * Added by Swapnendu Bastia
+ * Dt 21 May 2013.
+ * */
+    public LovVO getZoneSurrLOVDataQ(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+    {
+        ZoneSurrBusinessObject oBusinessObject = new ZoneSurrBusinessObject();
+        return oBusinessObject.getZoneSurrLOVDataQ(oLovQueryVO);
+    }
+    public LovVO getZoneSurrLOVDataN(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+    {
+        ZoneSurrBusinessObject oBusinessObject = new ZoneSurrBusinessObject();
+        return oBusinessObject.getZoneSurrLOVDataN(oLovQueryVO);
+    }
+    public RecordMetaInfo getZoneSurrHeaderMetaInfo(BaseQueryVO oQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+    {
+        ZoneSurrBusinessObject oBusinessObject = new ZoneSurrBusinessObject();
+        return oBusinessObject.getZoneSurrHeaderMetaInfo(oQueryVO);
+    }
+    public ArrayList getZoneSurrHeader(BaseQueryVO oQueryVO,long lStartPosition, long lLastPosition) throws EnrgiseSystemException, EnrgiseApplicationException
+    {
+        ZoneSurrBusinessObject oBusinessObject = new ZoneSurrBusinessObject();
+        return oBusinessObject.getZoneSurrHeader(oQueryVO,lStartPosition,lLastPosition);
+    }
+    public ZoneSurrComboVO getZoneSurrCombo()  throws EnrgiseSystemException, EnrgiseApplicationException
+    {
+        ZoneSurrBusinessObject oBusinessObject = new ZoneSurrBusinessObject();
+        return oBusinessObject.getZoneSurrCombo();
+    }
+    public String saveZoneSurrender(BaseHeaderBean oBaseHeaderBean, Timestamp oWhenPicked, String sScreenName, String sScreenMode, boolean bHeaderDataChanged,ArrayList oDetailBeanArray,boolean bDetailDataChanged, Timestamp oDetailPicked) throws EnrgiseSystemException, EnrgiseApplicationException
+    {
+        ZoneSurrBusinessObject oBusinessObject = new ZoneSurrBusinessObject();
+        return oBusinessObject.saveData(oBaseHeaderBean, oWhenPicked, sScreenName, sScreenMode, bHeaderDataChanged, oDetailBeanArray, bDetailDataChanged, oDetailPicked);
+    }
+
+//====================================================== MONTH END ===========================================================================
+/* changes in month end update screen to get the no. of employees waitting to join.
+ * Added by Swapnendu Bastia
+ * Dt 15 Feb 2011
+ * */
+    public String getEmpWaitingToJoin(long lUserId, long lSiteId) throws EnrgiseSystemException, EnrgiseApplicationException
+    {
+        MonthEndUpdateBusinessObject oMonthEndUpdateBusinessObject = new MonthEndUpdateBusinessObject();
+        String s = (oMonthEndUpdateBusinessObject.getEmpWaitingToJoin(lUserId, lSiteId));
+        oMonthEndUpdateBusinessObject = null;
+        return s;
+    }
+    public String getPostYrEndRemitMaxPayYear(long lSiteID,String hdnEmpLbrFlag) throws EnrgiseSystemException, EnrgiseApplicationException
+    {
+        PostYrEndRemitAPBusinessObject oPostYrEndRemitAPBusinessObject = new PostYrEndRemitAPBusinessObject();
+        return  oPostYrEndRemitAPBusinessObject.getMaxPayYear(lSiteID,hdnEmpLbrFlag);
+    }
+    public String PostOthrPayments(long lUserID,long lSiteID,String hdnEmpLbrFlag,String invoice_date) throws EnrgiseSystemException, EnrgiseApplicationException
+    {
+        PostYrEndRemitAPBusinessObject oPostYrEndRemitAPBusinessObject = new PostYrEndRemitAPBusinessObject();
+        return oPostYrEndRemitAPBusinessObject.PostOthrPayments(lUserID,lSiteID,hdnEmpLbrFlag,invoice_date);
+    }
+    public String PostRemitSalary(long lUserID,long lSiteID,String hdnEmpLbrFlag,String invoice_date) throws EnrgiseSystemException, EnrgiseApplicationException
+    {
+        PostYrEndRemitAPBusinessObject oPostYrEndRemitAPBusinessObject = new PostYrEndRemitAPBusinessObject();
+        return oPostYrEndRemitAPBusinessObject.PostRemitSalary(lUserID,lSiteID,hdnEmpLbrFlag,invoice_date);
+    }
+//====================================================== CPF MODULE ===========================================================================
+/*
+ * Added by Swapnendu Bastia
+ * Dt 16 Mar 2010.
+ * */
+  public MaintPfDtlComboVO getPfDetailCombo() throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    MaintPFDtlBusinessObject oMaintPFDtlBusinessObject = new MaintPFDtlBusinessObject();
+    MaintPfDtlComboVO oMaintPfDtlComboVO = oMaintPFDtlBusinessObject.getPfDetailCombo();
+    oMaintPFDtlBusinessObject = null;
+    return oMaintPfDtlComboVO;
+  } 
+  public ArrayList getPfAdjustHistoryHdr(MaintPFDetailQueryVO oMaintPFDetailQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException, RemoteException
+  {
+    MaintPFDtlBusinessObject oMaintPFDtlBusinessObject = new MaintPFDtlBusinessObject();
+    ArrayList arr = oMaintPFDtlBusinessObject.getPfAdjustHistoryHdr(oMaintPFDetailQueryVO);
+    oMaintPFDtlBusinessObject = null;
+    return arr;
+  }
+  public ArrayList getPfAdjustHistoryDtl(MaintPFDetailQueryVO oMaintPFDetailQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException, RemoteException
+  {
+    MaintPFDtlBusinessObject oMaintPFDtlBusinessObject = new MaintPFDtlBusinessObject();
+    ArrayList arr = oMaintPFDtlBusinessObject.getPfAdjustHistoryDtl(oMaintPFDetailQueryVO);
+    oMaintPFDtlBusinessObject = null;
+    return arr;
+  }
+  
+//======================================================MASTER (START)===========================================================================
+/*
+ * Special Compensatory allowance
+ * Added by Swapnendu Bastia
+ * Dt 07 -Dec 2010.
+ * */
+    public SpclCmpnstryComboVOSixPay getCmpnstryComboDetailsSixPay() throws EnrgiseSystemException, EnrgiseApplicationException
+    {
+        SpclCmpnstryAllowBusinessObject oBadClmtAllowSixPay = new SpclCmpnstryAllowBusinessObject();
+        return oBadClmtAllowSixPay.getCmpnstryComboDetailsSixPay();
+    } 
+    public RecordMetaInfo getSpclCompstryAllowHeaderMetaInfo(SpclCmpnstryAllowSixPayQueryVO oQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+    {
+        SpclCmpnstryAllowBusinessObject oBusinessObject = new SpclCmpnstryAllowBusinessObject();
+        return oBusinessObject.getSpclCompstryAllowHeaderMetaInfo(oQueryVO);
+    }
+    public ArrayList getSpclCompstryAllowHeader(SpclCmpnstryAllowSixPayQueryVO oQueryVO,long lStartPosition, long lLastPosition) throws EnrgiseSystemException, EnrgiseApplicationException
+    {
+        SpclCmpnstryAllowBusinessObject oBusinessObject = new SpclCmpnstryAllowBusinessObject();
+        return oBusinessObject.getSpclCompstryAllowHeader(oQueryVO,lStartPosition,lLastPosition);
+    }
+    public RecordMetaInfo getSpclCompAllowDetailMetaInfo(String sPrimaryKey, BaseDetailInfo oBaseDetailInfo) throws EnrgiseSystemException, EnrgiseApplicationException, RemoteException
+    {
+        SpclCmpnstryAllowBusinessObject oBusinessObject = new SpclCmpnstryAllowBusinessObject();
+        return oBusinessObject.getSpclCompAllowDetailMetaInfo(sPrimaryKey, (SpclCmpnstryAllowSixPayDetailInfo)oBaseDetailInfo);
+    }
+    public ArrayList getSpclCompAllowDetail(String sPrimaryKey, long lStartPosition, long lLastPosition, BaseDetailInfo oBaseDetailInfo) throws EnrgiseSystemException, EnrgiseApplicationException, RemoteException
+    {
+        SpclCmpnstryAllowBusinessObject oBusinessObject = new SpclCmpnstryAllowBusinessObject();
+        return oBusinessObject.getSpclCompAllowDetail(sPrimaryKey, lStartPosition, lLastPosition, (SpclCmpnstryAllowSixPayDetailInfo)oBaseDetailInfo);
+    }
+    public String saveSpclCompAllow(SpclCmpnstryAllowSixPayHeaderBean oBaseHeaderBean , Timestamp oWhenPicked, String sScreenName, String sScreenMode, boolean bHeaderDataChanged, ArrayList oDetailBeanArray, boolean bDetailDataChanged, Timestamp oDetailPicked) throws EnrgiseSystemException, EnrgiseApplicationException
+    {
+        SpclCmpnstryAllowBusinessObject oBusinessObject = new SpclCmpnstryAllowBusinessObject();
+        //return oBusinessObject.saveSixPayData(oBaseHeaderBean, oDetailBeanArray);
+        return oBusinessObject.saveData(oBaseHeaderBean, oWhenPicked, sScreenName, sScreenMode, bHeaderDataChanged, oDetailBeanArray, bDetailDataChanged, oDetailPicked);
+    }
+    public LovVO getSpclCompAllowPayBand(LovQueryVO oLovQueryVO)  throws EnrgiseSystemException, EnrgiseApplicationException
+    {
+        SpclCmpnstryAllowBusinessObject oBusinessObject = new SpclCmpnstryAllowBusinessObject();
+        return oBusinessObject.getSpclCompAllowPayBand(oLovQueryVO);
+    }
+    public LovVO getSpclCompAllowGradePay(LovQueryVO oLovQueryVO)  throws EnrgiseSystemException, EnrgiseApplicationException
+    {
+        SpclCmpnstryAllowBusinessObject oBusinessObject = new SpclCmpnstryAllowBusinessObject();
+        return oBusinessObject.getSpclCompAllowGradePay(oLovQueryVO);
+    }
+/*
+ * Miscellaneous allowance according to Six Pay
+ * Added by Swapnendu Bastia
+ * Dt 30 -Mar 2011.
+ * */
+     //public MiscAllowanceComboVOSixPay getMiscComboDetailsSixPay() throws EnrgiseSystemException, EnrgiseApplicationException, RemoteException;
+    public MiscAllowanceComboVOSixPay getMiscComboDetailsSixPay() throws EnrgiseSystemException, EnrgiseApplicationException
+    {
+        MiscAllow6PayBusinessObject oMiscAllow6PayBusinessObject = new MiscAllow6PayBusinessObject();
+        return oMiscAllow6PayBusinessObject.getMiscComboDetailsSixPay();
+    } 
+
+    public RecordMetaInfo getMiscAllowHeaderMetaInfo(MiscAllowanceSixPayQueryVO oQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+    {
+        MiscAllow6PayBusinessObject oBusinessObject = new MiscAllow6PayBusinessObject();
+        return oBusinessObject.getMiscAllowHeaderMetaInfo(oQueryVO);
+    }
+    public ArrayList getMiscAllowHeader(MiscAllowanceSixPayQueryVO oQueryVO,long lStartPosition, long lLastPosition) throws EnrgiseSystemException, EnrgiseApplicationException
+    {
+        MiscAllow6PayBusinessObject oBusinessObject = new MiscAllow6PayBusinessObject();
+        return oBusinessObject.getMiscAllowHeader(oQueryVO,lStartPosition,lLastPosition);
+    }
+    public LovVO getMiscAllowPayCode(LovQueryVO oLovQueryVO)  throws EnrgiseSystemException, EnrgiseApplicationException
+    {
+        MiscAllow6PayBusinessObject oBusinessObject = new MiscAllow6PayBusinessObject();
+        return oBusinessObject.getMiscAllowPayCode(oLovQueryVO);
+    }
+    public RecordMetaInfo getMiscAllowDetailMetaInfo(String sPrimaryKey, BaseDetailInfo oBaseDetailInfo) throws EnrgiseSystemException, EnrgiseApplicationException, RemoteException
+    {
+        MiscAllow6PayBusinessObject oBusinessObject = new MiscAllow6PayBusinessObject();
+        return oBusinessObject.getMiscAllowDetailMetaInfo(sPrimaryKey, (MiscAllowanceSixPayDetailInfo)oBaseDetailInfo);
+    }
+    public ArrayList getMiscAllowDetail(String sPrimaryKey, long lStartPosition, long lLastPosition, BaseDetailInfo oBaseDetailInfo) throws EnrgiseSystemException, EnrgiseApplicationException, RemoteException
+    {
+        MiscAllow6PayBusinessObject oBusinessObject = new MiscAllow6PayBusinessObject();
+        return oBusinessObject.getMiscAllowDetail(sPrimaryKey, lStartPosition, lLastPosition, (MiscAllowanceSixPayDetailInfo)oBaseDetailInfo);
+    }
+    public LovVO getMiscAllowPayBand(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+    {
+        MiscAllow6PayBusinessObject oBusinessObject = new MiscAllow6PayBusinessObject();
+        return oBusinessObject.getMiscAllowPayBand(oLovQueryVO);
+    }
+    public LovVO getMiscAllowGradePay(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+    {
+        MiscAllow6PayBusinessObject oBusinessObject = new MiscAllow6PayBusinessObject();
+        return oBusinessObject.getMiscAllowGradePay(oLovQueryVO);
+    }
+    public String saveMiscAllow(MiscAllowanceSixPayHeaderBean oBaseHeaderBean , Timestamp oWhenPicked, String sScreenName, String sScreenMode, boolean bHeaderDataChanged, ArrayList oDetailBeanArray, boolean bDetailDataChanged, Timestamp oDetailPicked) throws EnrgiseSystemException, EnrgiseApplicationException
+    {
+        MiscAllow6PayBusinessObject oBusinessObject = new MiscAllow6PayBusinessObject();
+        return oBusinessObject.saveData(oBaseHeaderBean, oWhenPicked, sScreenName, sScreenMode, bHeaderDataChanged, oDetailBeanArray, bDetailDataChanged, oDetailPicked);
+    }
+//======================================================MASTER (END)===========================================================================
+///added by sonia////
+   public LovVO getCDAEmpPromotionDsgnLOVData(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    EmpPromotionBusinessObject oEmpPromotion = new EmpPromotionBusinessObject();
+    LovVO oLovVO=oEmpPromotion.getCDAEmpPromotionDsgnLOVData(oLovQueryVO);
+    return oLovVO;
+  }
+////////end////////
+ public String genOverNAboveArrear(OverNAboveArrearHeaderBean oOverNAboveArrearHeaderBean,long loginUserId ,long lLoginSiteId,String payYYMM ) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    OverNAboveBusinessObject oDAArrear = new OverNAboveBusinessObject();
+    return oDAArrear.genOverNAboveArrear(oOverNAboveArrearHeaderBean,loginUserId,lLoginSiteId,payYYMM);
+  }
+///added by sonia on 18-07-2011////
+  public ArrayList getSeparationEmpDetail(long lSiteID,String hdnEmpLbrFlag) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    InitPayBusinessObject oInitPayBusinessObject = new InitPayBusinessObject();
+    return  oInitPayBusinessObject.getSeparationEmpDetail(lSiteID,hdnEmpLbrFlag);
+  }
+
+  public LovVO getSalaryInvoicePayLOVDataQ(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    CheckPayCodeBusinessObject oSalaryInvoice = new CheckPayCodeBusinessObject();
+    LovVO oLovVO=oSalaryInvoice.getSalaryInvoicePayLOVDataQ(oLovQueryVO);
+    return oLovVO;
+  }
+  ///added by sonia on 10-08-2011////
+   public String deleteLeaveEncash(LeaveEncashQueryVO oLeaveEncashQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    LeaveEncashBusinessObject oLeaveEncashBusinessObject =new LeaveEncashBusinessObject();
+    return oLeaveEncashBusinessObject.deleteLeaveEncash(oLeaveEncashQueryVO);
+  }
+  ///added by sonia on 31-08-2011////
+   public String deleteLTCEncash(LTCEncashQueryVO oLTCEncashQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    LTCEncashBusinessObject oLTCEncashBusinessObject =new LTCEncashBusinessObject();
+    return oLTCEncashBusinessObject.deleteLTCEncash(oLTCEncashQueryVO);
+  }
+  
+   public String cancelLTCEncashInv(LTCEncashQueryVO oLTCEncashQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+   {
+       LTCEncashBusinessObject oLTCEncashBusinessObject =new LTCEncashBusinessObject();
+        return oLTCEncashBusinessObject.cancelLTCEncashInv(oLTCEncashQueryVO);
+   }
+   
+    public String cancelLeaveEncashInv(LeaveEncashQueryVO oLeaveEncashQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+    {
+        LeaveEncashBusinessObject oLeaveEncashBusinessObject =new LeaveEncashBusinessObject();
+         return oLeaveEncashBusinessObject.cancelLeaveEncashInv(oLeaveEncashQueryVO);
+    }
+    
+     public String EmpMediBillsCancelInv(EmpMediBillsQueryVO oEmpMediBillsQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+     {
+         EmpMediBillsBusinessObject oEmpMediBillsBusinessObject=new EmpMediBillsBusinessObject();
+         return oEmpMediBillsBusinessObject.EmpMediBillsCancelInv(oEmpMediBillsQueryVO);
+     }
+     
+     public String CancelSuppPaymentInv(SupplPayQueryVO oSupplPayQueryVO)throws EnrgiseSystemException, EnrgiseApplicationException
+     {
+         SupplimentaryPayBusinessObject oSupplimentaryPayBusinessObject=new SupplimentaryPayBusinessObject();
+         return oSupplimentaryPayBusinessObject.CancelSuppPaymentInv(oSupplPayQueryVO);
+     }
+
+
+   public String deleteOTAPymnt(OTAPymntQueryVO oOTAPymntQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    OTAPymntBusinessObject oOTAPymntBusinessObject =new OTAPymntBusinessObject();
+    return oOTAPymntBusinessObject.deleteOTAPymnt(oOTAPymntQueryVO);
+  }
+  public String deletePayOverAbovePymnt(PayOverAboveQueryVO oPayOverAboveQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    PayOverAboveBusinessObject oPayOverAboveBusinessObject =new PayOverAboveBusinessObject();
+    return oPayOverAboveBusinessObject.deletePayOverAbovePymnt(oPayOverAboveQueryVO);
+  }
+   public EmpSuspInvDtlsComboVO getEmpSuspInvDtlsComboDetails(EmpSuspensionQueryVO oEmpSuspensionQueryVO)  throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    EmpSuspensionBusinessObject oEmpSuspension = new EmpSuspensionBusinessObject();
+    return oEmpSuspension.getEmpSuspInvDtlsComboDetails(oEmpSuspensionQueryVO);
+  }
+  public EmpTrnsfrInvDtlsComboVO getEmpTrnsfrInvDtlsComboDetails(EmpTrnsfrQueryVO oEmpTrnsfrQueryVO)  throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    EmpTrnsfrBusinessObject oEmpTrnsfr = new EmpTrnsfrBusinessObject();
+    return oEmpTrnsfr.getEmpTrnsfrInvDtlsComboDetails(oEmpTrnsfrQueryVO);
+  }
+  public LovVO getDailyAttSummLstLOVData(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    PayReportBusinessObject oPayReport = new PayReportBusinessObject();
+    return oPayReport.getDailyAttSummLstLOVData(oLovQueryVO);
+  }
+   public LovVO getGangDtls(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    PayReportBusinessObject oPayReport = new PayReportBusinessObject();
+    return oPayReport.getGangDtls(oLovQueryVO);
+  }
+  /* added by jatin */
+  
+  public String singleMonthEndUpdate(long lUserID,long lSiteID,String hdnEmpLbrFlag) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    MonthEndUpdateBusinessObject oMonthEndUpdateBusinessObject = new MonthEndUpdateBusinessObject();
+    return  oMonthEndUpdateBusinessObject.singleMonthEndUpdate(lUserID,lSiteID,hdnEmpLbrFlag);
+  }
+  public LovVO getEmpNamePaySlip(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    PayReportBusinessObject oPayReportBusinessObject = new PayReportBusinessObject();
+    LovVO oLovVO=oPayReportBusinessObject.getEmpNamePaySlip(oLovQueryVO);
+    return oLovVO;
+  }
+  public String saveEmpLeaveDetail(DummyHeaderBean oDummyHeaderBean, Timestamp oWhenPicked, String sScreenName, String sScreenMode, boolean bHeaderDataChanged,ArrayList oDetailBeanArray,boolean bDetailDataChanged, Timestamp oDetailPicked) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    EmpLeaveBusinessObject oEmpLeave = new EmpLeaveBusinessObject();
+    return oEmpLeave.saveData(oDummyHeaderBean,oWhenPicked,sScreenName,sScreenMode,bHeaderDataChanged,oDetailBeanArray,bDetailDataChanged,oDetailPicked);
+  }
+   public String saveEmpAttanLeaveDetail(DummyHeaderBean oDummyHeaderBean, Timestamp oWhenPicked, String sScreenName, String sScreenMode, boolean bHeaderDataChanged,ArrayList oDetailBeanArray,boolean bDetailDataChanged, Timestamp oDetailPicked) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    DeptAttanLeaveBuisnessObject oEmpLeave = new DeptAttanLeaveBuisnessObject();
+    return oEmpLeave.saveData(oDummyHeaderBean,oWhenPicked,sScreenName,sScreenMode,bHeaderDataChanged,oDetailBeanArray,bDetailDataChanged,oDetailPicked);
+  }
+  public String cancelLeaveDetail(DummyHeaderBean oDummyHeaderBean, Timestamp oWhenPicked, String sScreenName, String sScreenMode, boolean bHeaderDataChanged,ArrayList oDetailBeanArray,boolean bDetailDataChanged, Timestamp oDetailPicked) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    EmpLeaveBusinessObject oEmpLeave = new EmpLeaveBusinessObject();
+    String sHeaderPrimaryKey=oDummyHeaderBean.getHeaderPrimaryKey();
+    return oEmpLeave.cancelLeave(sHeaderPrimaryKey,oDummyHeaderBean, oDetailBeanArray);
+  }
+  public String convertLeaveDetail(DummyHeaderBean oDummyHeaderBean, Timestamp oWhenPicked, String sScreenName, String sScreenMode, boolean bHeaderDataChanged,ArrayList oDetailBeanArray,boolean bDetailDataChanged, Timestamp oDetailPicked) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    EmpLeaveBusinessObject oEmpLeave = new EmpLeaveBusinessObject();
+    String sHeaderPrimaryKey=oDummyHeaderBean.getHeaderPrimaryKey();
+    return oEmpLeave.convertLeave(sHeaderPrimaryKey,oDummyHeaderBean, oDetailBeanArray);
+  }
+
+//====================================================== EMPLOYEE PENALTY ===========================================================================
+/*
+ * Employee Penalty
+ * Added by Swapnendu Bastia
+ * Dt 29-Aug-2012.
+ * */
+
+  public RecordMetaInfo getPenalityHeaderMetaInfo(EmpPenalityQueryVO oEmpPenalityQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    EmpPenalityBusinessObject oEmpPenality = new EmpPenalityBusinessObject();
+    return oEmpPenality.getPenalityHeaderMetaInfo(oEmpPenalityQueryVO);
+  }
+  public ArrayList getPenalityHeader(EmpPenalityQueryVO oEmpPenalityQueryVO,long lStartPosition, long lLastPosition) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    EmpPenalityBusinessObject oEmpPenality = new EmpPenalityBusinessObject();
+    return oEmpPenality.getPenalityHeader(oEmpPenalityQueryVO,lStartPosition,lLastPosition);
+  }
+  public String saveEmpPenality(MaintEmpPenalityBean oEmpPenalityBean, Timestamp oWhenPicked, String sScreenName, String sScreenMode, boolean bHeaderDataChanged,ArrayList oDetailBeanArray,boolean bDetailDataChanged, Timestamp oDetailPicked) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    EmpPenalityBusinessObject oEmpPenality = new EmpPenalityBusinessObject();
+    return oEmpPenality.saveData((BaseHeaderBean)oEmpPenalityBean,oWhenPicked, sScreenName, sScreenMode, bHeaderDataChanged, oDetailBeanArray, bDetailDataChanged, oDetailPicked);
+  }
+  public EmpPenalityComboVO getEmpPenalityComboDetails()  throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    EmpPenalityBusinessObject oEmpPenality = new EmpPenalityBusinessObject();
+    return oEmpPenality.getEmpPenalityComboDetails();
+  }
+  public LovVO getEmpPenalityLOVData(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    EmpPenalityBusinessObject oEmpPenality = new EmpPenalityBusinessObject();
+    LovVO oLovVO=oEmpPenality.getEmpPenalityLOVData(oLovQueryVO);
+    return oLovVO;
+  }
+  public LovVO getQueryEmpPenalityLOVData(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    EmpPenalityBusinessObject oEmpPenality = new EmpPenalityBusinessObject();
+    LovVO oLovVO=oEmpPenality.getQueryEmpPenalityLOVData(oLovQueryVO);
+    return oLovVO;
+  }
+  /*public LovVO getPenalityEmpTypeLOVData(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    EmpPenalityBusinessObject oEmpPenality = new EmpPenalityBusinessObject();
+    LovVO oLovVO=oEmpPenality.getPenalityEmpTypeLOVData(oLovQueryVO);
+    return oLovVO;
+  }*/
+  public String getEmpPenalityMaxPayYear(long siteId,String hdnEmpLbrFlag) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    EmpPenalityBusinessObject oEmpPenalityBusinessObject = new EmpPenalityBusinessObject();
+    return oEmpPenalityBusinessObject.getMaxPayYear(siteId,hdnEmpLbrFlag);
+  }
+  public String penaltyWaiver(EmpPenalityQueryVO oEmpPenalityQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    EmpPenalityBusinessObject oEmpPenalityBusinessObject = new EmpPenalityBusinessObject();
+    return(oEmpPenalityBusinessObject.penaltyWaiver(oEmpPenalityQueryVO));
+  }
+  public String incrementStop(EmpPenalityQueryVO oEmpPenalityQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    EmpPenalityBusinessObject oEmpPenalityBusinessObject = new EmpPenalityBusinessObject();
+    return(oEmpPenalityBusinessObject.incrementStop(oEmpPenalityQueryVO));
+  }
+  public String incrementReinstate(EmpPenalityQueryVO oEmpPenalityQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    EmpPenalityBusinessObject oEmpPenalityBusinessObject = new EmpPenalityBusinessObject();
+    return(oEmpPenalityBusinessObject.incrementReinstate(oEmpPenalityQueryVO));
+  }
+  public ArrayList getEmpPenaltyList(long lSiteID,String hdnEmpLbrFlag) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    InitPayBusinessObject oInitPayBusinessObject = new InitPayBusinessObject();
+    return(oInitPayBusinessObject.getEmpPenaltyList(lSiteID, hdnEmpLbrFlag));
+  }
+  public LovVO getPenaltyDsgnLOVData(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    EmpPenalityBusinessObject oEmpPenalityBusinessObject = new EmpPenalityBusinessObject();
+    LovVO oLovVO = oEmpPenalityBusinessObject.getPenaltyDsgnLOVData(oLovQueryVO);
+    return oLovVO;
+  }
+  public RecordMetaInfo getHdrRcdWaveOffMetaImpl(EmpPenalityQueryVO oEmpPenalityQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    EmpPenalityBusinessObject oEmpPenality = new EmpPenalityBusinessObject();
+    return oEmpPenality.getHdrRcdWaveOffMetaImpl(oEmpPenalityQueryVO);
+  }
+  public ArrayList getHdrRcdWaveOffImpl(EmpPenalityQueryVO oEmpPenalityQueryVO,long lStartPosition, long lLastPosition) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    EmpPenalityBusinessObject oEmpPenality = new EmpPenalityBusinessObject();
+    return oEmpPenality.getHdrRcdWaveOffImpl(oEmpPenalityQueryVO,lStartPosition,lLastPosition);
+  }
+  public RecordMetaInfo getHdrRcdIncrWaveMetaImpl(EmpPenalityQueryVO oEmpPenalityQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    EmpPenalityBusinessObject oEmpPenality = new EmpPenalityBusinessObject();
+    return oEmpPenality.getHdrRcdIncrWaveMetaImpl(oEmpPenalityQueryVO);
+  }
+  public ArrayList getHdrRcdIncrWaveImpl(EmpPenalityQueryVO oEmpPenalityQueryVO,long lStartPosition, long lLastPosition) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    EmpPenalityBusinessObject oEmpPenality = new EmpPenalityBusinessObject();
+    return oEmpPenality.getHdrRcdIncrWaveImpl(oEmpPenalityQueryVO,lStartPosition,lLastPosition);
+  }
+  //added by nand on 24th may 2013 for dismiss reinstate in penalty
+  public LovVO getQueryEmpDismissLOVData(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    EmpPenalityBusinessObject oEmpPenality = new EmpPenalityBusinessObject();
+    LovVO oLovVO=oEmpPenality.getQueryEmpDismissLOVData(oLovQueryVO);
+    return oLovVO;
+  }
+  public LovVO getQueryEmpDismissLOVDataQ(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    EmpPenalityBusinessObject oEmpPenality = new EmpPenalityBusinessObject();
+    LovVO oLovVO=oEmpPenality.getQueryEmpDismissLOVDataQ(oLovQueryVO);
+    return oLovVO;
+  }
+  public String reinstateDismissed(EmpPenalityQueryVO oEmpPenalityQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    EmpPenalityBusinessObject oEmpPenalityBusinessObject = new EmpPenalityBusinessObject();
+    return(oEmpPenalityBusinessObject.reinstateDismissed(oEmpPenalityQueryVO));
+  }
+  public RecordMetaInfo getHdrRcdDissReinstateMetaImpl(EmpPenalityQueryVO oEmpPenalityQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    EmpPenalityBusinessObject oEmpPenality = new EmpPenalityBusinessObject();
+    return oEmpPenality.getHdrRcdDissReinstateMetaImpl(oEmpPenalityQueryVO);
+  }
+  public ArrayList getHdrRcdDissReinstateImpl(EmpPenalityQueryVO oEmpPenalityQueryVO,long lStartPosition, long lLastPosition) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    EmpPenalityBusinessObject oEmpPenality = new EmpPenalityBusinessObject();
+    return oEmpPenality.getHdrRcdDissReinstateImpl(oEmpPenalityQueryVO,lStartPosition,lLastPosition);
+  }
+  //====================================================== EMPLOYEE PENALTY END===========================================================================
+
+  public ArrayList getEmpTobeSeparateList(long lSiteID,String hdnEmpLbrFlag) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    InitPayBusinessObject oInitPayBusinessObject = new InitPayBusinessObject();
+    return(oInitPayBusinessObject.getEmpTobeSeparateList(lSiteID, hdnEmpLbrFlag));
+  }
+  public RecordMetaInfo getOvrAbvArrearHeaderMetaInfo(GenDAArrearQueryVO oGenDAArrearQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    OverNAboveBusinessObject oOverNAboveBusinessObject = new OverNAboveBusinessObject();
+    return oOverNAboveBusinessObject.getOverNAboveArrearHeaderMetaInfo(oGenDAArrearQueryVO);
+  }
+
+  public ArrayList getOvrAbvArrearHeader(GenDAArrearQueryVO oGenDAArrearQueryVO,long lStartPosition, long lLastPosition) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    OverNAboveBusinessObject oOverNAboveBusinessObject = new OverNAboveBusinessObject();
+    return oOverNAboveBusinessObject.getOverNAboveArrearHeader(oGenDAArrearQueryVO,lStartPosition,lLastPosition);
+  }
+  
+  public String undoOvernAboveArrear(OverNAboveArrearHeaderBean oOverNAboveArrearHeaderBean,long loginUserId ,long lLoginSiteId) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    OverNAboveBusinessObject oOverNAboveBusinessObject = new OverNAboveBusinessObject();
+    return oOverNAboveBusinessObject.undoOvrAbvArrear(oOverNAboveArrearHeaderBean,loginUserId ,lLoginSiteId);
+  }
+	public String sGetEmpNumchk(String  sEmpNum,long  lSiteId,String  sEmplbr) throws EnrgiseSystemException, EnrgiseApplicationException
+	{
+		GetDescBusinessObject oGetDescBusinessObject = new GetDescBusinessObject();
+		return oGetDescBusinessObject.sGetEmpNumchk(sEmpNum,lSiteId,sEmplbr);
+	}
+	public LovVO getQueryEmpRetdPromotionLOVData(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+	{
+		EmpPromotionBusinessObject oEmpPromotion = new EmpPromotionBusinessObject();
+		LovVO oLovVO=oEmpPromotion.getQueryEmpRetdPromotionLOVData(oLovQueryVO);
+		return oLovVO;
+	}  
+	public LovVO getEmpRetdPromotionLOVData(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+	{
+		EmpPromotionBusinessObject oEmpPromotion = new EmpPromotionBusinessObject();
+		LovVO oLovVO=oEmpPromotion.getEmpRetdPromotionLOVData(oLovQueryVO);
+		return oLovVO;
+	}
+
+  public RecordMetaInfo getRespCreatUpdMetaInfo(RespcreateQueryVO oRespcreateQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    ResponsibilityCreationBusinessObject oResponsibilityCreationBusinessObject = new ResponsibilityCreationBusinessObject();
+    RecordMetaInfo oRecordMetaInfo = oResponsibilityCreationBusinessObject.getRespCreatUpdMetaInfo(oRespcreateQueryVO);
+    oResponsibilityCreationBusinessObject = null;
+    return oRecordMetaInfo;
+  }
+
+  public ArrayList getRespCreatHeader(RespcreateQueryVO oRespcreateQueryVO,long lStartPosition, long lLastPosition) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    ResponsibilityCreationBusinessObject oResponsibilityCreationBusinessObject = new ResponsibilityCreationBusinessObject();
+    ArrayList arr = oResponsibilityCreationBusinessObject.getRespCreatHeader(oRespcreateQueryVO,lStartPosition,lLastPosition);
+    oResponsibilityCreationBusinessObject = null;
+    return arr;
+  }
+  
+  public RecordMetaInfo getRespCreatUpdDtlMetaInfo(String sPrimaryKey, BaseDetailInfo oBaseDetailInfo) throws EnrgiseSystemException, EnrgiseApplicationException, RemoteException
+  {
+    ResponsibilityCreationBusinessObject oResponsibilityCreationBusinessObject = new ResponsibilityCreationBusinessObject();
+    RecordMetaInfo oRecordMetaInfo = oResponsibilityCreationBusinessObject.getRespCreatUpdDtlMetaInfo(sPrimaryKey, (RespCreatUpdDetailInfo)oBaseDetailInfo);
+    oResponsibilityCreationBusinessObject = null;
+    return oRecordMetaInfo;
+  }
+
+  public ArrayList getRespCreatDetail(String sPrimaryKey, long lStartPosition, long lLastPosition, BaseDetailInfo oBaseDetailInfo) throws EnrgiseSystemException, EnrgiseApplicationException, RemoteException
+  {
+    ResponsibilityCreationBusinessObject oResponsibilityCreationBusinessObject = new ResponsibilityCreationBusinessObject();
+    ArrayList arr = oResponsibilityCreationBusinessObject.getRespCreatDetail(sPrimaryKey, lStartPosition, lLastPosition, (RespCreatUpdDetailInfo)oBaseDetailInfo);
+    oResponsibilityCreationBusinessObject = null;
+    return arr;
+  }
+  
+  public String saveRespCreaUpdDetail(BaseHeaderBean oBaseHeaderBean, Timestamp oWhenPicked, String sScreenName, String sScreenMode, boolean bHeaderDataChanged,ArrayList oDetailBeanArray,boolean bDetailDataChanged, Timestamp oDetailPicked) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    ResponsibilityCreationBusinessObject oResponsibilityCreationBusinessObject = new ResponsibilityCreationBusinessObject();
+    return oResponsibilityCreationBusinessObject.saveData(oBaseHeaderBean,oWhenPicked,sScreenName,sScreenMode,bHeaderDataChanged,oDetailBeanArray,bDetailDataChanged,oDetailPicked);
+  }
+
+  public ScreenComboVO getRespCreatComboDetails()throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    ResponsibilityCreationBusinessObject oResponsibilityCreationBusinessObject=new ResponsibilityCreationBusinessObject();
+    return oResponsibilityCreationBusinessObject.getRespCreatComboDetails();
+  }
+  public RecordMetaInfo getHdrRcdPayImgInctMetaImpl(EnqPayImageQueryVO oEnqPayImageQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    PayImageBusinessObject oPayImageBO = new PayImageBusinessObject();
+    return oPayImageBO.getHdrRcdPayImgInctMetaImpl(oEnqPayImageQueryVO);
+  }
+
+  public ArrayList getHdrRcdPayImgInctImpl(EnqPayImageQueryVO oEnqPayImageQueryVO,long lStartPosition,long lLastPosition) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    PayImageBusinessObject oPayImageBO = new PayImageBusinessObject();
+    return oPayImageBO.getHdrRcdPayImgInctImpl(oEnqPayImageQueryVO,lStartPosition,lLastPosition);
+  }
+  public RecordMetaInfo getEnqPayImageInctDetailMetaInfo(String sPrimaryKey,EnqPayImageDetailInfo oEnqPayImageDetailInfo) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    PayImageBusinessObject oPayImageBO = new PayImageBusinessObject();
+    return oPayImageBO.getEnqPayImageInctDetailMetaInfo(sPrimaryKey, oEnqPayImageDetailInfo);
+  }
+
+  public ArrayList getEnqPayImageInctDetail(String sPrimaryKey,long lStartPosition,long lLastPosition,EnqPayImageDetailInfo oEnqPayImageDetailInfo) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    PayImageBusinessObject oPayImageBO = new PayImageBusinessObject();
+    return oPayImageBO.getEnqPayImageInctDetail(sPrimaryKey,lStartPosition,lLastPosition,oEnqPayImageDetailInfo);
+  }
+  public ClassificationComboVO getClassificationCombo()throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    CatVsPayCodeBusinessObject oCatVsPayCodeBusinessObject = new CatVsPayCodeBusinessObject();
+    return oCatVsPayCodeBusinessObject.getClassificationCombo();
+  }
+  
+  public RecordMetaInfo getCatVsPayCodeMetaInfo(String sPrimaryKey) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    CatVsPayCodeBusinessObject oCatVsPayCodeBusinessObject = new CatVsPayCodeBusinessObject();
+    return oCatVsPayCodeBusinessObject.getCatVsPayCodeMetaInfo(sPrimaryKey);
+  }
+
+  public ArrayList getCatVsPayCodeDetail(String sPrimaryKey,long lStartPosition,long lLastPosition) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    CatVsPayCodeBusinessObject oCatVsPayCodeBusinessObject = new CatVsPayCodeBusinessObject();
+    return oCatVsPayCodeBusinessObject.getCatVsPayCodeDetail(sPrimaryKey,lStartPosition,lLastPosition);
+  }
+  public String SaveClassificationMapping(CatVsPayCodeHeaderBean oCatVsPayCodeHeaderBean, Timestamp oWhenPicked, String sScreenName, String sScreenMode, boolean bHeaderDataChanged,ArrayList oDetailBeanArray,boolean bDetailDataChanged, Timestamp oDetailPicked) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    CatVsPayCodeBusinessObject oCatVsPayCodeBusinessObject = new CatVsPayCodeBusinessObject();
+    return oCatVsPayCodeBusinessObject.saveData((CatVsPayCodeHeaderBean)oCatVsPayCodeHeaderBean,oWhenPicked, sScreenName, sScreenMode, bHeaderDataChanged, oDetailBeanArray, bDetailDataChanged, oDetailPicked);
+
+  }
+  
+  public LovVO  getCatVSPayCodeLOVPayCodeDataQ(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    CatVsPayCodeBusinessObject oCatVsPayCodeBusinessObject = new CatVsPayCodeBusinessObject();
+    LovVO oLovVO=oCatVsPayCodeBusinessObject.getCatVSPayCodeLOVPayCodeDataQ(oLovQueryVO);
+    return oLovVO;
+  }
+ public LovVO getLoanAdjustmentLOVDataQ(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    LoanAdjustmentBusinessObject oLoanAdjustmentBusinessObject = new LoanAdjustmentBusinessObject();
+    LovVO oLovVO=oLoanAdjustmentBusinessObject.getLoanAdjustmentLOVDataQ(oLovQueryVO);
+    return oLovVO;
+  }
+
+  public LovVO getLoanAdjustDtlLOVDataN(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    LoanAdjustmentBusinessObject oLoanAdjustmentBusinessObject = new LoanAdjustmentBusinessObject();
+    LovVO oLovVO=oLoanAdjustmentBusinessObject.getLoanAdjustDtlLOVDataN(oLovQueryVO);
+    return oLovVO;
+  }
+    public BaseHeaderBean getAdjustmentDtls(LoanAdjustmentVO oLoanAdjustmentVO) throws EnrgiseSystemException, EnrgiseApplicationException, RemoteException
+    {
+        LoanAdjustmentBusinessObject oLoan = new LoanAdjustmentBusinessObject();
+        return oLoan.getAdjustmentDtls(oLoanAdjustmentVO);
+    }
+    public RecordMetaInfo getLoanAdjustHeaderMetaInfo(LoanAdjustmentVO oLoanAdjustmentVO) throws EnrgiseSystemException, EnrgiseApplicationException
+    {
+        LoanAdjustmentBusinessObject oLoanAdjustmentBusinessObject = new LoanAdjustmentBusinessObject();
+        return oLoanAdjustmentBusinessObject.getLoanAdjustHeaderMetaInfo(oLoanAdjustmentVO);
+    }
+    public ArrayList getLoanAdjustHeader(LoanAdjustmentVO oLoanAdjustmentVO,long lStartPosition, long lLastPosition) throws EnrgiseSystemException, EnrgiseApplicationException
+    {
+        LoanAdjustmentBusinessObject oLoanAdjustmentBusinessObject = new LoanAdjustmentBusinessObject();
+        return oLoanAdjustmentBusinessObject.getLoanAdjustHeader(oLoanAdjustmentVO,lStartPosition,lLastPosition);
+    }
+    public String saveAdjustmentDetails(LoanAdjustmentHeaderBean oLoanAdjustmentHeaderBean, Timestamp oWhenPicked, String sScreenName, String sScreenMode, boolean bHeaderDataChanged,ArrayList oDetailBeanArray,boolean bDetailDataChanged, Timestamp oDetailPicked) throws EnrgiseSystemException, EnrgiseApplicationException
+    {
+        LoanAdjustmentBusinessObject oLoanAdjustmentBusinessObject = new LoanAdjustmentBusinessObject();
+        return oLoanAdjustmentBusinessObject.saveData(oLoanAdjustmentHeaderBean,oWhenPicked,sScreenName,sScreenMode,bHeaderDataChanged,oDetailBeanArray,bDetailDataChanged,oDetailPicked);
+    }
+    
+    ///////////////////////////////////////////////CPF New Payment FACADE BEAN added by geetika(10/12/2013)///////////////////////
+
+   public RecordMetaInfo getCPFNewPayHeaderMetaInfo(CPFFinalPaymentQueryVO oCPFFinalPaymentQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    CPFNewPymntBusinessObject oCPFNewPay = new CPFNewPymntBusinessObject();
+    return oCPFNewPay.getCPFNewPayHeaderMetaInfo(oCPFFinalPaymentQueryVO);
+  }
+
+  public LovVO getEmpCPFNewPayLOVData(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    CPFNewPymntBusinessObject oCPFNewPay = new CPFNewPymntBusinessObject();
+    LovVO oLovVO=oCPFNewPay.getEmpCPFNewPayLOVData(oLovQueryVO);
+    return oLovVO;
+  }
+
+
+  public LovVO getQueryEmpCPFNewPayLOVData(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    CPFNewPymntBusinessObject oCPFNewPay = new CPFNewPymntBusinessObject();
+    LovVO oLovVO=oCPFNewPay.getQueryEmpCPFNewPayLOVData(oLovQueryVO);
+    return oLovVO;
+  }
+
+  public RecordMetaInfo getCPFNewPayDetailMetaInfo(String sPrimaryKey,CPFFinalPaymentBaseDetailInfo oCPFFinalPaymentBaseDetailInfo) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    CPFNewPymntBusinessObject oCPFNewPay = new CPFNewPymntBusinessObject();
+    return oCPFNewPay.getCPFNewPayDetailMetaInfo(sPrimaryKey,oCPFFinalPaymentBaseDetailInfo);
+  }
+
+  public ArrayList getCPFNewPayDetail(String sPrimaryKey,long lStartPosition, long lLastPosition ,CPFFinalPaymentBaseDetailInfo oCPFFinalPaymentBaseDetailInfo) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    CPFNewPymntBusinessObject oCPFNewPay = new CPFNewPymntBusinessObject();
+    return oCPFNewPay.getCPFNewPayDetail(sPrimaryKey,lStartPosition,lLastPosition,oCPFFinalPaymentBaseDetailInfo);
+  }
+
+  public String saveEmpCPFNewPay(CPFFinalPaymentBean oCPFFinalPaymentBean, Timestamp oWhenPicked, String sScreenName, String sScreenMode, boolean bHeaderDataChanged,ArrayList oDetailBeanArray,boolean bDetailDataChanged, Timestamp oDetailPicked) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    CPFNewPymntBusinessObject oCPFNewPay = new CPFNewPymntBusinessObject();
+    return oCPFNewPay.saveData((BaseHeaderBean)oCPFFinalPaymentBean,oWhenPicked, sScreenName, sScreenMode, bHeaderDataChanged, oDetailBeanArray, bDetailDataChanged, oDetailPicked);
+  }
+
+  public ArrayList getCPFNewPayHeader(CPFFinalPaymentQueryVO oCPFFinalPaymentQueryVO,long lStartPosition, long lLastPosition) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    CPFNewPymntBusinessObject oCPFNewPay = new CPFNewPymntBusinessObject();
+    return oCPFNewPay.getCPFNewPayHeader(oCPFFinalPaymentQueryVO,lStartPosition,lLastPosition);
+  }
+
+  public String realeaseCPFNewPay(BaseHeaderBean oBaseHeaderBean)throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    CPFNewPymntBusinessObject oCPFNewPay = new CPFNewPymntBusinessObject();
+    return oCPFNewPay.realeaseCPFNewPay(oBaseHeaderBean);
+
+  }
+
+  public BaseHeaderBean getCPFNewDtls(CPFFinalPaymentQueryVO oCPFFinalPaymentQueryVO)throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    CPFNewPymntBusinessObject oCPFNewPay = new CPFNewPymntBusinessObject();
+    return oCPFNewPay.getCPFNewDtls(oCPFFinalPaymentQueryVO);
+  }
+
+  public String revokeCPFNewPay(BaseHeaderBean oBaseHeaderBean)throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    CPFNewPymntBusinessObject oCPFFinPay = new CPFNewPymntBusinessObject();
+    return oCPFFinPay.revokeCPFNewPay(oBaseHeaderBean);
+  }
+  
+  public CPFFinalPayComboVO getCPFFinalPayComboDetails()throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    CPFFinalPymntBusinessObject oCPFFinPay = new CPFFinalPymntBusinessObject();
+    return oCPFFinPay.getCPFFinalPayComboDetails();
+
+  }
+  //added by himanshu on 9-july-2014
+  public String calcCpfYrInt(BaseHeaderBean oBaseHeaderBean) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    CPFFinalPymntBusinessObject oCPFFinPay = new CPFFinalPymntBusinessObject();
+    return oCPFFinPay.calcCpfYrInt(oBaseHeaderBean);
+  }
+  public String freezeCpfYrInt(BaseHeaderBean oBaseHeaderBean) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    CPFFinalPymntBusinessObject oCPFFinPay = new CPFFinalPymntBusinessObject();
+    return oCPFFinPay.freezeCpfYrInt(oBaseHeaderBean);
+  }
+// end of addition by himanshu on 9-july-2014
+
+ //added by himanshu on 15-jan-2015
+ public String cancelCPFNewPay(BaseHeaderBean oBaseHeaderBean)throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    CPFNewPymntBusinessObject oCPFFinPay = new CPFNewPymntBusinessObject();
+    return oCPFFinPay.cancelCPFNewPay(oBaseHeaderBean);
+  }
+  
+//end of addition
+
+  //Added by Abdul on 27-jan-2015
+  public RecordMetaInfo getChngZoneDetailMetaInfo(String sPrimaryKey, BaseDetailInfo oBaseDetailInfo) throws EnrgiseSystemException, EnrgiseApplicationException, RemoteException
+  {
+    ChangeZoneBusinessObject oChngZoneObject = new ChangeZoneBusinessObject();
+    RecordMetaInfo oRecordMetaInfo = oChngZoneObject.getChngZoneDetailMetaInfo(sPrimaryKey, (ChangeZoneDetailInfo)oBaseDetailInfo);
+    oChngZoneObject = null;
+    return oRecordMetaInfo;
+  }
+
+  public ArrayList getChngZoneDetail(String sPrimaryKey, long lStartPosition, long lLastPosition, BaseDetailInfo oBaseDetailInfo) throws EnrgiseSystemException, EnrgiseApplicationException, RemoteException
+  {
+    ChangeZoneBusinessObject oChngZoneObject = new ChangeZoneBusinessObject();
+    ArrayList arr = oChngZoneObject.getChngZoneDetail(sPrimaryKey, lStartPosition, lLastPosition, (ChangeZoneDetailInfo)oBaseDetailInfo);
+    oChngZoneObject = null;
+    return arr;
+  }
+  public String saveChangeZoneDetail(ChangeZoneHeaderBean oDummyHeaderBean, Timestamp oWhenPicked, String sScreenName, String sScreenMode, boolean bHeaderDataChanged,ArrayList oDetailBeanArray,boolean bDetailDataChanged, Timestamp oDetailPicked) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    ChangeZoneBusinessObject oChngZoneObject = new ChangeZoneBusinessObject();
+    String s = oChngZoneObject.saveData(oDummyHeaderBean,oWhenPicked,sScreenName,sScreenMode,bHeaderDataChanged,oDetailBeanArray,bDetailDataChanged,oDetailPicked);
+    oChngZoneObject = null;
+    return s;
+  }
+  public LovVO getAllEmpLOVData(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    ChangeZoneBusinessObject oChngZoneObject = new ChangeZoneBusinessObject();
+    LovVO oLovVO=oChngZoneObject.getAllEmpLOVData(oLovQueryVO);
+    return oLovVO;
+  }
+  
+ // Added by abdul on 23-july-2018
+ public RecordMetaInfo getbasicHistDetailMetaInfo(String sPrimaryKey, BaseDetailInfo oBaseDetailInfo) throws EnrgiseSystemException, EnrgiseApplicationException, RemoteException
+ {
+   EmpBasicHistBusinessObject oBasicHist = new EmpBasicHistBusinessObject();
+   RecordMetaInfo oRecordMetaInfo = oBasicHist.getbasicHistDetailMetaInfo(sPrimaryKey, (BasicHistDetailInfo)oBaseDetailInfo);
+   oBasicHist = null;
+   return oRecordMetaInfo;
+ }
+    public LovVO getEmpBasicHistLOVData(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+    {
+      EmpBasicHistBusinessObject oEmpBasicHist = new EmpBasicHistBusinessObject();
+      LovVO oLovVO=oEmpBasicHist.getEmpBasicHistLOVData(oLovQueryVO);
+      return oLovVO;
+    }
+ public ArrayList getBasicHistDetail(String sPrimaryKey, long lStartPosition, long lLastPosition, BaseDetailInfo oBaseDetailInfo) throws EnrgiseSystemException, EnrgiseApplicationException, RemoteException
+ {
+   EmpBasicHistBusinessObject oBasicHist = new EmpBasicHistBusinessObject();
+   ArrayList arr = oBasicHist.getBasicHistDetail(sPrimaryKey, lStartPosition, lLastPosition, (BasicHistDetailInfo)oBaseDetailInfo);
+   oBasicHist = null;
+   return arr;
+ }
+////////////////////Added By Avtar on 03-Jun-2015//////////////////////////////////////////
+  public RecordMetaInfo getPLIForeclosureHeaderMetaInfo(PLIForeclosureVO oPLIForeclosureVO) throws EnrgiseSystemException, EnrgiseApplicationException, RemoteException
+ {
+  PLIForeclosureBusinessObject oPLI = new PLIForeclosureBusinessObject();
+  return oPLI.getPLIForeclosureHeaderMetaInfo(oPLIForeclosureVO);
+ }
+   public ArrayList getPLIForeclosureHeader(PLIForeclosureVO oPLIForeclosureVO,long lStartPosition, long lLastPosition) throws EnrgiseSystemException, EnrgiseApplicationException, RemoteException
+{
+  PLIForeclosureBusinessObject oPLI = new PLIForeclosureBusinessObject();
+  return oPLI.getPLIForeclosureHeader(oPLIForeclosureVO,lStartPosition,lLastPosition);
+}
+  public LovVO getPLIDtlLOVDataN(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException, RemoteException
+{
+  PLIForeclosureBusinessObject oPLI = new PLIForeclosureBusinessObject();
+  return oPLI.getPLIDtlLOVDataN(oLovQueryVO);
+}
+  public String  savePLIForeclosureDetails(PLIForeclosureBean oPLIForeclosureBean, Timestamp oWhenPicked, String sScreenName, String sScreenMode, boolean bHeaderDataChanged,ArrayList oDetailBeanArray,boolean bDetailDataChanged, Timestamp oDetailPicked) throws EnrgiseSystemException, EnrgiseApplicationException, RemoteException
+{
+  PLIForeclosureBusinessObject oPLI = new PLIForeclosureBusinessObject();
+  return oPLI.saveNewHeaderImpl(oPLIForeclosureBean);
+}
+  public LovVO getPLIDtlLOVDataQ(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException, RemoteException
+{
+  PLIForeclosureBusinessObject oPLI = new PLIForeclosureBusinessObject();
+  return oPLI.getPLIDtlLOVDataQ(oLovQueryVO);
+}
+  public BaseHeaderBean getPLIForeclosureDtls(PLIForeclosureVO oPLIForeclosureVO) throws EnrgiseSystemException, EnrgiseApplicationException, RemoteException
+{
+  PLIForeclosureBusinessObject oPLI = new PLIForeclosureBusinessObject();
+  return oPLI.getPLIForeclosureDtls(oPLIForeclosureVO);
+}
+  public LovVO getEmpLOVData(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException, RemoteException
+  {
+    PLIForeclosureBusinessObject oPLI = new PLIForeclosureBusinessObject();
+     return oPLI.getEmpLOVData(oLovQueryVO) ;
+   }
+////////////////////Added By Avtar on 03-Jun-2015//////////////////////////////////////////
+
+  public RecordMetaInfo getPensionEmpShareUploadDetailMetaInfo(String sPrimaryKey) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+   PensionEmpShareUploadBusinessObject oPayAcct = new  PensionEmpShareUploadBusinessObject();
+    return oPayAcct.getPensionEmpShareUploadDetailMetaInfo(sPrimaryKey);
+  }
+
+  public ArrayList getPensionEmpShareUploadDetail(String sPrimaryKey,long lStartPosition,long lLastPosition) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    PensionEmpShareUploadBusinessObject oPayAcct = new  PensionEmpShareUploadBusinessObject();
+    return oPayAcct.getPensionEmpShareUploadDetail(sPrimaryKey,lStartPosition,lLastPosition);
+  }
+
+  public String savePensionEmpShareUploadDetails(DummyHeaderBean oDummyHeaderBean, Timestamp oWhenPicked, String sScreenName, String sScreenMode, boolean bHeaderDataChanged,ArrayList oDetailBeanArray,boolean bDetailDataChanged, Timestamp oDetailPicked) throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    PensionEmpShareUploadBusinessObject oPayAcct = new  PensionEmpShareUploadBusinessObject();
+    return oPayAcct.saveData((BaseHeaderBean)oDummyHeaderBean,oWhenPicked, sScreenName, sScreenMode, bHeaderDataChanged, oDetailBeanArray, bDetailDataChanged, oDetailPicked);
+
+  }
+    
+   public LovVO  getPensionEmpShareUploadEmployeeNoLOVData(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+    {
+      PensionEmpShareUploadBusinessObject oEmployeeNo = new PensionEmpShareUploadBusinessObject();
+      LovVO oLovVO=oEmployeeNo.getPensionEmpShareUploadEmployeeNoLOVData(oLovQueryVO);
+      return oLovVO;
+    } 
+//added by manish
+   
+       //added by Priyanka on 10-Arpril-2017
+
+  public RecordMetaInfo getPensionDetailMetaInfo(String sPrimaryKey, BaseDetailInfo oBaseDetailInfo) throws EnrgiseSystemException, EnrgiseApplicationException, RemoteException
+    {
+        MaintPensionDtlBusinessObject oBusinessObject = new MaintPensionDtlBusinessObject();
+        return oBusinessObject.getPensionDetailMetaInfo(sPrimaryKey, (MaintPCDetailInfo)oBaseDetailInfo);
+    }
+    public ArrayList getPensionDetail(String sPrimaryKey, long lStartPosition, long lLastPosition, BaseDetailInfo oBaseDetailInfo) throws EnrgiseSystemException, EnrgiseApplicationException, RemoteException
+    {
+        MaintPensionDtlBusinessObject oBusinessObject = new MaintPensionDtlBusinessObject();
+        return oBusinessObject.getPensionDetail(sPrimaryKey, lStartPosition, lLastPosition, (MaintPCDetailInfo)oBaseDetailInfo);
+    }
+         
+   /*  public MaintPcDtlComboVO getPcDetailCombo() throws EnrgiseSystemException, EnrgiseApplicationException
+  {
+    MaintPCDtlBusinessObject oMaintPCDtlBusinessObject = new MaintPCDtlBusinessObject();
+    MaintPcDtlComboVO oMaintPcDtlComboVO = oMaintPCDtlBusinessObject.getPcDetailCombo();
+    oMaintPCDtlBusinessObject = null;
+    return oMaintPcDtlComboVO;
+  } */
+  public ArrayList getPcAdjustHistoryHdr(MaintPCDetailQueryVO oMaintPCDetailQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException, RemoteException
+  {
+    MaintPensionDtlBusinessObject oMaintPensionDtlBusinessObject = new MaintPensionDtlBusinessObject();
+    ArrayList arr = oMaintPensionDtlBusinessObject.getPcAdjustHistoryHdr(oMaintPCDetailQueryVO);
+    oMaintPensionDtlBusinessObject = null;
+    return arr;
+  }
+  public ArrayList getPcAdjustHistoryDtl(MaintPCDetailQueryVO oMaintPCDetailQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException, RemoteException
+  {
+    MaintPensionDtlBusinessObject oMaintPensionDtlBusinessObject = new MaintPensionDtlBusinessObject();
+    ArrayList arr = oMaintPensionDtlBusinessObject.getPcAdjustHistoryDtl(oMaintPCDetailQueryVO);
+    oMaintPensionDtlBusinessObject = null;
+    return arr;
+  }
+ public RecordMetaInfo getPensionHeaderMetaInfo(MaintPCDetailQueryVO oMaintPCDetailQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+   {
+     MaintPensionDtlBusinessObject oMaintPensionDtlBusinessObject = new MaintPensionDtlBusinessObject();
+     return oMaintPensionDtlBusinessObject.getPensionHeaderMetaInfo(oMaintPCDetailQueryVO);
+   }
+
+   public ArrayList getPensionHeader(MaintPCDetailQueryVO oMaintPCDetailQueryVO,long lStartPosition, long lLastPosition) throws EnrgiseSystemException, EnrgiseApplicationException
+   {
+     MaintPensionDtlBusinessObject oMaintPensionDtlBusinessObject = new MaintPensionDtlBusinessObject();
+     return oMaintPensionDtlBusinessObject.getPensionHeader(oMaintPCDetailQueryVO,lStartPosition,lLastPosition);
+   }
+    public LovVO getPensionFromYrLOVData(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+    {
+     MaintPensionDtlBusinessObject oPensionDtl = new MaintPensionDtlBusinessObject();
+     LovVO oLovVO=oPensionDtl.getPensionFromYrLOVData(oLovQueryVO);
+      return oLovVO;
+    }
+    public LovVO getPensionDetailLOVData(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+    {
+     MaintPensionDtlBusinessObject oPensionDtl = new MaintPensionDtlBusinessObject();
+     LovVO oLovVO=oPensionDtl.getPensionDetailLOVData(oLovQueryVO);
+     return oLovVO;
+    }
+
+
+    public LovVO getQueryPensionDetailLOVData(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+    {
+     MaintPensionDtlBusinessObject oPensionDtl = new MaintPensionDtlBusinessObject();
+     LovVO oLovVO=oPensionDtl.getQueryPensionDetailLOVData(oLovQueryVO);
+     return oLovVO;
+    }
+    public MaintPcDtlComboVO getPensionDetailCombo() throws EnrgiseSystemException, EnrgiseApplicationException
+    {
+      MaintPensionDtlBusinessObject oMaintPensionDtlBusinessObject = new MaintPensionDtlBusinessObject();
+      MaintPcDtlComboVO oMaintPcDtlComboVO = oMaintPensionDtlBusinessObject.getPensionDetailCombo();
+      oMaintPensionDtlBusinessObject = null;
+      return oMaintPcDtlComboVO;
+    }
+    public String savePCDetail(MaintPCDetailHeaderBean oMaintPCDetailHeaderBean, Timestamp oWhenPicked, String sScreenName, String sScreenMode, boolean bHeaderDataChanged,ArrayList oDetailBeanArray,boolean bDetailDataChanged, Timestamp oDetailPicked) throws EnrgiseSystemException, EnrgiseApplicationException
+    {
+      MaintPensionDtlBusinessObject oPensionDtl = new MaintPensionDtlBusinessObject();
+      return oPensionDtl.saveData((BaseHeaderBean)oMaintPCDetailHeaderBean,oWhenPicked, sScreenName, sScreenMode, bHeaderDataChanged, oDetailBeanArray, bDetailDataChanged, oDetailPicked);
+    }
+
+//added by Prachi on 19 June 2017
+public LovVO getPLIPayEmpLOVData(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+    {
+      PLICancelBusinessObject oPLICanPay = new PLICancelBusinessObject();
+      LovVO oLovVO=oPLICanPay.getPLIPayEmpLOVData(oLovQueryVO);
+      return oLovVO;
+    }
+    public LovVO getEmpLocationLOVData(LovQueryVO oLovQueryVO)  throws EnrgiseSystemException, EnrgiseApplicationException
+    {
+      PLICancelBusinessObject oPLICancelBusinessObject =new PLICancelBusinessObject();
+      return oPLICancelBusinessObject.getEmpLocationLOVData(oLovQueryVO);
+    }
+    
+    public RecordMetaInfo getPLIPaymentCancelHeaderMetaInfo(PLIActCancelQueryVO oPLIActCancelQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+     {
+       PLICancelBusinessObject oPLIPay1 = new PLICancelBusinessObject();
+       return oPLIPay1.getPLIPaymentCancelHeaderMetaInfo(oPLIActCancelQueryVO);
+     }
+    
+    public ArrayList getPLIPaymentHeader1(PLIActCancelQueryVO oPLIActCancelQueryVO,long lStartPosition, long lLastPosition) throws EnrgiseSystemException, EnrgiseApplicationException
+    {
+      PLICancelBusinessObject oPLIPay2 = new PLICancelBusinessObject();
+      return oPLIPay2.getPLIPaymentHeader1(oPLIActCancelQueryVO,lStartPosition,lLastPosition);
+    }
+    public RecordMetaInfo getPLIPayDetailMetaInfo(String sPrimaryKey, PLIPayCanDetailInfo oPLIPayCanDetailInfo) throws EnrgiseSystemException, EnrgiseApplicationException
+    {
+          PLICancelBusinessObject oPLIPay3 = new PLICancelBusinessObject();
+          return oPLIPay3.getPLIPayDetailMetaInfo(sPrimaryKey, oPLIPayCanDetailInfo);
+    }
+    public ArrayList getPLIPaymentDetail1(String sPrimaryKey,long lStartPosition,long lLastPosition, PLIPayCanDetailInfo oPLIPayCanDetailInfo) throws EnrgiseSystemException, EnrgiseApplicationException
+    {
+         PLICancelBusinessObject oPLIPay4 = new PLICancelBusinessObject();
+         return oPLIPay4.getPLIPaymentDetail1(sPrimaryKey,lStartPosition,lLastPosition, oPLIPayCanDetailInfo);
+    }
+    
+    public String CancelPLIPaymentInv(PLIActCancelQueryVO oPLIActCancelQueryVO)throws EnrgiseSystemException, EnrgiseApplicationException
+    {
+        PLICancelBusinessObject oPLICancelBusinessObject=new PLICancelBusinessObject();
+        return oPLICancelBusinessObject.CancelPLIPaymentInv(oPLIActCancelQueryVO);
+    }
+//added by Arvind
+public String CancelCPFPartFinalInv(CPFFinalPaymentQueryVO oCPFFinalPaymentQueryV0) throws EnrgiseSystemException, EnrgiseApplicationException
+{
+      CPFFinalPymntBusinessObject oCPFFinalPymntBusinessObject=new CPFFinalPymntBusinessObject();
+      return oCPFFinalPymntBusinessObject.CancelCPFPartFinalInv(oCPFFinalPaymentQueryV0);
+    }
+//added by arvind
+    public String freezePenYrInt(MaintPCDetailQueryVO oMaintPCDetailQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+    {
+      MaintPensionDtlBusinessObject oCPFFinPay = new MaintPensionDtlBusinessObject();
+      return oCPFFinPay.freezePenYrInt(oMaintPCDetailQueryVO);
+    }
+	//Added By Amresh For PRMS
+	public String EmpPrmsMediBillsCancelInv(EmpPrmsMediBillsQueryVO oEmpPrmsMediBillsQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+     {
+         EmpPrmsMediBillsBusinessObject oEmpPrmsMediBillsBusinessObject=new EmpPrmsMediBillsBusinessObject();
+         return oEmpPrmsMediBillsBusinessObject.EmpPrmsMediBillsCancelInv(oEmpPrmsMediBillsQueryVO);
+     } 
+    public LovVO getPrmsMedClaimAgencyCodelov(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException,RemoteException
+    {
+      EmpPrmsMediBillsBusinessObject oMediBill = new EmpPrmsMediBillsBusinessObject();
+      LovVO oLovVO=oMediBill.getPrmsMedClaimAgencyCodelov(oLovQueryVO);
+      return oLovVO;
+    }
+    
+    
+    public LovVO getPrmsMedClaimAgencySiteCodelov(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException,RemoteException
+    {
+      EmpPrmsMediBillsBusinessObject oMediBill = new EmpPrmsMediBillsBusinessObject();
+      LovVO oLovVO=oMediBill.getPrmsMedClaimAgencySiteCodelov(oLovQueryVO);
+      return oLovVO;
+    }
+
+    public LovVO getPensionEmpLovQ(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+    {
+        PensionFinalSettBusinessObject oPensionFinalSett = new PensionFinalSettBusinessObject();
+        LovVO oLovVO=oPensionFinalSett.getPensionEmpLovQ(oLovQueryVO);
+        return oLovVO;
+    }
+    
+    public LovVO getPensionEmpLovN(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+    {
+      PensionFinalSettBusinessObject oPensionFinalSett = new PensionFinalSettBusinessObject();
+      LovVO oLovVO=oPensionFinalSett.getPensionEmpLovN(oLovQueryVO);
+      return oLovVO;
+    }
+
+    public RecordMetaInfo getPensionFinSettHeaderMetaInfo(PensionFinalSettQueryVO oPensionFinalSettQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+    {
+      PensionFinalSettBusinessObject oPensionFinalSett = new PensionFinalSettBusinessObject();
+      return oPensionFinalSett.getPensionFinSettHeaderMetaInfo(oPensionFinalSettQueryVO);
+    }
+
+    public ArrayList getPensionFinSettHeader(PensionFinalSettQueryVO oPensionFinalSettQueryVO,long lStartPosition, long lLastPosition) throws EnrgiseSystemException, EnrgiseApplicationException
+    {
+      PensionFinalSettBusinessObject oPensionFinalSett = new PensionFinalSettBusinessObject();
+      return oPensionFinalSett.getPensionFinSettHeader(oPensionFinalSettQueryVO,lStartPosition,lLastPosition);
+    }
+
+    public ArrayList getPensionFinalDtls(PensionFinalSettQueryVO oPensionFinalSettQueryVO)throws EnrgiseSystemException, EnrgiseApplicationException
+    {
+      PensionFinalSettBusinessObject oCPFFinPay = new PensionFinalSettBusinessObject();
+      return oCPFFinPay.getPensionFinalDtls(oPensionFinalSettQueryVO);
+    }
+    
+    public String savePensionFinSett(PensionFinalSettBean oPensionFinalSettBean, Timestamp oWhenPicked, String sScreenName, String sScreenMode, boolean bHeaderDataChanged,ArrayList oDetailBeanArray,boolean bDetailDataChanged, Timestamp oDetailPicked) throws EnrgiseSystemException, EnrgiseApplicationException
+    {
+      PensionFinalSettBusinessObject oPensionFinalSett = new PensionFinalSettBusinessObject();
+      return oPensionFinalSett.saveData((BaseHeaderBean)oPensionFinalSettBean,oWhenPicked, sScreenName, sScreenMode, bHeaderDataChanged, oDetailBeanArray, bDetailDataChanged, oDetailPicked);
+    }
+//added by dhiraj 
+    public String deleteLeaveTravelConcession(LeaveTravelConcessionQueryVO oLeaveTravelConcessionQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+    {
+     LeaveTravelConcessionBusinessObject oLeaveTravelConcessionBusinessObject =new LeaveTravelConcessionBusinessObject();
+     return oLeaveTravelConcessionBusinessObject.deleteLeaveTravelConcession(oLeaveTravelConcessionQueryVO);
+    }
+    
+    public String cancelLeaveTravelConcessionInv(LeaveTravelConcessionQueryVO oLeaveTravelConcessionQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+    {
+        LeaveTravelConcessionBusinessObject oLeaveTravelConcessionBusinessObject =new LeaveTravelConcessionBusinessObject();
+         return oLeaveTravelConcessionBusinessObject.cancelLeaveTravelConcessionInv(oLeaveTravelConcessionQueryVO);
+    }
+ //Added By Amresh For nEWSPAPER aLLOWANCE
+            public String EmpNewspaperAllowanceCancelInv(EmpNewspaperAllowanceQueryVO oEmpNewspaperAllowanceQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+         {
+             EmpNewspaperAllowanceBusinessObject oEmpNewspaperAllowanceBusinessObject=new EmpNewspaperAllowanceBusinessObject();
+             return oEmpNewspaperAllowanceBusinessObject.EmpNewspaperAllowanceCancelInv(oEmpNewspaperAllowanceQueryVO);
+         } 
+        public LovVO getEmpNewspaperAllowanceAgencyCodelov(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException,RemoteException
+        {
+          EmpNewspaperAllowanceBusinessObject oMediBill = new EmpNewspaperAllowanceBusinessObject();
+          LovVO oLovVO=oMediBill.getEmpNewspaperAllowanceAgencyCodelov(oLovQueryVO);
+          return oLovVO;
+        }
+        
+        
+        public LovVO getNewspaperAllowanceClaimAgencySiteCodelov(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException,RemoteException
+        {
+          EmpNewspaperAllowanceBusinessObject oMediBill = new EmpNewspaperAllowanceBusinessObject();
+          LovVO oLovVO=oMediBill.getEmpNewspaperAllowanceAgencySiteCodelov(oLovQueryVO);
+          return oLovVO;
+        }
+ public String EmpLiveriesReimbursementCancelInv(EmpLiveriesReimbursementQueryVO oEmpLiveriesReimbursementQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+         {
+             EmpLiveriesReimbursementBusinessObject oEmpLiveriesReimbursementBusinessObject=new EmpLiveriesReimbursementBusinessObject();
+             return oEmpLiveriesReimbursementBusinessObject.EmpLiveriesReimbursementCancelInv(oEmpLiveriesReimbursementQueryVO);
+         } 
+        public LovVO getEmpLiveriesReimbursementAgencyCodelov(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException,RemoteException
+        {
+          EmpLiveriesReimbursementBusinessObject oMediBill = new EmpLiveriesReimbursementBusinessObject();
+          LovVO oLovVO=oMediBill.getEmpLiveriesReimbursementAgencyCodelov(oLovQueryVO);
+          return oLovVO;
+        }
+        
+        
+        public LovVO getEmpLiveriesReimbursementClaimAgencySiteCodelov(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException,RemoteException
+        {
+          EmpLiveriesReimbursementBusinessObject oMediBill = new EmpLiveriesReimbursementBusinessObject();
+          LovVO oLovVO=oMediBill.getEmpLiveriesReimbursementAgencySiteCodelov(oLovQueryVO);
+          return oLovVO;
+        }
+		
+		 public String EmpBriefcaseReimbursementCancelInv(EmpBriefcaseReimbursementQueryVO oEmpBriefcaseReimbursementQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+         {
+             EmpBriefcaseReimbursementBusinessObject oEmpBriefcaseReimbursementBusinessObject=new EmpBriefcaseReimbursementBusinessObject();
+             return oEmpBriefcaseReimbursementBusinessObject.EmpBriefcaseReimbursementCancelInv(oEmpBriefcaseReimbursementQueryVO);
+         } 
+        public LovVO getEmpBriefcaseReimbursementAgencyCodelov(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException,RemoteException
+        {
+          EmpBriefcaseReimbursementBusinessObject oMediBill = new EmpBriefcaseReimbursementBusinessObject();
+          LovVO oLovVO=oMediBill.getEmpBriefcaseReimbursementAgencyCodelov(oLovQueryVO);
+          return oLovVO;
+        }
+        
+        
+        public LovVO getEmpBriefcaseReimbursementClaimAgencySiteCodelov(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException,RemoteException
+        {
+          EmpBriefcaseReimbursementBusinessObject oMediBill = new EmpBriefcaseReimbursementBusinessObject();
+          LovVO oLovVO=oMediBill.getEmpBriefcaseReimbursementAgencySiteCodelov(oLovQueryVO);
+          return oLovVO;
+        }
+		
+		 public String EmpTelephoneDataReimbursementCancelInv(EmpTelephoneDataReimbursementQueryVO oEmpTelephoneDataReimbursementQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+         {
+             EmpTelephoneDataReimbursementBusinessObject oEmpTelephoneDataReimbursementBusinessObject=new EmpTelephoneDataReimbursementBusinessObject();
+             return oEmpTelephoneDataReimbursementBusinessObject.EmpTelephoneDataReimbursementCancelInv(oEmpTelephoneDataReimbursementQueryVO);
+         } 
+        public LovVO getEmpTelephoneDataReimbursementAgencyCodelov(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException,RemoteException
+        {
+          EmpTelephoneDataReimbursementBusinessObject oMediBill = new EmpTelephoneDataReimbursementBusinessObject();
+          LovVO oLovVO=oMediBill.getEmpTelephoneDataReimbursementAgencyCodelov(oLovQueryVO);
+          return oLovVO;
+        }
+        
+        
+        public LovVO getEmpTelephoneDataReimbursementClaimAgencySiteCodelov(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException,RemoteException
+        {
+          EmpTelephoneDataReimbursementBusinessObject oMediBill = new EmpTelephoneDataReimbursementBusinessObject();
+          LovVO oLovVO=oMediBill.getEmpTelephoneDataReimbursementAgencySiteCodelov(oLovQueryVO);
+          return oLovVO;
+        }
+		
+		 public String EmpLaptopReimbursementCancelInv(EmpLaptopReimbursementQueryVO oEmpLaptopReimbursementQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+         {
+             EmpLaptopReimbursementBusinessObject oEmpLaptopReimbursementBusinessObject=new EmpLaptopReimbursementBusinessObject();
+             return oEmpLaptopReimbursementBusinessObject.EmpLaptopReimbursementCancelInv(oEmpLaptopReimbursementQueryVO);
+         } 
+        public LovVO getEmpLaptopReimbursementAgencyCodelov(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException,RemoteException
+        {
+          EmpLaptopReimbursementBusinessObject oMediBill = new EmpLaptopReimbursementBusinessObject();
+          LovVO oLovVO=oMediBill.getEmpLaptopReimbursementAgencyCodelov(oLovQueryVO);
+          return oLovVO;
+        }
+        
+        
+        public LovVO getEmpLaptopReimbursementClaimAgencySiteCodelov(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException,RemoteException
+        {
+          EmpLaptopReimbursementBusinessObject oMediBill = new EmpLaptopReimbursementBusinessObject();
+          LovVO oLovVO=oMediBill.getEmpLaptopReimbursementAgencySiteCodelov(oLovQueryVO);
+          return oLovVO;
+        }
+		
+		 public String EmpMobileReimbursementCancelInv(EmpMobileReimbursementQueryVO oEmpMobileReimbursementQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+         {
+             EmpMobileReimbursementBusinessObject oEmpMobileReimbursementBusinessObject=new EmpMobileReimbursementBusinessObject();
+             return oEmpMobileReimbursementBusinessObject.EmpMobileReimbursementCancelInv(oEmpMobileReimbursementQueryVO);
+         } 
+        public LovVO getEmpMobileReimbursementAgencyCodelov(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException,RemoteException
+        {
+          EmpMobileReimbursementBusinessObject oMediBill = new EmpMobileReimbursementBusinessObject();
+          LovVO oLovVO=oMediBill.getEmpMobileReimbursementAgencyCodelov(oLovQueryVO);
+          return oLovVO;
+        }
+        
+        
+        public LovVO getEmpMobileReimbursementClaimAgencySiteCodelov(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException,RemoteException
+        {
+          EmpMobileReimbursementBusinessObject oMediBill = new EmpMobileReimbursementBusinessObject();
+          LovVO oLovVO=oMediBill.getEmpMobileReimbursementAgencySiteCodelov(oLovQueryVO);
+          return oLovVO;
+        }
+		
+		 public String EmpTravelReimbursementCancelInv(EmpTravelReimbursementQueryVO oEmpTravelReimbursementQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+         {
+             EmpTravelReimbursementBusinessObject oEmpTravelReimbursementBusinessObject=new EmpTravelReimbursementBusinessObject();
+             return oEmpTravelReimbursementBusinessObject.EmpTravelReimbursementCancelInv(oEmpTravelReimbursementQueryVO);
+         } 
+        public LovVO getEmpTravelReimbursementAgencyCodelov(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException,RemoteException
+        {
+          EmpTravelReimbursementBusinessObject oMediBill = new EmpTravelReimbursementBusinessObject();
+          LovVO oLovVO=oMediBill.getEmpTravelReimbursementAgencyCodelov(oLovQueryVO);
+          return oLovVO;
+        }
+        
+        
+        public LovVO getEmpTravelReimbursementClaimAgencySiteCodelov(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException,RemoteException
+        {
+          EmpTravelReimbursementBusinessObject oMediBill = new EmpTravelReimbursementBusinessObject();
+          LovVO oLovVO=oMediBill.getEmpTravelReimbursementAgencySiteCodelov(oLovQueryVO);
+          return oLovVO;
+        }
+		
+		 public String EmpLocalTravelAllowanceCancelInv(EmpLocalTravelAllowanceQueryVO oEmpLocalTravelAllowanceQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+         {
+             EmpLocalTravelAllowanceBusinessObject oEmpLocalTravelAllowanceBusinessObject=new EmpLocalTravelAllowanceBusinessObject();
+             return oEmpLocalTravelAllowanceBusinessObject.EmpLocalTravelAllowanceCancelInv(oEmpLocalTravelAllowanceQueryVO);
+         } 
+        public LovVO getEmpLocalTravelAllowanceAgencyCodelov(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException,RemoteException
+        {
+          EmpLocalTravelAllowanceBusinessObject oMediBill = new EmpLocalTravelAllowanceBusinessObject();
+          LovVO oLovVO=oMediBill.getEmpLocalTravelAllowanceAgencyCodelov(oLovQueryVO);
+          return oLovVO;
+        }
+        
+        
+        public LovVO getEmpLocalTravelAllowanceClaimAgencySiteCodelov(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException,RemoteException
+        {
+          EmpLocalTravelAllowanceBusinessObject oMediBill = new EmpLocalTravelAllowanceBusinessObject();
+          LovVO oLovVO=oMediBill.getEmpLocalTravelAllowanceAgencySiteCodelov(oLovQueryVO);
+          return oLovVO;
+        }
+		 public String EmpMiscellaneousReimbursementCancelInv(EmpMiscellaneousReimbursementQueryVO oEmpMiscellaneousReimbursementQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+         {
+             EmpMiscellaneousReimbursementBusinessObject oEmpMiscellaneousReimbursementBusinessObject=new EmpMiscellaneousReimbursementBusinessObject();
+             return oEmpMiscellaneousReimbursementBusinessObject.EmpMiscellaneousReimbursementCancelInv(oEmpMiscellaneousReimbursementQueryVO);
+         } 
+        public LovVO getEmpMiscellaneousReimbursementAgencyCodelov(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException,RemoteException
+        {
+          EmpMiscellaneousReimbursementBusinessObject oMediBill = new EmpMiscellaneousReimbursementBusinessObject();
+          LovVO oLovVO=oMediBill.getEmpMiscellaneousReimbursementAgencyCodelov(oLovQueryVO);
+          return oLovVO;
+        }
+        
+        
+        public LovVO getEmpMiscellaneousReimbursementClaimAgencySiteCodelov(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException,RemoteException
+        {
+          EmpMiscellaneousReimbursementBusinessObject oMediBill = new EmpMiscellaneousReimbursementBusinessObject();
+          LovVO oLovVO=oMediBill.getEmpMiscellaneousReimbursementAgencySiteCodelov(oLovQueryVO);
+          return oLovVO;
+        }
+		
+		 public String EmpLtcHomeReimbursementCancelInv(EmpLtcHomeReimbursementQueryVO oEmpLtcHomeReimbursementQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException
+         {
+             EmpLtcHomeReimbursementBusinessObject oEmpLtcHomeReimbursementBusinessObject=new EmpLtcHomeReimbursementBusinessObject();
+             return oEmpLtcHomeReimbursementBusinessObject.EmpLtcHomeReimbursementCancelInv(oEmpLtcHomeReimbursementQueryVO);
+         } 
+        public LovVO getEmpLtcHomeReimbursementAgencyCodelov(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException,RemoteException
+        {
+          EmpLtcHomeReimbursementBusinessObject oMediBill = new EmpLtcHomeReimbursementBusinessObject();
+          LovVO oLovVO=oMediBill.getEmpLtcHomeReimbursementAgencyCodelov(oLovQueryVO);
+          return oLovVO;
+        }
+        
+        
+        public LovVO getEmpLtcHomeReimbursementClaimAgencySiteCodelov(LovQueryVO oLovQueryVO) throws EnrgiseSystemException, EnrgiseApplicationException,RemoteException
+        {
+          EmpLtcHomeReimbursementBusinessObject oMediBill = new EmpLtcHomeReimbursementBusinessObject();
+          LovVO oLovVO=oMediBill.getEmpLtcHomeReimbursementAgencySiteCodelov(oLovQueryVO);
+          return oLovVO;
+        }
+
+}

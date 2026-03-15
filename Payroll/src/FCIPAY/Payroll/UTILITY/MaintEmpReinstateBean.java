@@ -1,0 +1,176 @@
+package FCIPAY.Payroll.UTILITY;
+import java.io.Serializable;
+import FCIPAY.Payroll.UTILITY.PayrollBaseHeaderBean;
+
+public class MaintEmpReinstateBean extends PayrollBaseHeaderBean implements Serializable  
+{
+  private String txtEmpNo;  
+  private String txtEmpName;  
+  private String txtDsgn;    
+  private String txtCateg;  
+  private String txtCategDesc;      
+  private String txtEmpType;      
+  private String txtCpfCode; 
+  private String txtPresentPOP;
+  private String txtPresentPOPDesc;
+  private String txtDOJSite;
+  private String txtEmpStatus; 
+  
+  private String reinstId;
+  private String reinstEffDate;
+  private String reinstReason;  
+  private String intervngPrd; 
+  
+  public MaintEmpReinstateBean()
+  {
+  }
+
+  public String getTxtEmpNo()
+  {
+    return txtEmpNo;
+  }
+
+  public void setTxtEmpNo(String newTxtEmpNo)
+  {
+    txtEmpNo = newTxtEmpNo;
+  }
+  
+  public String getTxtEmpName()
+  {
+    return txtEmpName;
+  }
+
+  public void setTxtEmpName(String newTxtEmpName)
+  {
+    txtEmpName = newTxtEmpName;
+  }
+  
+   public String getTxtDsgn()
+  {
+    return txtDsgn;
+  }
+  public void setTxtDsgn(String newTxtDsgn)
+  {
+    txtDsgn = newTxtDsgn;
+  } 
+  
+  public String getTxtCateg()
+  {
+    return txtCateg;
+  }
+
+  public void setTxtCateg(String newTxtCateg)
+  {
+    txtCateg = newTxtCateg;
+  }
+  
+  public String getTxtCategDesc()
+  {
+    return txtCategDesc;
+  }
+
+  public void setTxtCategDesc(String newTxtCategDesc)
+  {
+    txtCategDesc = newTxtCategDesc;
+  }
+  
+   public String getTxtEmpType()
+  {
+    return txtEmpType;
+  }
+
+  public void setTxtEmpType(String newTxtEmpType)
+  {
+    txtEmpType = newTxtEmpType;
+  }  
+ 
+  public String getTxtPresentPOP()
+  {
+    return txtPresentPOP;
+  }
+
+  public void setTxtPresentPOP(String newTxtPresentPOP)
+  {
+    txtPresentPOP = newTxtPresentPOP;
+  } 
+  
+  public String getTxtPresentPOPDesc()
+  {
+    return txtPresentPOPDesc;
+  }
+
+  public void setTxtPresentPOPDesc(String newTxtPresentPOPDesc)
+  {
+    txtPresentPOPDesc = newTxtPresentPOPDesc;
+  }
+  
+  public String getTxtCpfCode()
+  {
+    return txtCpfCode;
+  }
+
+  public void setTxtCpfCode(String newTxtCpfCode)
+  {
+    txtCpfCode = newTxtCpfCode;
+  }  
+  
+   public String getTxtDOJSite()
+  {
+    return txtDOJSite;
+  }
+
+  public void setTxtDOJSite(String newTxtDOJSite)
+  {
+    txtDOJSite = newTxtDOJSite;
+  } 
+  
+  public String getTxtEmpStatus()
+  {
+    return txtEmpStatus;
+  }
+
+  public void setTxtEmpStatus(String newTxtEmpStatus)
+  {
+    txtEmpStatus = newTxtEmpStatus;
+  }
+  
+  public String getReinstId()
+  {
+    return reinstId;
+  }
+
+  public void setReinstId(String newReinstId)
+  {
+    reinstId = newReinstId;
+  }
+  
+   public String getReinstEffDate()
+  {
+    return reinstEffDate;
+  }
+
+  public void setReinstEffDate(String newReinstEffDate)
+  {
+    reinstEffDate = newReinstEffDate;
+  }
+ 
+ public String getReinstReason()
+  {
+    return reinstReason;
+  }
+  public void setReinstReason(String newReinstReason)
+  {
+    reinstReason = newReinstReason;
+  }
+  
+  public String getIntervngPrd()
+  {
+    return intervngPrd;
+  }
+  
+  public void setIntervngPrd(String newIntervngPrd)
+  {
+    intervngPrd = newIntervngPrd;
+  }  
+  
+}

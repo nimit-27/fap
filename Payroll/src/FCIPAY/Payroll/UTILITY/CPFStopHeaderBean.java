@@ -1,0 +1,166 @@
+package FCIPAY.Payroll.UTILITY;
+import java.io.Serializable;
+import FCIPAY.Payroll.UTILITY.PayrollBaseHeaderBean;
+
+public class CPFStopHeaderBean extends PayrollBaseHeaderBean implements Serializable  
+{
+  public CPFStopHeaderBean()
+  {
+  }
+  private String txtEmpNo;
+  private String txtEmpName;
+  private String txtDsgn;  
+  private String txtDsgnDesc;
+  private String txtCateg;  
+  private String txtCategDesc; 
+  private String txtEmpType;
+  private String txtCpfCode;
+  private String txtPresentPOP;
+  private String txtPresentPOPDesc;
+  private String txtDOJSite;
+  private String txtEmpStatus;
+  
+  private String cpfFlag;
+  private String txtCPFMsg;
+  
+  public String getTxtEmpNo()
+  {
+    return txtEmpNo;
+  }
+  
+  public void setTxtEmpNo(String newTxtEmpNo)
+  {
+    txtEmpNo = newTxtEmpNo;
+  }  
+
+  public String getTxtEmpName()
+  {
+    return txtEmpName;
+  }
+
+  public void setTxtEmpName(String newTxtEmpName)
+  {
+    txtEmpName = newTxtEmpName;
+  }
+  
+  public String getTxtDsgn()
+  {
+    return txtDsgn;
+  }
+  
+  public void setTxtDsgn(String newTxtDsgn)
+  {
+    txtDsgn = newTxtDsgn;
+  }
+  
+  public String getTxtDsgnDesc()
+  {
+    return txtDsgnDesc;
+  }
+
+  public void setTxtDsgnDesc(String newTxtDsgnDesc)
+  {
+    txtDsgnDesc = newTxtDsgnDesc;
+  }
+
+  public String getTxtCateg()
+  {
+    return txtCateg;
+  }
+
+  public void setTxtCateg(String newTxtCateg)
+  {
+    txtCateg = newTxtCateg;
+  }
+  
+  public String getTxtCategDesc()
+  {
+    return txtCategDesc;
+  }
+
+  public void setTxtCategDesc(String newTxtCategDesc)
+  {
+    txtCategDesc = newTxtCategDesc;
+  }
+  
+  public String getTxtEmpType()
+  {
+    return txtEmpType;
+  }
+
+  public void setTxtEmpType(String newTxtEmpType)
+  {
+    txtEmpType = newTxtEmpType;
+  }  
+
+  public String getTxtCpfCode()
+  {
+    return txtCpfCode;
+  }
+
+  public void setTxtCpfCode(String newTxtCpfCode)
+  {
+    txtCpfCode = newTxtCpfCode;
+  }  
+
+  public String getTxtPresentPOP()
+  {
+    return txtPresentPOP;
+  }
+
+  public void setTxtPresentPOP(String newTxtPresentPOP)
+  {
+    txtPresentPOP = newTxtPresentPOP;
+  }
+  
+  public String getTxtPresentPOPDesc()
+  {
+    return txtPresentPOPDesc;
+  }
+
+  public void setTxtPresentPOPDesc(String newTxtPresentPOPDesc)
+  {
+    txtPresentPOPDesc = newTxtPresentPOPDesc;
+  }
+
+  public String getTxtDOJSite()
+  {
+    return txtDOJSite;
+  }
+
+  public void setTxtDOJSite(String newTxtDOJSite)
+  {
+    txtDOJSite = newTxtDOJSite;
+  }
+
+  public String getTxtEmpStatus()
+  {
+    return txtEmpStatus;
+  }
+
+  public void setTxtEmpStatus(String newTxtEmpStatus)
+  {
+    txtEmpStatus = newTxtEmpStatus;
+  }
+
+  public String getCpfFlag()
+  {
+    return cpfFlag;
+  }
+
+  public void setCpfFlag(String newCpfFlag)
+  {
+    cpfFlag = newCpfFlag;
+  }
+
+  public String getTxtCPFMsg()
+  {
+    return txtCPFMsg;
+  }
+
+  public void setTxtCPFMsg(String newTxtCPFMsg)
+  {
+    txtCPFMsg = newTxtCPFMsg;
+  }
+
+}

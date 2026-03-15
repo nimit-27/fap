@@ -1,0 +1,125 @@
+#sty{
+background-color:"#006699";
+color :white;
+font-weight:900
+}
+
+#div1 {
+	overflow: auto;
+	left: 22.5%;
+	top: 150px;
+	width: 100%;
+	height:100px;
+}
+
+#div2 {
+	overflow: auto;
+	left: 22.5%;
+	top: 150px;
+	width: 100%;
+	height:300px;
+}
+.BannerText
+{
+color:black;
+font-size:15pt;
+text-align:right;
+font-family:"Arial, Helvetica, sans-serif";
+background-color:"#d9ecff";
+}
+
+.MainHeader
+{
+color:black;
+font-size:15pt;
+text-align:center;
+font-family:"Arial, Helvetica, sans-serif";
+}
+
+.ScrollFix
+{
+ 	   SCROLLBAR-ARROW-COLOR: red;
+	   SCROLLBAR-BASE-COLOR: Gainsboro;
+}
+
+
+.SubHeader
+{
+background-color:"#006699";
+color :white;
+font-weight:900;
+font-family:"Arial, Helvetica, sans-serif";
+}
+
+.labelText
+{ 
+color:black;
+font-size:12pt;
+text-align:justify;
+font-family:"Arial, Helvetica, sans-serif";
+}
+.required{} //Added to validate mandatory fields
+
+.bgndTable
+{
+background-color:"#d9ecff";
+}
+
+.TableBody
+{
+font-family:"verdana";
+font-size:12;
+}
+ 
+
+  /* Define the style sheet for the menu bar */
+    #menubar {color:white;position: relative; font: bold xx-small Verdana; cursor: default; background: #006699 ; }
+    /* Style for the top-level menu items */
+    #menubar .root {border: 0px #006699 solid; padding-left: 2pt; padding-right: 10pt ;padding-top: 2pt; padding-bottom: 2pt;}
+    /* Style for nested menus */
+    #menubar TABLE {color: white;font: bold xx-small Verdana; margin: 0pt; padding: 0pt; background: #006699; border-left: 2px #EEEEEE solid; border-right: 2px gray solid; border-bottom: 2px gray solid; border-top: 2px #EEEEEE solid; display: none; position: absolute}
+    #menubar TABLE TD {padding-top: 2pt; padding-bottom: 2pt; padding-left: 12pt; padding-right: 15pt; margin: 0pt}
+    /* Style for highlighted elements */
+    #menubar .highlight {color: orange; background:#006699}
+    /* Style for highlighting disabled elements */
+    #menubar .disabledhighlight {background: #006699; color: gray}
+    /* Style for disabled and break elements */
+    #menubar #break, #menubar .disabled {color: blue}
+    /* Remove padding and margins for break elements (horizontal bars) */
+    #menubar #break {padding: 0pt; margin: 0pt}
+    /* Style for the arrow representing more choices */
+    #menubar .more {font: 9pt webdings; position: relative; height: 9pt; left: 14pt; top: -1pt; margin: 0pt; padding: 0pt;float: right; width: .8em}
+    #menubar .left {margin-left: -11pt}
+
+    /* Used for the color picker sub-menu */
+    #colors TD {width: 10pt; height: 10pt; font-size: 1pt; padding: 0pt; margin: 0pt}
+    UL {font: bold xx-small Verdana; text-decoration: none;}
+
+   #men TABLE TD {padding-top: 0pt; padding-bottom: 0pt; padding-left: 0pt; padding-right: 0pt; margin: 0pt}
+
+/*FOR BUTTONS */
+.butto{
+background-color :"#006699";
+highlight-color:"blue";
+color :white;
+hover:yellow;
+border-width:1;
+border-style:outset;
+border-color:white;
+font-weight:900;
+}
+
+.butto1{
+background-color :"white";
+highlight-color:"blue";
+color :#006699;
+hover:yellow;
+border-width:0;
+border-style:outset;
+border-color:white;
+font-weight:700;
+height:16;
+}
+
+
+</style>

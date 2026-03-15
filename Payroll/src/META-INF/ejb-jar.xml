@@ -1,0 +1,58 @@
+<?xml version = '1.0' encoding = 'windows-1252'?>
+<ejb-jar xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/ejb-jar_2_1.xsd"
+         version="2.1" xmlns="http://java.sun.com/xml/ns/j2ee">
+  <enterprise-beans>
+    <session>
+      <description>Session Bean ( Stateless )</description>
+      <display-name>PayrollFacade</display-name>
+      <ejb-name>PayrollFacade</ejb-name>
+      <home>FCIPAY.Payroll.EJB.facade.PayrollFacadeHome</home>
+      <remote>FCIPAY.Payroll.EJB.facade.PayrollFacade</remote>
+      <ejb-class>FCIPAY.Payroll.EJB.facade.PayrollFacadeBean</ejb-class>
+      <session-type>Stateless</session-type>
+      <transaction-type>Container</transaction-type>
+    </session>
+    <session>
+      <description>Session Bean ( Stateful )</description>
+      <display-name>UserSession</display-name>
+      <ejb-name>UserSession</ejb-name>
+      <home>FCIPAY.Payroll.EJB.common.session.UserSessionHome</home>
+      <remote>FCIPAY.Payroll.EJB.common.session.UserSession</remote>
+      <ejb-class>FCIPAY.Payroll.EJB.common.session.UserSessionBean</ejb-class>
+      <session-type>Stateful</session-type>
+      <transaction-type>Container</transaction-type>
+    </session>
+    <session>
+      <description>Session Bean ( Stateless )</description>
+      <display-name>LabourFacade</display-name>
+      <ejb-name>LabourFacade</ejb-name>
+      <home>FCIPAY.Payroll.EJB.facade.LabourFacadeHome</home>
+      <remote>FCIPAY.Payroll.EJB.facade.LabourFacade</remote>
+      <ejb-class>FCIPAY.Payroll.EJB.facade.LabourFacadeBean</ejb-class>
+      <session-type>Stateless</session-type>
+      <transaction-type>Container</transaction-type>
+    </session>
+    <session>
+      <description>Session Bean ( Stateless )</description>
+      <display-name>MasterFacade</display-name>
+      <ejb-name>MasterFacade</ejb-name>
+      <home>FCIPAY.Payroll.EJB.facade.MasterFacadeHome</home>
+      <remote>FCIPAY.Payroll.EJB.facade.MasterFacade</remote>
+      <ejb-class>FCIPAY.Payroll.EJB.facade.MasterFacadeBean</ejb-class>
+      <session-type>Stateless</session-type>
+      <transaction-type>Container</transaction-type>
+    </session>
+    <session>
+      <description>Session Bean ( Stateless )</description>
+      <display-name>PayrollNewFacade</display-name>
+      <ejb-name>PayrollNewFacade</ejb-name>
+      <home>FCIPAY.Payroll.EJB.facade.PayrollNewFacadeHome</home>
+      <remote>FCIPAY.Payroll.EJB.facade.PayrollNewFacade</remote>
+      <ejb-class>FCIPAY.Payroll.EJB.facade.PayrollNewFacadeBean</ejb-class>
+      <session-type>Stateless</session-type>
+      <transaction-type>Container</transaction-type>
+    </session>
+
+  </enterprise-beans>
+</ejb-jar>

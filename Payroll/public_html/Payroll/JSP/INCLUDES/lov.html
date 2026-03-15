@@ -1,0 +1,73 @@
+<HTML><HEAD><TITLE>MAINTAIN SUPPLY ORDER</TITLE>
+<BODY scroll=no onload='showDtls()'>
+<FORM name=frmLOV >
+<TABLE cellSpacing=0 cellPadding=0 width="100%" bgColor=#d9ecff 
+  border=0><TBODY>
+  <TR>
+    <TD width="20%"><INPUT name=txtFind size=30></TD>
+    <TD width="5%"></TD>
+    <TD width="15%"><INPUT type=button value=Find default onclick='showDtls()'></TD>
+    <TD width="5%"></TD>
+    <TD width="15%"><INPUT type=button value=Select onclick='retVal()'></TD>
+    <TD width="5%"></td>
+    <TD width="15%"><INPUT type=button value=Close onclick='window.close()'></td>
+  </tr>
+<BR>
+</table>
+
+<DIV class=div4 id=div4 name="div4" style="position:absolute;top=70;height=400;">
+<TABLE cellSpacing=0 cellPadding=10 width="100%" bgColor=#d9ecff border=0>
+<TR height=400>
+	<td></td>
+</TR>
+</table>
+</div>
+<span id=s name=s style="position:absolute;top=70;width=100%;height=400;overflow=scroll;">
+</span>
+
+</FORM>
+</body>
+<head>
+<!--The java Script Functions which are local to this form -->
+<SCRIPT>
+	recordNum=40;
+	var str="";
+	arr =new Array(40)
+	today=new Date()
+	month = today.getMonth() + 1
+	date = today.getDate()
+	year=today.getYear(); 
+	theDate=date + "/" + month + "/" + year
+
+	function showDtls() {
+			str= "<table cellSpacing=0 cellPadding=0 width=100% bgcolor=#d9ecff border=0>"
+			str+="<TR height=10 bgcolor=#cccccc align=center><td>Select</td>"
+			str+="<td>Code</td>"
+			str+="<td>Description</td>"
+			str+="<td>Date</td></tr>"			
+			
+			for(i=1;i<=recordNum;i++){
+				str+="<tr align=center><Td width=10%><input type=radio name=rdoSelect value='ABC00"+ i +"'></td>"
+				str+="<TD width=30%><input name='txtCode" + i + "' value='" + i + "' disabled size=30></TD>"
+				str+="<TD width=30%><input name=txtDesc value='Electrical Equipment"+ i +"' disabled size=30></TD>"
+				str+="<TD width=30%><input name=txtDate disabled size=15 value=" + theDate + "></TD></tr>"
+			}
+
+		str+= "</table>"
+		s.innerHTML=str
+	}
+
+
+	function retVal(){
+			var s=document.frmLOV.rdoSelect
+			for(i=0;i<s.length;i++){
+				if(s[i].checked){
+					window.returnValue=s[i].value				
+					break;
+				}
+			window.close();
+			}
+	}
+</SCRIPT>
+</head>
+</html>

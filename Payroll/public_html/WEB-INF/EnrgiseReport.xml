@@ -1,0 +1,309 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<INFOClass>
+  <Module>
+    <ModuleName>Payroll</ModuleName>
+  
+
+<!--EOLHPL Recovery Report-->   
+     <ScreenInfo>
+      <ScreenName>EOLHPLRecoveryReport</ScreenName>
+      <Reports>
+        <Report>
+          <KeyInfo>EOLHPLRecReportkey</KeyInfo>
+          <ReportKey>ibaGenEOLHPLRecReport</ReportKey>
+        </Report>
+      </Reports>
+    </ScreenInfo>
+
+
+ <!--Licence Fee Statement Report-->   
+     <ScreenInfo>
+      <ScreenName>PayGenerateLicenceFee</ScreenName>
+      <Reports>
+        <Report>
+          <KeyInfo>GenerateLicenceFeeReportkey</KeyInfo>
+          <ReportKey>ibaGenerateLicenceFeeReport</ReportKey>
+        </Report>
+      </Reports>
+    </ScreenInfo>
+
+    <!--sal statement report-->   
+     <ScreenInfo>
+      <ScreenName>GenerateSalStatement</ScreenName>
+      <Reports>
+        <Report>
+          <KeyInfo>GenerateSalStatementforallkey</KeyInfo>
+          <ReportKey>ibaGenSalStatementforallreport</ReportKey>
+        </Report>
+        <Report>
+          <KeyInfo>GenerateSalStatementGroupkey</KeyInfo>
+          <ReportKey>ibaGenSalStatementGroupreport</ReportKey>
+        </Report>
+        <Report>
+          <KeyInfo>GenerateSalStatementDesigkey</KeyInfo>
+          <ReportKey>ibaGenSalStatementDesigreport</ReportKey>
+        </Report>
+      </Reports>
+    </ScreenInfo>
+
+<!--Canteen Subsidy Report-->   
+     <ScreenInfo>
+      <ScreenName>CanteenSubsidyReport</ScreenName>
+      <Reports>
+        <Report>
+          <KeyInfo>CanteenSubsidyReportkey</KeyInfo>
+          <ReportKey>ibaCanteenSubsidyReport</ReportKey>
+        </Report>
+          <Report>
+          <KeyInfo>CanteenSubsidyforAllReportkey</KeyInfo>
+          <ReportKey>ibaCanteenSubsidyforallReport</ReportKey>
+        </Report>        
+      </Reports>
+    </ScreenInfo>
+
+<!--Upgrade Allowance Report-->   
+     <ScreenInfo>
+      <ScreenName>UpgradeAllowanceReport</ScreenName>
+      <Reports>
+        <Report>
+          <KeyInfo>UpgradeAllowanceReportkey</KeyInfo>
+          <ReportKey>ibaUpgradeAllowanceReport</ReportKey>
+        </Report>
+      </Reports>
+    </ScreenInfo>
+    
+<!--PFSlip Report-->
+    <ScreenInfo>
+      <ScreenName>PFSlipReport</ScreenName>
+      <Reports>
+        <Report>
+          <KeyInfo>PFSlipReportkey</KeyInfo>
+          <ReportKey>ibaPFSlipReport</ReportKey>
+        </Report>
+        <Report>
+          <KeyInfo>PFSlipReportForAllkey</KeyInfo>
+          <ReportKey>ibaPFSlipForAllReport</ReportKey>
+        </Report>
+      </Reports>
+    </ScreenInfo> 
+
+<!--Pay Slip Report-->
+    <ScreenInfo>
+      <ScreenName>PaySlipReport</ScreenName>
+      <Reports>
+        <Report>
+          <KeyInfo>PaySlipReportkey</KeyInfo>
+          <ReportKey>ibaPaySlipReport</ReportKey>
+        </Report>
+        <Report>
+          <KeyInfo>PaySlipReportForAllkey</KeyInfo>
+          <ReportKey>ibaPaySlipForAllReport</ReportKey>
+        </Report>
+      </Reports>
+    </ScreenInfo> 
+
+<!-- Recovery or Earning Statement -->
+    <ScreenInfo>
+      <ScreenName>PayGenerateRecEarningStatement</ScreenName>
+      <Reports>
+        <Report>
+          <KeyInfo>RecEarningStatementForAllkey</KeyInfo>
+          <ReportKey>ibaRecEarningStmntForAllReport</ReportKey>
+        </Report>
+      </Reports>
+    </ScreenInfo> 
+
+<!--Generate LIC Report-->   
+     <ScreenInfo>
+      <ScreenName>GenerateLICReport</ScreenName>
+      <Reports>
+        <Report>
+          <KeyInfo>GenerateLICReportkey</KeyInfo>
+          <ReportKey>ibaGenerateLICReport</ReportKey>
+        </Report>
+        <Report>
+          <KeyInfo>GenerateLICReportForAllkey</KeyInfo>
+          <ReportKey>ibaGenerateLICForAllReport</ReportKey>
+        </Report>
+      </Reports>
+    </ScreenInfo>
+
+<!-- Generate Last Pay Certificate  -->
+    <ScreenInfo>
+      <ScreenName>GenerateLPCReport</ScreenName>
+      <Reports>
+        <Report>
+          <KeyInfo>GenerateLastPayCertificatekey</KeyInfo>
+          <ReportKey>ibaGenLastPayCertificateReport</ReportKey>
+        </Report>
+        <Report>
+          <KeyInfo>GenerateLastPayCertificateForAllkey</KeyInfo>
+          <ReportKey>ibaGenLastPayCertificateForAllReport</ReportKey>
+        </Report>
+      </Reports>
+    </ScreenInfo> 
+
+    <ScreenInfo>
+      <ScreenName>PayGenerateForm16</ScreenName>
+      <Reports>
+        <Report>
+          <KeyInfo>payGenerateFormSixteenkey</KeyInfo>
+          <ReportKey>payGenerateFormSixteenReport</ReportKey>
+        </Report>
+      </Reports>
+    </ScreenInfo> 
+ 
+
+<!--YrBonusAward Stmnt Report-->   
+     <ScreenInfo>
+      <ScreenName>YrBonusAwardStmntReport</ScreenName>
+      <Reports>
+        <Report>
+          <KeyInfo>YrBonusAwardStmntReportkey</KeyInfo>
+          <ReportKey>GenYrBonusAwardStmntReport</ReportKey>
+        </Report>
+      </Reports>
+    </ScreenInfo>
+
+
+<!--Monthly Leave Details-->   
+     <ScreenInfo>
+      <ScreenName>MonthlyLeaveDetails</ScreenName>
+      <Reports>
+        <Report>
+          <KeyInfo>MonthlyLeaveDetailsReportkey</KeyInfo>
+          <ReportKey>GenMonthlyLeaveDetailsReport</ReportKey>
+        </Report>
+      </Reports>
+    </ScreenInfo>
+
+
+<!--IT Forecast Report-->   
+     <ScreenInfo>
+      <ScreenName>PayITForecastReport</ScreenName>
+      <Reports>
+        <Report>
+          <KeyInfo>payGenerateITForecastkey</KeyInfo>
+          <ReportKey>ibaPayGenerateITForecastreport</ReportKey>
+        </Report>
+        <Report>
+          <KeyInfo>PayGenerateITForecastforallreportkey</KeyInfo>
+          <ReportKey>ibaPayGenerateITForecastforallreport</ReportKey>
+        </Report>
+        <Report>
+          <KeyInfo>payGenerateITForecastLockey</KeyInfo>
+          <ReportKey>PayITForecastReportLoc</ReportKey>
+        </Report>        
+      </Reports>
+    </ScreenInfo>
+
+     <ScreenInfo>
+      <ScreenName>PayITForecastProjReport</ScreenName>
+      <Reports>      
+        <Report>
+          <KeyInfo>payGenerateITForecastProjLockey</KeyInfo>
+          <ReportKey>PayITForecastReportLoc</ReportKey>
+        </Report>        
+      </Reports>
+    </ScreenInfo>
+    
+
+ <!-- ECS Data File Report
+  --> 
+- <ScreenInfo>
+  <ScreenName>ECSDataFileScreen</ScreenName> 
+- <Reports>
+- <Report>
+  <KeyInfo>ECSDataFileReportkey</KeyInfo> 
+  <ReportKey>ibaECSDataFileReportkey</ReportKey> 
+  </Report>
+  </Reports>
+  </ScreenInfo>
+
+<!--Canteen Subsidy Report-->   
+     <ScreenInfo>
+      <ScreenName>CanteenSubsidyReport</ScreenName>
+      <Reports>
+        <Report>
+          <KeyInfo>CanteenSubsidyReportkey</KeyInfo>
+          <ReportKey>ibaCanteenSubsidyReport</ReportKey>
+        </Report>
+          <Report>
+          <KeyInfo>CanteenSubsidyforAllReportkey</KeyInfo>
+          <ReportKey>ibaCanteenSubsidyforallReport</ReportKey>
+        </Report>
+        
+      </Reports>
+    </ScreenInfo>
+
+       <!--Generate Bank Statement-->   
+    <ScreenInfo>
+      <ScreenName>GenerateBankStatement</ScreenName>
+      <Reports>
+        <Report>
+          <KeyInfo>GenerateBankStatementkey</KeyInfo>
+          <ReportKey>GenerateBankStatementkey</ReportKey>
+        </Report>
+         <Report>
+          <KeyInfo>GenerateECSReportkey</KeyInfo>
+          <ReportKey>GenerateECSReportkey</ReportKey>
+        </Report>
+         <Report>
+          <KeyInfo>GenerateOtherBankskey</KeyInfo>
+          <ReportKey>GenerateOtherBankskey</ReportKey>
+        </Report>
+         <Report>
+          <KeyInfo>GenerateSwiftReportkey</KeyInfo>
+          <ReportKey>GenerateSwiftReportkey</ReportKey>
+        </Report>
+         <Report>
+          <KeyInfo>GenerateBankSummarykey</KeyInfo>
+          <ReportKey>GenerateBankSummarykey</ReportKey>
+        </Report>        
+      </Reports>
+    </ScreenInfo>
+    
+     <ScreenInfo>
+      <ScreenName>GenerateLoanSummReport</ScreenName>
+      <Reports>
+        <Report>
+          <KeyInfo>GenerateLoanSummarykey</KeyInfo>
+          <ReportKey>GenerateLoanSummarykey</ReportKey>
+        </Report>
+     </Reports>                
+    </ScreenInfo>
+
+     <ScreenInfo>
+      <ScreenName>GeneratePFSummaryReport</ScreenName>
+      <Reports>
+        <Report>
+          <KeyInfo>GeneratePFSummarykey</KeyInfo>
+          <ReportKey>GeneratePFSummarykey</ReportKey>
+        </Report>
+     </Reports>                
+    </ScreenInfo>
+
+     <ScreenInfo>
+      <ScreenName>GenerateLoanIntStat</ScreenName>
+      <Reports>
+        <Report>
+          <KeyInfo>GenerateLoanIntReportkey</KeyInfo>
+          <ReportKey>GenerateLoanIntReportkey</ReportKey>
+        </Report>
+     </Reports>                
+    </ScreenInfo>
+
+     <ScreenInfo>
+      <ScreenName>GenerateDaefrsReport</ScreenName>
+      <Reports>
+        <Report>
+          <KeyInfo>GenerateDAEFRSReportkey</KeyInfo>
+          <ReportKey>GenerateDAEFRSReportkey</ReportKey>
+        </Report>
+     </Reports>                
+    </ScreenInfo>
+    
+    
+    
+    </Module>
+</INFOClass>

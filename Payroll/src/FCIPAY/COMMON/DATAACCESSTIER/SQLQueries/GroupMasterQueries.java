@@ -1,0 +1,20 @@
+/*
+ * Program Name : GroupMasterQueries.java
+ * Author       : Jegan.V
+ * Date Written : 24/02/2004
+ * Description  : This has a list of all the queries that are used in GroupMasterDAO
+ *
+*/
+
+package FCIPAY.COMMON.DATAACCESSTIER.SQLQueries;
+
+public class GroupMasterQueries  
+{
+    public static final String SQL_GETMODULE="SELECT GBL_CODE,CODE_SDESC FROM COM_GBL_DTL WHERE GBL_TYPE='M'";
+
+    public static final String SQL_GETGROUP_DTLS="SELECT GRP_SDESC,GRP_DESC,GRP_STAT_FLG,MODULE_GBL,CODE_SDESC FROM SYSADMIN_GRP_MST,COM_GBL_DTL WHERE LOC_ID=? AND MODULE_GBL=GBL_CODE ORDER BY GRP_SDESC";
+
+    public static final String SQL_UPDATEGRP_DTLS="UPDATE SYSADMIN_GRP_MST SET GRP_STAT_FLG=?,MODIFIED_USER=?,MODIFIED_SITE=?,MODIFIED_DT=SYSDATE WHERE GRP_SDESC=? AND LOC_ID=?";
+
+    public static final String SQL_INSERTGRP_DTLS="INSERT INTO SYSADMIN_GRP_MST(GRP_SDESC,LOC_ID,GRP_DESC,GRP_STAT_FLG,MODULE_GBL,CREATED_USER,CREATED_SITE,CREATED_DT) VALUES(UPPER(TRIM(?)),?,TRIM(?),?,?,?,?,SYSDATE)";
+}

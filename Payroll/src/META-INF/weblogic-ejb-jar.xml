@@ -1,0 +1,30 @@
+<?xml version = '1.0' encoding = 'windows-1252'?>
+<weblogic-ejb-jar xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://www.bea.com/ns/weblogic/weblogic-ejb-jar http://www.bea.com/ns/weblogic/weblogic-ejb-jar/1.0/weblogic-ejb-jar.xsd"
+                  xmlns="http://www.bea.com/ns/weblogic/weblogic-ejb-jar">    
+    <weblogic-enterprise-bean>
+        <ejb-name>PayrollFacade</ejb-name>
+        <enable-call-by-reference>true</enable-call-by-reference>
+        <jndi-name>PayrollFacade</jndi-name>
+    </weblogic-enterprise-bean>
+    <weblogic-enterprise-bean>
+        <ejb-name>UserSession</ejb-name>
+        <enable-call-by-reference>true</enable-call-by-reference>
+        <jndi-name>UserSession</jndi-name>
+    </weblogic-enterprise-bean>
+    <weblogic-enterprise-bean>
+        <ejb-name>LabourFacade</ejb-name>
+        <enable-call-by-reference>true</enable-call-by-reference>
+        <jndi-name>LabourFacade</jndi-name>
+    </weblogic-enterprise-bean>
+    <weblogic-enterprise-bean>
+        <ejb-name>MasterFacade</ejb-name>
+        <enable-call-by-reference>true</enable-call-by-reference>
+        <jndi-name>MasterFacade</jndi-name>
+    </weblogic-enterprise-bean>
+    <weblogic-enterprise-bean>
+        <ejb-name>PayrollNewFacade</ejb-name>
+        <enable-call-by-reference>true</enable-call-by-reference>
+        <jndi-name>PayrollNewFacade</jndi-name>
+    </weblogic-enterprise-bean>
+</weblogic-ejb-jar>

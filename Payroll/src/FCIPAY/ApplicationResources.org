@@ -1,0 +1,704 @@
+index.title=JDeveloper Struts Application
+index.heading=JDeveloper Struts Application
+index.message=See how easy it is to use struts with JDeveloper 9i.
+errors.header=<center><font face="Arial" color="red" size="3"><b>
+errors.footer=</b></font></center>
+
+/******** Common ******************************************/
+Finance.Insert.Success=<font face="Arial" color="blue" size="3" >Record Inserted Successfully</font>
+Finance.Report.Success=<font face="Arial" color="blue" size="3" >Report Generated Successfully</font>
+Finance.Update.Success=<font face="Arial" color="blue" size="3" >Record Updated Successfully</font>
+Finance.Query.Success=<font face="Arial" color="blue" size="3" >Query Result</font>
+Finance.Update.Failure=Update Failure! Record not updated
+Finance.Query.Failure= Query Failure! No Records Found
+Finance.DB.Administrator=Internal Error! Contact System Administrator
+Finance.TaxAcctDtls.Success=<font face="Arial" color="blue" size="3" >Record Inserted Successfully</font>
+Finance.TaxAcctDtls.NoAcctExists=No Account Code Exists to Assign
+
+Common.DB.Administrator=Internal Error! Contact System Administrator
+Common.Login.NoLocationFound=Employee is not identified for any location!
+Common.Login.UserInactive=Login Failure! User is Inactive
+Common.LogIn.InvalidUser=Login Failure! Invalid User Id or Password
+Common.Login.Success=<font face="Arial" color="blue" size="3">Success
+common.fatalexception = DataBase Error! Contact System Administrator
+
+/* Added on 25022004 by Kiran Kumar Tripurari
+Common.Resource.Busy=Cannot Process, Some Other User is Processing the Same Transaction!!
+
+/*********************************************************/
+
+/******* Balram *****************************************/
+Finance.LocMast.PK=Insert Failure! Location Id Already Exists
+Finance.LocMst.AccLoc=Insert Failure! Accounting Location Already Exists
+Finance.ChgMast.ChgCode=Insert Failure! Charge Code Already Exists
+Finance.ChgMast.ChgSDesc=Insert Failure! Charge Code Short Description Already Exists
+Finance.AcctMast.PK=Insert Failure! Account Id Already Exists
+Finance.AcctMast.AcctClosing= Profit and Loss Account does not Exist
+Finance.AcctMast.CashShortCode=Insert Failure! Short Code Already Exists for Cash Account
+Finance.AcctMast.BankShortCode=Insert Failure! Short Code Already Exists for Bank Account
+Finance.AcctMast.PLAcct=Insert Failure!Profit and Loss Account Already Exists
+Finance.ChqDtlInsert.Failure=Cheque Number Already Exists
+Finance.VoucherPosting.ClndrPrd = Selected Voucher Does Not Belong To Active Calendar/Period
+Finance.VoucherPosting.VoucherNoNotFound=Voucher Specified Does Not Exist
+Finance.VoucherPosting.VouchersNotFound=Vouchers Does Not Exist For This Location
+Finance.VoucherPosting.VoucherTypeNotFound=Vouchers of the Specified Type Does Not Exist
+Finance.VoucherPosting.SetNoNotFound=Vouchers Of The Specified Set No Does Not Exist
+Finance.VoucherPosting.AuthorisedVoucherNotFound=Selected Voucher(s) is/are not Authorised for Posting
+Finance.VoucherPosting.PostingFailure=Posting Failure!Contact System Administrator
+Finance.VoucherPosting.Success=<font face="Arial" color="blue" size="3" >Posting Success!</font>
+Finance.VoucherPosting.PostedAlready=Posting of the selected voucher(s) is currently under process by another user
+Finance.Clndr.VouchStatus=Calendar Closure Failure! Vouchers Authorised for Posting are found
+Finance.IUACA.ZeroAcctBal=Calendar Closure Failure!Account Balances in IUA Clearing Accounts is not Zero
+Finance.FutureClndr.NotFound=Calendar Closure Failure!Future Calendar Does Not Exist
+Finance.PLAcct.NotFound= Calendar Closure Failure!Profit and Loss Account does not Exist
+Finance.NJV.NotCreated=Calendar Closure Failure!Contact System Administrator
+Finance.Clndr.Success=<font face="Arial" color="blue" size="3" >Calendar Closed Successfully</font>
+Finance.Clndr.Failure=Calendar Closure Failure
+Finance.PastClndr.ClosureSuccess=<font face="Arial" color="blue" size="3" >Past Calendar Permanently Closed</font>
+Finance.PastClndr.ClosureFailure=Past Calendar Closure Failure!
+Finance.PastClndr.Exists=Failure!Calendar Prior to this Calendar is not Permanently Closed
+Finance.PrevOpenClndr.Exists=Failure!Calendar Prior to this Calendar is not Closed
+Finance.PastClndr.OpenSuccess=<font face="Arial" color="blue" size="3" >Past Calendar Opened Successfully</font>
+Finance.PastClndr.OpenFailure=Past Calendar Open Failure
+Finance.FtrClndr.ClosedExists = Past Calendar Open Failure! Calendar Succeeding This Calendar Is Closed
+Finance.FutureClndr.DeleteSuccess=<font face="Arial" color="blue" size="3" >Calendar is Successfully Deleted</font>
+Finance.FutureClndr.DeleteFailure=Calendar Deletion Failed
+
+Finance.NoMultiPaymentFound.Failure=No Mathching Vouchers Found
+Finance.VoucherSetNo.Failure=Internal Error
+Finance.VoucherSetNo.Success=Set Number Generated Successfully
+
+Finance.ClassMaster.PayLimitExists = Pay Range Already Exists
+Finance.RateGrpSDesc.Exists = Rate Group Short Description Already Exists
+Finance.RateGrpDtl.HeadExists =This Rate Group and Head Already Exists
+Finance.ClassMaster.UK = Pay Range Already Exists for this Head and Class
+
+Finance.VoucherReject.Success=<font face="Arial" color="blue" size="3" >Voucher Cancelled Successfully</font>
+Finance.VoucherReject.Failure=Voucher Cancellation Failure
+Finance.VoucherAuthorise.Success=<font face="Arial" color="blue" size="3" >Voucher Approved Successfully</font>
+Finance.VoucherAuthorise.Failure=Voucher Approval Failure
+Finance.AuthVouchers.NotFound= Vouchers Due For Approval Are Not Found!
+Finance.VoucherSendBack.Success=<font face="Arial" color="blue" size="3" >Voucher is sent back Successfully</font>
+Finance.VoucherSendBack.Failure=Voucher SendBack Failure
+Finance.ApprvlParameters.NotSet=Approval Parameters are not set for this Location
+Finance.Approval.ProcessedAlready=Voucher is currently under process by another user
+Finance.VoucherApproval.AmountLimit=Amount Criteria Not Defined for all Voucher Types
+
+Finance.TRType.NotFound=Travel Types Not Found!
+Finance.TravelReceipt.InvalidEmployee = Invalid Employee Status!
+Finance.TravelReceipt.InvalidLocation = Refund Transaction should be settled at your base location
+Finance.TravelReceipt.ReceiptNo = Refund Number is {0}.Save it for future reference
+Finance.ReceiptNo.NotFound = No Refunds Found!<br>
+Finance.ReceiptNo.NotSelected = Refund No Not Selected
+Finance.Period.NotFound=Current Period is not Active to process the record
+Finance.ReceiptReject.Success=<font face="Arial" color="blue" size="3" >Refund Rejected Successfully</font>
+Finance.Receipt.ProcessedAlready=Refund is currently under process by another user
+Finance.TravelAcctId.InvalidStatus = Approval Failure! Advance Account Id is Inactive
+Finance.TravelAcctId.NotCtrlAcct = Approval Failure! Advance Account Id is not a control account
+Finance.TravelReceipt.VoucherParamNotFound = Voucher Parameters are not set for this location
+Finance.ReceiptApprove.Success =<font face="Arial" color="blue" size="3" >Refund Approved Successfully</font>
+Finance.VoucherParameter.UpdationError = Voucher Parameter Updation Error!
+Finance.TravelReceipt.VoucherNo=Voucher Number is {0}.Save it for future reference
+Finance.TravelAdvances.NotFound = No Advances Found!
+Finance.TicketRequisition.Processed= <font face="Arial" color="blue" size="3" >Ticket Requisition Process is Initiated Successfully!<br></font>
+Finance.TicketRequisition.ProcessedAlready = Ticket Requisition is already processed
+Finance.TicketRequisition.Cancelled= <font face="Arial" color="blue" size="3" >Ticket Requisition Process is Cancelled Successfully!<br></font>
+Finance.TicketRequisition.RecordSuccess=<font face="Arial" color="blue" size="3" >Ticket Details Recorded Successfully!<br> </font>
+
+Finance.Advance.ApprovalSent=<font face="Arial" color="blue" size="3" >Advance has been forwarded Successfully!</font>
+Finance.Claim.ApprovalSuccess=<font face="Arial" color="blue" size="3" >Claim has been approved Successfully!</font>
+Finance.AdvApproval.ProcessedAlready = Application is currently under process by another user
+Finance.AdvanceReject.Success = <font face="Arial" color="blue" size="3" >Advance is rejected successfully!</font>
+Finance.ClaimReject.Success = <font face="Arial" color="blue" size="3" >Claim is rejected successfully!</font>
+Finance.Advance.ApprovalSanction=<font face="Arial" color="blue" size="3" >Advance has been Sanctioned Successfully!</font>
+Finance.Advance.RejectSanction = Advance can't be rejected as the Ticket requisition is in process
+Finance.AdvClmReq.NotFound = Request not found for approval
+Finance.EligibleAmount.NotDefined = Eligibility Amount Not Defined For This Employee!
+
+Finance.DeputationOrders.NotFound=No Deputation Orders Found!
+Finance.ActiveVendors.NotFound=No Active Vendors Found!
+Finance.FEReleaseDetails.RecordSuccess=<font face="Arial" color="blue" size="3" >Foreign Exchange Release Details Recorded Successfully!<br> </font>
+Finance.DeputationOrder.ProcessedAlready = Selected Deputation Order is being processed by other user
+Finance.DeputationOrder.CancelSuccess = <font face="Arial" color="blue" size="3" >Foreign Exchange Release Details Cancelled Successfully!<br> </font>
+
+Finance.Report.NoAdvancesFound= No Advances Found!
+Finance.VenAddress.NotFound=Vendor Address Not Found!
+Finance.CustMast.UK = Customer Already Exists!
+Finance.ProdUnit.NotFound = No Production Unit Found!
+Finance.Subledger.NotFound = No Subledger Code Found!
+Finance.DebitAccount.NotFound = No Debit Account Found!
+Finance.RevenueAccount.NotFound = No Revenue Account Found!
+Finance.ProdVenCodes.NotFound = Query Failure! No Records Found!
+
+Finance.AdjCodes.NotFound = <br>No Adjustment Codes Found For Mapping!
+Finance.FundCodes.NotFound = <br>No Fund Codes Found For Mapping!
+Finance.ChargeCodes.NotFound = <br>No Charge Codes Found!
+Finance.BillTypes.NotFound = <br>No Bill Types Found!
+Finance.DPCHeads.NotFound = <br>No DPC Heads Found!
+Finance.Periods.NotFound = <br>No Periods Found!
+Finance.TariffParameters.NotSet = Tariff Parameters are not set for {0}.
+Finance.Meters.NotFound = No Meters are identified for the selected customer
+Finance.BillGenerated.Already = Bill is already generated for the customer in the selected period 
+Finance.BillInsert.Success = <font face="Arial" color="blue" size="3" >Bill Inserted Successfully.Bill Number is {0}.</font>
+Finance.BillNo.NotFound = No Bills Found!
+Finance.BillCancel.Success = <font face="Arial" color="blue" size="3" >Bill Cancelled Successfully!</font>
+Finance.BillCancelled.Already = Bill is already processed by another user
+/*********************************************************/
+
+
+/**************bhavna************************************/
+Finance.SponsorSettlement.ProcessedAlready=Selected record is currently under process by another user
+Finance.SponsorSettlement.ClaimsNotFound=<BR>No claims found!
+Finance.ProjectMaster.Error=Error inserting record!
+
+/************************************************************/
+
+/*************Jegan*****************************/
+Finance.LocCode.NotFound=Location Codes Not Found
+Finance.AccCode.NotFound=Account Codes Not Found
+Finance.Upload.Success=<font face="Arial" color="blue" size="3" >Upload Success</font>
+Finance.Upload.Failure=Improper File Format
+Finance.File.NotFound=Improper File
+Finance.Data.Invaid=Improper Data Found
+Finance.Date.Invalid=Invalid Date Format
+Finance.InstrumentNo.Exists=Instrument Number Occur more than Once
+Finance.NoMultiPaymentFound.Failure=No Matching Vouchers Found
+Finance.VoucherSetNo.Failure=Internal Error
+Finance.VoucherSetNo.Success=Set Number Generated Successfully
+/*********************************************************/
+
+
+/******* Kamlesh *****************************************/
+Finance.LocCode.NotFound=Location Codes Not Found
+Finance.CantDelet.ChgCode = Can't move Charge Code, Transactions exists against selected Charge Code
+Finance.CCMast.UK=Insert Failure! Cost Centre Code Already Exists
+Finance.CCSMast.UK=Insert Failure! Cost Centre Sub Group Code Already Exists
+Finance.SGMast.UK=Insert Failure! Schedule Group Code Already Exists
+Finance.SSGMast.UK=Insert Failure! Schedule Sub Group Code Already Exists
+Finance.CCMast.FieldSize=Update Failure! Input string size is more than database field size
+Finance.VoidChq.NotValidFlag=Cheque doesn't have Valid Status to make it void
+Finance.VoidChq.NotExists=Cheque doesn't Exist for selected Account Code in this Accounting Location
+Finance.VoidChq.NotValidVouchStat=Invalid Voucher Status for Cheque Alteration
+Finance.VoidChq.AlreadyVoid=Cheque is already Voided
+Finance.VoidChqs.NoAcctFound = No Bank Account Found
+Finance.Invalid.AccLoc=Invalid Accounting Location!
+Finance.FutCalendar.Exists=Calendar Cannot be created as Future Calendar exists against Location
+Finance.Calendar.Exists=Calendar Cannot be created as later Calendar exists against Location 
+Finance.FinCal.PK=Inset Failure! Calendar Id already Exists
+
+Finance.CurrencyMaster.LocCurrExists = Local Currency Already Exists
+Finance.CurrencyMaster.NoCurrencyExists = No Currency Found in DataBase
+Finance.PercentMaster.NoHeadsFound =  No Percent Head Found
+Finance.PeriodicityMaster.NoHeadsFound = No Periodicity Head Found
+Finance.PayLimit.RangeFound = Record for the pay range against this head already exists 
+Finance.LumSumMaster.NoHeadsFound = No Lum Sum Head Found
+Finance.CurrSDesc.UniqFail = Currency Already Exists with this Short Description
+Finance.CurrDesc.UniqFail = Currency Already Exists with this Description
+Finance.Range.Failure = Record for the pay range against this head already exists
+Finance.TrExcep.RecordExists= Record already exists 
+Finance.TrExcep.NoHeadFound = No Head Found
+Finance.TrExcep.NoExcepFound = No Exception found for selected Head
+Finance.TrDACity.NoCityFound = No City found
+Finance.TEVBPV.NoClaimFound = No Claims found
+Finance.TEVBPV.NoClaimDtlsFound = Details for selected claim not found
+Finance.TEVBPV.NoPrdFound = No Period is Active for processing the request
+Finance.TEVBPV.Show.VoucherNo=Generated Voucher No is {0}
+Finance.TEVBPV.NoDtls = No Details found for selected Claim No
+Finance.TEV.InvalidAcct = Invalid Account Code for processing the selected Claim No
+Finance.TEVBPV.SendBackSuccess =<font face="Arial" color="blue" size="3" > Claim Request successfully Sent Back to Sanction Department</font>
+Finance.ClaimPay.NoEmpFound = No Employee Found
+Finance.VenFERelease.NoDOrderNoFound =  No Deputation Order Found for Payment
+Finance.VouchNo.AlreadyUsed = Selected Voucher No for the transaction is already used by some other user, Pls click Save Again!
+Finance.TEVBPV.EmpDtlNotFound = For Applicant Charge Code and/or Cost Centre Code is required, but not found!
+Finance.AdvClmSearch.SendBack =<font face="Arial" color="blue" size="3" > Record Succesfully Cancelled  </font>
+Finance.AdvClmSearch.InvalidStatus = Invalid Status to Cancel the Request
+
+Finance.RateGrp.NoTravelTypeFound = No Travel Type Found
+Finance.RateGrpDtl.NoGroupFound = No Group Found for selected Travel Request
+Finance.RateGrpDtl.NoHeadFound = No Head found for selected Travel Request
+
+Finance.TrvHead.UK=Insert Failure!Record Already Exists
+Finance.TrvHead.Success=Record Successfully inserted
+Finance.Update.Update=Record Successfully updated
+Finance.RateMst.Success=Record for the Pay range already exists
+
+Finance.PostingCheque.NoVoucherId= No Voucher found
+Finance.PostingCheque.InvalidChqStat= Cheques against Voucher No is not having Valid Status
+Finance.PostingCheque.NotValidVouchStat = Voucher is getting processed by other user,Voucher status is invalid!  
+Finance.PostingCheque.InvalidSetChqStat = Cheques against Set No is not having Valid Status
+
+Finance.CQReport.NoClndrFound = No Current Calendar Found for this Location
+Finance.DelChq.NotValidFlag=Cheque doesn't have Valid Status to make it Available
+Finance.Period.NotExists=This is a First Period of Calendar! You can't generate Report for this Calendar
+Finance.Calendar.NotExists=No Current Calendar Exists For This Location
+
+Finance.ReAssignCheque.AvailableChq_NotFound = No Available Cheque Found for this Account Code
+Finance.ReAssignCheque.InvalidChqStatus = Cheques with Valid Status not found
+Finance.ReAssignCheque.Voucher.UnderProcess = Selected Voucher No/Set No is getting processed by another user!
+Finance.ReAssignCheque.Voucher.AlreadyProcess = Selected transaction is already processed by another user!
+
+Finance.CBDayBook.NoAcctFound = No Account Found!
+Finance.CBDayBook.NoCalFound = No Calendar Found for this Location for entered Dates!
+
+
+Finance.ProdUnitMast.NoVouchTypeFound = No Voucher Type Found!
+Finance.ProdUnit.UniqFail = Record Already Exists with same Short Code!
+Finance.ProdUnit.NoProdUnitFound = No Production Unit found ! 
+Finance.MeterMaster.NoSLCodeFound = No Sub ledger found for selected Production Unit!
+Finance.MtrMultiTariff.NoProdUnitFound = No Production Unit found!
+Finance.MtrMultiTariff.NoVendorFound = No Sub Ledger found!
+Finance.MtrMultiTariff.NoChgCodeFound = No Charge Code found!
+Finance.MtrMultiTariff.NoPeriodFound = No Periods found for processing!
+Finance.CustReb.NoBillTypeFound = No Bill Type Found!
+Finance.CustBillAdd.NoAddTypeFound = No Address Type found!
+Finance.CustBillAdd.NoAddFound = No Address detail found
+
+/*******************************************************/
+
+/*********  Kiran ***********************************************/
+Finance.VenMast.UK=Insert Failure! Vendor Code Already Exists
+Finance.VenAddr.UK=Insert Failure! Address Reference No. Already Exists
+Finance.VenMap.UK=Insert Failure! Old Vendor Code Already Exists
+Finance.VenMap.FK=Insert Failure! New Vendor Code Does n't Exist
+
+Finance.FinPassBook.ResultSet.Empty=No Record Exists within the Given Period!
+Finance.Delete.Success=<font face="Arial" color="blue" size="3">Record Deleted Successfully! 
+Finance.FinPassBook.DuplicateBalDate=A Record Already Exists with the Balance Date!
+Finance.DateNotInCalendar=Date Does n't Fall within the Current Calendar!
+Finance.FinPassBook.NotAGlLocation=User location not valid for maintaining bank transactions!
+
+Finance.InvalidAccLocation=Invalid Accounting Location!
+Finance.NoCurrentCalendar=No Current Open Calendar Exists for the Location!
+Finance.NoActivePeriod=No Active Periods Found!
+Finance.NoPaymentVouchersFound=No Vouchers Found for Payment!
+Finance.NoReceiptVouchersFound=No Vouchers Found for Receipt!
+Finance.DateError=Date Entered Does n't Fall within the Selected Period!
+Finance.NoActiveAcctsFound=Cannot process, No Active Cash/Bank Accounts Found!
+Finance.InActiveEmp=Cannot Process, One of the Employees is Inactive!
+Finance.InActiveAcct=Cannot Process, One of the Accounts is Inactive!
+Finance.InActiveVen=Cannot Process, One of the Vendors is Inactive!
+Finance.InstrNoExists=Instrument No Already Exists!
+Finance.InsufficientBalance=Insufficient Balance! Pls Select Another Account
+Finance.InsufficientNoOfInstrs=Sufficient No of Instruments Not Found!
+Finance.NoChequesFound=No Cheques Found!
+Finance.NoLettersFound=No Letters Found!
+Finance.Transaction.Rollback=<font face="Arial" color="blue" size="3">Transaction Successfully Rolledback!
+Finance.RecordPayments.Invalid.VoucherNo=Cannot Process, Given Voucher No Is Not Valid!!
+
+Finance.InvalidVoucher=Cannot Process, Invalid Voucher!
+Finance.NoReceiptsFound=No Receipts Found!
+
+Finance.NoSetsFound=No Sets Found for Payment!
+Finance.InvalidSet=Cannot Process, Invalid Set!
+
+Finance.BankPassBookRecon.NoAccounts=Cannot Proceed, No Bank Accounts Found!
+Finance.BankPassBookRecon.BalDateDoesNotExist=No Record Exists with the Date in Pass Book for One of the Selected Accounts!
+
+Finance.DeleteCheque.NoBankAcctsFound=Cannot Process, No Active Bank Accounts Found!!
+Finance.DeleteCheque.Reserve.Success=<center><font face="Arial" color="blue" size="3"><b>Cheque(s) are Reserved Successfully!</b></font></center>
+Finance.DeleteCheque.Delete.Success=<center><font face="Arial" color="blue" size="3"><b>Cheque(s) are Deleted Successfully!</b></font></center>
+Finance.DeleteCheque.Update.Failure=Processing Failure, Cheque With Cheque No.{0} Is Not Available!!
+Finance.Reserved.Cheques.Insufficient=Sufficient No of Reserved Instruments Not Found!
+Finance.DeleteCheque.Cheque.AlreayInDelState=Processing Failure, Cheque With Cheque No.{0} Is Already In Deleted State!
+Finance.DeleteCheque.Cheque.AlreayInResState=Processing Failure, Cheque With Cheque No.{0} Is Already In Reserved State!
+Global.Connection.Error=Global Connection Is Not Null/Is Still Open!!!!
+
+Finance.TrAdvPayVoucher.NoReqsFound=No Travel Advance Found!
+Finance.ActivePeriod.NotFound=Cannot Process, No Active Period Found!
+Finance.Date.PastCalendar.Error=Cannot Process, Voucher Date Should Be the Last Day of the Period for the Past Calendar!
+Finance.TrAdvPayVoucher.Show.VoucherNo=Generated Voucher No is {0}
+Finance.TrAdvPayVoucher.InvalidAcct=Cannot Process, Invalid Account Id!
+Finance.TrAdvPayVoucher.SendBack.Success=<font face="Arial" color="blue" size="3" >Request is Sent Back Successfully!</font>
+Finance.TrAdvPayVoucher.IuaAcctId.NotFound=<font face="Arial" color="red" size="3" >Cannot Process, IUA Account Id Is Not Identified For The Location {0}!</font>
+
+Finance.Travel.SancApproval.NoData=No Advance/Claim Found for Approval!
+
+Finance.FaJvVoucher.DepOrders.NotFound=No Deputation Order Found!
+Finance.FaJvVoucher.Emp.AcctId.InValid=Cannot Process, Employee Account Id is Inactive or not Valid!
+Finance.FaJvVoucher.FE.AcctId.InValid=Cannot Process, FE Account Id is Inactive or not Valid!
+
+Finance.MtrTrfMast.ProdUnit.NotFound=No Production Unit Found for This Location!
+Finance.MtrTrfMast.SlCode.NotFound=No Sl Code Found for This Production Unit!
+Finance.MtrTrfMast.ChargeCode.NotFound=No Charge Code Found!
+Finance.MtrTrfMast.Period.NotFound=No Period Found To Define Tariff!
+Finance.MtrTrfMast.Periods.Error=Error, From Period Cannot Be Later Than To Period!
+
+Finance.SearchVoucher.Vouchers.Count=<font face="Arial" color="blue" size="3" >{0} Voucher(s) Retrieved!</font>
+/**************************************************************/
+
+
+/****** HRMS **************************************************/
+error.duplicate.master=<li>{0}Already Exists
+HRMS.Date.Invalid= {0}'s date is later than the present date!<br>
+HRMS.Insert.Success=<font face="Arial" color="blue" size="3" >Record Inserted Successfully</font>
+HRMS.Update.Success=<font face="Arial" color="blue" size="3" >Record Updated Successfully</font>
+HRMS.Query.Success=<font face="Arial" color="blue" size="3" >Query Result</font>
+HRMS.Query.Failure= Query Failure! No Records Found
+HRMS.Insert.Failure=Record not Inserted!
+HRMS.Update.Failure=Record not Updated!
+HRMS.DB.Administrator=Internal Error! Contact System Administrator
+HRMS.DBError.General=Internal Error! Contact System Administrator
+
+HRMS.Master.PK=Insert Failure! Record Already Exists
+HRMS.Master.RecordNotFound=Query Failure! No Records Found
+HRMS.Master.General=Database Error! Contact System Administrator
+HRMS.Emp.Exists=Employee does not exist
+HRMS.Appln.Exists=Application does not exist
+HRMS.Reject.Success=<center><font face="Arial" color="blue" size="3">Application Rejected</font></center>
+HRMS.EMPLOYEE.NOTIDENTIFIED=Invalid Employee Number.
+HRMS.INSUFFICIENTNO.VACANCIES=Number of Vacancies is less than the selected number of employees in the list.Cannot Proceed further
+HRMS.ZOCTYPE.NOTFOUND=Criteria For Generation Not  Defined
+HRMS.QUALIFICATIONTYPE.NOTDEFINED=Qualification Type Not  Defined
+HRMS.ZOCLISTSAMECATEGORY.NOTALLOWED=Cannot Generate ZOCList for Same Category
+HRMS.RECOMMENDATIODETAILS.UPDATED=<center><font face="Arial" color="blue" size="3">Recommendation Details Updated Successfully</font></center>
+HRMS.RECOMMENDATIONUK.VIOLATED=Cannot Recommend an employee more than once.
+HRMS.ZOCMASTERDATA.NOTFOUND=ZOC Master Data NotFound.Cannot Proceed Further
+HRMS.NOZOCLIST.UNDERSELECTEDCATEGORY=No Data Found under Selected Category
+HRMS.CRMASTERDATA.NOTFOUND=CR Rating Master Data NotFound.Cannot Proceed Further
+HRMS.NODATAFOUND.SCREENINGLIST=No Data Found for the Specified Criteria
+HRMS.SCREENINGDETAILS.UPDATED=<center><font face="Arial" color="blue" size="3">Screening Details Updated Successfully</font></center>
+HRMS.INTERIMORDERDETAILS.UPDATED=<center><font face="Arial" color="blue" size="3">Interim Promotion Order Details Updated Successfully</font></center>
+HRMS.SCREENINGUK.VIOLATED=Cannot Screen an employee more than once.
+HRMS.ZOCDATAFORINTERVIEW.NOTFOUND=No ZOC Screened Data Found For Entering Results
+HRMS.CRUCIALDATES.NOTFOUND=Crucial Dates Not Defined
+HRMS.CRUCIALDATEFORGRADE.NOTFOUND=Crucial Date For Selected To Grade Not Found
+HRMS.RECOMMENDATIONLIST.NOTFOUND=No Matching Detail found for selected Crucial Date under this Section
+HRMS.PREVIOUSENRTYDETAILS.NOTDEFINED=Panel Dates Does not Exists.
+HRMS.NOGRADEWISEDETFORPDT.FOUND=No Employee found under selected Grade and Panel Date.
+HRMS.INTERVIEWLIST.NOTFOUND=No Matching Detail found under selected ZOC Detail
+HRMS.INTERVIEWDETAILS.UPDATED=<center><font face="Arial" color="blue" size="3">Interview Result Details Updated Successfully</font></center>
+HRMS.NOZOCLIST.FORSELECTEDCRITERIA=No Employee found under selected criteria.
+HRMS.NOGRADEWISELIST.FORSELECTEDGRADE=No Employee found under selected Grade.
+HRMS.SENIORITYPANELDETAILS.UPDATED=<center><font face="Arial" color="blue" size="3">Seniority  Details Updated Successfully</font></center>
+HRMS.NOPOSTS.CHRGASSUMPTION=You don't have any new Post to Assume
+HRMS.NOPOSTS.CHRGRELINQUISH=You don't have any old Post to Relinquish
+HRMS.ALREADY.CHRGASSUMED=You have already Assumed New Post
+HRMS.ONLEAVE.CHARGEASSUMPTIONDT=You Cannot Assume Charge on this Date ,as you are in Leave.
+HRMS.ALREADY.CHRGRELINQUISHED=You have already Relinquished Old Post
+HRMS.CHARGEASSUMPTIONDT.UPDATED=<center><font face="Arial" color="blue" size="3">Charge Assumption Date Updated Successfully</font></center>
+HRMS.CHARGERELINQUISHDT.UPDATED=<center><font face="Arial" color="blue" size="3">Charge Relinquishment Date Updated Successfully</font></center>
+HRMS.PROMOTIONORDER.GENERATED=<center><font face="Arial" color="blue" size="3">Promotion Order Generated Successfully</font></center>
+HRMS.ZOCDATAFORORDER.NOTFOUND=No ZOC Data Found for Interim Promotion Order Generation
+HRMS.ZOCDATAFORPROMOTIONORDER.NOTFOUND=No ZOC Data Found for  Promotion Order Generation
+HRMS.CADREFORCATEGORY.NOTFOUND=Cadre not found under selected category
+HRMS.POSTSFORCATEGORY.NOTFOUND=Grades Not  Found Under Selected  Category
+HRMS.CRGRADINGUPDATED.SUCCESSFULLY=<font face="Arial" color="blue" size="3" >CR Grading Updated Successfully for the Employee </font>
+HRMS.MANPOWER.NOTAVAILABLE=Insert Failure ! Corresponding ManPower Data Not Available
+HRMS.OFFICIALDETAILS.DOJNOTFOUND=Insufficient Employee Data.Cannot update Official Details
+HRMS.GRADEDETAILS.GRADENOTFOUND=Grade Details Not Found for Selected Grade
+HRMS.GRADEDETAILS.GROUPNOTFOUND=Group for the Employee Grade Not Found
+HRMS.GRADEMASTERDATA.NOTFOUND=Grade Master Data Not Found
+HRMS.SERVICEBOND.DETAILSNOTFOUND=Query Failure! No Records Found
+HRMS.SECTIONS.NOTDEFINED=Section Details Not Found.Cannot Proceed
+HRMS.CREMPLIST.NOTFOUND=No Record Found for the Selected Section and Period
+HRMS.CRDETAILSFOREMPLOYEE.NOTFOUND=NO CR Listing  Available for the Selected Employee
+HRMS.QUALIFICATION.NOTDEFINED=Qualification Details Not Defined
+HRMS.UNIT.NOTDEFINED=Unit Details Not Available
+HRMS.DIRECTORATESUNDERUNIT.NOTFOUND=No Directorates Found Under Selected Unit
+HRMS.GRPSUNDERDRCRT.NOTFOUND=No Groups Found Under Selected Directorate
+HRMS.CATEGORY.NOTDEFINED=Category Details Not Available
+HRMS.APPRAISALRATINGS.NOTDEFINED=Appraisal Ratings Not Defined.
+HRMS.SEVERENECEEVENTS.NOTDEFINED=Severence Order Events Not Defined.
+HRMS.CONFIRMATIONDETAILS.UPDATED=<center><font face="Arial" color="blue" size="3">Confirmation Appraisal Report Details Updated Successfully</font></center>
+HRMS.PROBATIONDETAILS.UPDATED=<center><font face="Arial" color="blue" size="3">Probation Appraisal Report Details Updated Successfully</font></center>
+HRMS.PANELNONTECHRESULTS.UPDATED=<center><font face="Arial" color="blue" size="3">Panel Result Details for Non-Technical Promotion Updated Successfully</font></center>
+HRMS.PANELENTRYNONTECHUK.VIOLATED=Cannot Include an employee more than once
+HRMS.PROBATIONCLOSURELIST.NOTFOUND=No Employee Details Found to Carry out Probation process.
+HRMS.CONFRMESTABLISHMENTAPPR.DATANOTFOUND=No Appraisal Details found.Cannot Proceed Further.
+HRMS.CONFRMRPTAPPROVAL.ESTABLISHMENT=Confirmation Appraisal Details {0}
+HRMS.PROBRPTAPPROVAL.ESTABLISHMENT=Probation Appraisal Details {0}
+HRMS.CONFRMAPPROVAL.FINAL=You are not authorized to Approve
+HRMS.EVENTNO.GENERATED=EVENT NO {0}
+HRMS.CONFRMREJECT.FINAL=You are not authorized to Reject
+HRMS.SEVERENCEORDER.ISSUED=<center><font face="Arial" color="blue" size="3">Severance Order Details Updated Successfully.</font></center>
+HRMS.LTCELIG.COND = <center><font face="Arial" color="blue" size="3">You didn't enter the Travel Details</font></center>
+HRMS.LTCDEPENDENT.NOTDEFINED=Dependent Details not yet provided
+HRMS.LTCDPNDTAPPRV.NODATAFOUND=No Dependent Details Found for Approval
+HRMS.LTCDEPENDENT.INSUFFICIENTMASTERDATA=Necessary Master Data Not Defined.Cannot proceed further
+HRMS.LTCADVANCE.NOTELIGIBLE=Not Eligible to carry out this process
+HRMS.LTCSERVICE.NOTRENDERED=Minimum Service Not Rendered.
+HRMS.ADVANCE.ALREADYAPPROVED=LTC Application is being  Processed by Another User 
+HRMS.LTCOTHERS.NOTELIGIBLE=Not Yet Availed any LTC before or opted for Annual LTC.Cannot Proceed Further.
+HRMS.HOMETOWNDPNDTS.NOTAVAILABLE=Cannot Avail  LTC for the Selected BlockYear
+HRMS.TRAVELDETAILS.NOTDEFINED=Not Eligible for filling up Travel Details
+HRMS.LTCADVACE.NOLEAVEFORPERIODFOUND=<font face="Arial" color="blue" size="3" >No leave for the selected period available</font>
+HRMS.LTCOTHERS.CANNOTAVAILONTHISBLOCKYEAR=Cannot Avail Others for the Selected BlockYear
+HRMS.LTCADVANCEID.NOTFOUND=No LTC Applications Found for Approval
+HRMS.LTCADVANCE.NOHOMETOWNDECLFOUND=No HomeTown Declaration Found
+HRMS.CANNOTENCASH.INFIRSTBLOCK=Encashment is Permitted in the Second Year of the Block Only
+HRMS.INVALIDEMPTYPE.ENCASHMENT=Not Eligible for LTC Encashment.
+HRMS.LTCENCASH.CANNOTENCASHBLOCKYEAR=Cannot Encash for the Selected BlockYear
+HRMS.LTCENCASH.DTCHECK = You cannot apply for encashment more than once in a Calendar year
+HRMS.LTCENCASHID.NOTFOUND=No Encashment Applications Found for Approval
+HRMS.LTCADVANCE.SELFFAILURE=Self and all Dependents have already availed LTC for the selected Block Year.Cannot Proceed Further.
+HRMS.LTCHOMETOWN.SELFALREADYAVAILED=Cannot Avail LTC for Selected Year
+HRMS.LTCAPPROVALDETAILS.NOTFOUND=No Approved Advance Details Available.Cannot Proceed Further.
+HRMS.LTCHTOWNDECL.CNTCHECK= You have already availed the change once. No second change is permissible.
+HRMS.LTCHTOWNDECL.STATUSCHECK= You cannot apply because your previous application is still pending for processing
+HRMS.LTCHTOWNAPRVL.SUCCESS=<center><font face="Arial" color="blue" size="3">Approved Successfully</font></center>
+HRMS.LTCHTOWNAPRVL.APPROVED=Record Already Approved
+HRMS.LTCHTOWN.APPROVE.SUCCESS= <font face="Arial" color="blue" size="3" >Application has been approved for Hometown Change
+HRMS.LTCHTOWN.APPROVE.FAILURE = Error! Approval process not successful
+HRMS.LTCHTOWN.REJECT.SUCCESS = <font face="Arial" color="blue" size="3" >Hometown Change Application has been Rejected
+HRMS.LTCHTOWN.REJECT.FAILURE = Error! Reject not successful
+HRMS.LTCENCASH.PENDING=Encashment application is submitted for the selected block year.
+HRMS.JOINRPT.NOLEAVE=No approved leaves pending 
+HRMS.JOINRPT.NOATTENDANCE=Not present in the office 
+HRMS.Leave.EOL=You Are Not Eligible For EOL with MC 
+HRMS.Leave.LvbalLND=You Have To Exhaust  EL/AL/HPL Balance For Applying Leave Not Due!
+HRMS.Leave.Lvbal=You Don't have sufficient Leave Balance!
+HRMS.CommutedLeave.Lvbal=Leave Period Exceeds 50% of Leave Balance or You Don't Have Sufficient Leave Balance!
+HRMS.Leave.Lmaxlimit=No of Days Applied for exceeds the Maximum Limit for  the Leave!
+HRMS.Leave.StudyLeave=Study Leave not allowed as Retirement Date is less than 3 years from the Leave End Date
+HRMS.Leave.Holiday=Prefix and Suffix Dates Should Be a Holiday!
+HRMS.Cancel.Success=<font face="Arial" color="blue" size="3" >Leave Cancelled!
+HRMS.Cancel.Failure=Error! Leave not Cancelled
+HRMS.Unapprvd.Leave=Previous Application Pending For Approval! You Cannot Apply For The Same Leave Type
+HRMS.Alreadyappld.Leave=You Have Already Applied For Leave For The Same Period!
+HRMS.No.Records=No Records Found!
+HRMS.Already.Processed=Application Under Process By Another User!
+HRMS.CurrentYear.Check=You Can Apply For {0} Only For The Current Year!
+HRMS.Master.LeaveExists=Insert Failure! Leave Type Already Exists!
+HRMS.No.CancRecords=No Records Available For Cancellation!
+HRMS.No.RevnRecords=No Records Available For Revision !
+HRMS.No.ExtnRecords=No Records Available For Extension!
+HRMS.No.ApprovalRecords=No Records Available For Approval or Rejection!
+HRMS.Extend.Leave=This Leave is an Extension of the Leave Span of a Previous Application.Please Apply as an Extension!
+HRMS.POSTINGORDER.GENERATED=<center><font face="Arial" color="blue" size="3">Posting Order Generated Successfully</font></center>
+HRMS.Emp.NotEligible=Employee not Eligible for Posting
+HRMS.LEAVE.TAKEPRINT=Please Take a Print out and Send to Recommending/Sanctioning Authority
+
+HRMS.PFINCOMPLETE.NOMENTRY = Incomplete Nominee Details
+
+HRMS.LEAVEENCASH.BALCHECK = Proposed no of days cannot be greater than 25% of Balance Leave or 30 days whichever is less
+HRMS.LEAVEENCASH.DAYCHECK = No of days proposed for encashment cannot exceed the no of days of leave taken
+HRMS.LEAVEENCASH.REJECT.SUCCESS = <font face="Arial" color="blue" size="3" >The Encashment Application has been rejected
+HRMS.LEAVEENCASH.REJECT.FAILURE = Error! Reject not successful
+HRMS.LEAVEENCASH.APPROVE.SUCCESS = <font face="Arial" color="blue" size="3" >Application has been approved  
+HRMS.LEAVEENCASH.APPROVE.SUCCESS1 = <font face="Arial" color="blue" size="3" >Encashed leave has been debited from the leave balance
+HRMS.LEAVEENCASH.APPROVE.FAILURE = Error! Approval process not successful
+HRMS.LEAVEENCASH.NOTELIGIBLELVBAL = You don't have any leave balance
+HRMS.LEAVEENCASH.NOTELIGIBLELVE = You have not applied for encashable leave
+
+HRMS.PFACCT.CHECK = You already have a PF Account: {0}
+HRMS.PFACCT.NOTPRESENT = You do not have a valid PF Account
+HRMS.Unapprvd.Pf= Previous Application Pending For Approval!
+HRMS.PFELIG_CHECK = Record already exist for the PF Type, Transaction Type and Purpose
+HRMS.PFMAXBASIC.CHECK = Your basic pay should not exceed Rs. {0}
+HRMS.PFMINBASIC.CHECK = Your basic pay should be more than Rs. {0}
+HRMS.PFELIG_CHECK1 = Record does not exist for the selected PF Type, Transaction Type and Purpose
+HRMS.PFMAXSANC.CHECK = Amount applied for should not exceed the maximum sanctionable amount of Rs. {0}
+HRMS.PFMINSANC.CHECK = Amount applied for should not be less than the minimum sanctionable amount of Rs. {0}
+HRMS.PFEMOLSUB.CHECK = Amount applied for should always be less than {0} month(s) pay (i.e, Rs. {1})
+HRMS.PFEMOLSUB.CHECK1 = Amount applied for should always be less {0}% of the amount at credit (i.e, Rs. {1})
+HRMS.PFMAXSANCAMT.CHECK = Amount applied for should always be less than maximum sanctionable amount of  Rs. {0}
+HRMS.PFEMOLSUB.CHECK2 = Amount applied for should always be less than {0} months pay (i.e, Rs. {1})
+HRMS.PFMAXINST.CHECK = As per the PF rule, there should not be more than {0} installments for the given purpose
+HRMS.PFMININST.CHECK = As per the PF rule, there should not be less than {0} installments for the given purpose
+HRMS.PFMINEXP.CHECK = As per the PF rules, you should have atleast {0} years of experience for the given purpose
+HRMS.PFSERVLEFT.CHECK = You should have atleast {0} years of service 
+HRMS.PFSERVLEFT.CHECK1 = As you have only {0} months of service left you cannot be permitted {1} installments
+HRMS.PFTYPE.CHECKING = Sorry, You are having {0} Account
+HRMS.PFTYPE.CHECK = Nomination cannot be Approved or Rejected for this Employee, as he is having {0} Account
+HRMS.EMPPFACCT.NOTPRESENT = The employee does not have a valid PF account
+HRM.PFNOM.APPROVED = Nominees Approved Successfully
+HRM.PFNOM.REJECT = Nominees Rejected Successfully
+HRMS.PF.REJFAIL = Rejection Failed
+HRMS.PF.REJECT = <font face="Arial" color="blue" size="3" >Application Rejected Successfully
+HRMS.PF.APPROVED = Application Approved Successfully
+HRMS.PF.REJECTED = Application Rejected Successfully
+HRMS.PF.APPRFAIL = Approval Failed
+HRMS.PF.DELETED = Record Deleted Successfully
+HRMS.PF.DELETEFAIL = Deletion of Record Failed
+HRMS.NOMINEE.STATUS = You have already nominated, for revision of nomination please use the Cancellation form
+HRMS.NOMINEE.STATUS1 = You do not have any nominee for cancellation
+HRMS.NOMINEE.STATUS2 = You cannot cancel the nominees until and unless the nominees gets approved, for changes use the same nomination screen
+HRMS.PFADVFORCONV.NOTFOUND = No PF Advance Applications found for conversion
+HRMS.PFADVFORCONVAPPROVAL.NOTFOUND= No PF Conversion Applications found for Approval
+HRMS.PFCONV.APPROVE.SUCCESS= Application has been approved for PF Conversion
+HRMS.PFCONV.REJECT.SUCCESS = PF Conversion Application has been Rejected
+HRMS.PFCONVERSION.BASICMORE = Sorry! Your Basic Pay is more than Max Basic limit
+HRMS.PFCONVERSION.EXPLESS = Sorry! Your Experience is less than Min Experienc required
+HRMS.PFCONVERSION.SERVICELEFTLESS = Sorry! Your service left is less than Min service left
+HRMS.PFCONVERSION.AMOUNTSANCMORE = Sorry! Your Sanctioned amount is more than Max sanction amount limit
+HRMS.PFCONVERSION.AMOUNTSANCLESS = Sorry! Your Sanctioned amount is less than Min sanction amount limit
+HRMS.PFCONVERSION.SUCCESS = Your PF Advance has been successfully converted into Withdrawal
+HRMS.PF.RETCHECK = Employees Retirement date is {0}, his recovery date should be atleast {1} months before his retirement
+HRMS.PF.RULECHECK = For a purpose there cannot be two rows having identical Transaction Type, PF Type and Rule No. 
+HRMS.PF.PURPOSECHECK = No Purpose exist for the selected PF and Transaction Type
+HRMS.PFCONVAPPROVAL.APPLN.NOTFOUND = No PF Conversion Applications found for Approval
+HRMS.PFMEMAPPL.STATUS = There exist no Application For Approval
+HRMS.PFADVWTH.BASCHECK = Basic pay value is not there for this Employee
+
+HRMS.PAYFIX.REJECT.SUCCESS = Pay Fixation Application has been rejected 
+HRMS.PAYFIXAPPL.CHECK = You have still not promoted
+HRMS.PAYFIXAPPL.INCREMENTDTLSNOTFOUND = Present Increment date not found
+HRMS.PAYFIX.PROGHIST_CHECK = <font face="Arial" color="blue" size="3" >Pay fixation has already been done for the Promoted grade
+
+HRMS.SECURITY.VISTIN.SUCCESS = <font face="Arial" color="blue" size="3" >Visitor In Time is recorded
+HRMS.SECURITY.VISTOUT.SUCCESS = <font face="Arial" color="blue" size="3" >Visitor Out Time is recorded
+
+HRMS.HOLIDAYINSERT.SUCCESS=<font face="Arial" color="blue" size="3" >Holiday Details Inserted Successfully</font>
+HRMS.HOLIDAYINSERT.FAILURE=<font face="Arial" color="red" size="3">Holiday Details could not be inserted</font>
+HRMS.HOLIDAYDETAILS.NOTDEFINED=<font face="Arial" color="red" size="3">Holiday Names not defined</font>
+HRMS.HOLIDAYGETRECORD.ZERO=<font face="Arial" color="blue" size="3">No Holiday Details for this search</font>
+HRMS.HOLIDAYEDIT.SUCCESS=<font face="Arial" color="blue" size="3">Holiday Details edited successfully</font>
+HRMS.HOLIDAYEDIT.FAILURE=<font face="Arial" color="red" size="3">Holiday Details could not be edited</font>
+HRMS.HOLIDAYQUERY.ZERO=<font face="Arial" color="blue" size="3">No records present in the Database</font>
+HRMS.HolidayMaster.UniqueKeyConstraint=<font face="Arial" color="blue" size="3">Record with this Location and Year already exists</font>
+
+HRMS.BioData.WrongSelection=<font face="Arial" color="blue" size="3">Please enter an Employee Number in the Employee No. field</font>
+HRMS.BioDataQuery.ZeroQual=<font face="Arial" color="blue" size="3">No record for Educational Qualification</font>
+HRMS.BioDataQuery.ZeroService=<font face="Arial" color="blue" size="3">No record for Service History</font>
+HRMS.BioDataQuery.ZeroRecord=<font face="Arial" color="blue" size="3">Employee Number does not exist</font>
+HRMS.ExitInterviewQuery.ZeroRecord=<font face="Arial" color="blue" size="3">Employee Number does not exist</font>
+HRMS.Insert.Success=<font face="Arial" color="blue" size="3">Record Inserted Successfully</font>
+HRMS.Insert.Failure=<font face="Arial" color="blue" size="3">Record could not be Inserted</font>
+HRMS.Edit.Success=<font face="Arial" color="blue" size="3">Record Edited Successfully</font>
+HRMS.Edit.Failure=<font face="Arial" color="blue" size="3">Record could not be Edited</font>
+HRMS.BioData.UniqueKeyConstraint=<font face="Arial" color="blue" size="3">Record with this Employee number already exists</font>
+HRMS.Invalid.Date=<font face="Arial" color="blue" size="3">{0} is invalid! <br></font>
+HRMS.Update.Success=<font face="Arial" color="blue" size="3">Record Updated Successfully<br></font>
+HRMS.Update.Failure=<font face="Arial" color="red" size="3">Record could not be updated<br></font>
+HRMS.General=<font face="Arial" color="blue" size="3">{0}<br></font>
+HRMS.CRMaster.UniqueKeyConstraint=<font face="Arial" color="blue" size="3">Record with this Confidential Report Number already exists</font>
+HRMS.CRMaster.UniqueCRNo=<font face="Arial" color="blue" size="3">Record with this Confidential Report Number already exists</font>
+HRMS.CRMaster.UniqueDescription=<font face="Arial" color="blue" size="3">Record with this Confidential Report Description already exists</font>
+
+
+HRMS.EMPEDU.UNQKEYCHECK =There Cannot Be Two Rows Having Identical Examination Passed And Discipline For An Employee . 
+
+HRMS.No.Discpln=<font face="Arial" color="blue" size="3" >No Disciplines Available for the Selected Examination 
+HRMS.PROJID.MAPPINGFAILURE=No Project Id Mapping Found For The Selected Location
+
+HRMS.TRANSFERTYPE.NOTFOUND=Transfer Type Details Not Found
+HRMS.TRANSFERGRND.NOTFOUND=Transfer Ground Details Not Found
+HRMS.NOPENDINGTRANSFERLIST.FOUND=Invalid Employee Number
+HRMS.TRANSFERTYPE.NOTFOUND=Transfer Class Details Not Found
+
+/***************COMMONKEYS****************************/
+CMM.Insert.Success=<center><font face="Arial" color="blue" size="3"><b>Record Inserted Successfully</b></font></center>
+CMM.Update.Success=<center><font face="Arial" color="blue" size="3"><b>Record Updated Successfully</b></font></center>
+CMM.System.Admin=Internal Error! Contact System Administrator
+CMM.Update.Failure=Update Failed
+
+/***************MASTERSCREENS*************************/
+CMM.StoreMast.PK=Insert Failure! Store Code Already Exists
+CMM.SectionMast.PK=Insert Failure! Section Code Already Exists
+CMM.WareHouseMast.PK=Insert Failure! WareHouseCode Already Exists
+CMM.ItemMasterNew.PK=Insert Failure! Material Code Already Exists
+CMM.ItemMasterEdit.PK=Update Failure! Material Code Does Not Exists
+CMM.Invalid.Employee=Invalid Employee Number
+CMM.Section.NotAvailable=No Section Code Available for selected Stores
+CMM.WareHouse.NotAvailable=No WareHouse Code Available for selected Section
+
+/****** COMMON **************************************************/
+Common.DB.Administrator=Internal Error! Contact System Administrator
+Common.Database.Error = DataBase Error! Contact System Administrator
+Common.Connection.Failed = Connection Failed
+Common.Pooling.Plugin = Error in Plugin  
+
+Common.ChangePwd.Incorrect=Incorrect Password
+Common.ChangePwd.Success=<center><font face="Arial" color="blue" size="3"><b>Password Changed Successfully</b></font></center>
+Common.Invalid.Employee=Invalid Employee
+Common.ResetPwd.Success=<center><font face="Arial" color="blue" size="3"><b>Password Reseted Successfully</b></font></center>
+
+Common.SAMaster.Success=<center><font face="Arial" color="blue" size="3"><b>Record Inserted Successfully</b></font></center>
+Common.SAMaster.Update=<center><font face="Arial" color="blue" size="3"><b>Record Updated Successfully</b></font></center>
+Common.SARights.Success=<center><font face="Arial" color="blue" size="3"><b>Rights Issued Successfully</b></font></center>
+
+Common.SAMaster.UK=Record Already Exists
+Common.SAMaster.NoScreenList=All Screens are assigned for this Header
+
+Common.ProblemReport.Success=<center><font face="Arial" color="blue" size="3"><b>Problem Reported Successfully</b></font></center>
+COMMON.EMPLGRPROLEASSIGN.NOSUCHUSER=User does not exist
+COMMON.EMPLGRPROLEASSIGN.NOMODULESIDEN=No Modules Identified
+COMMON.EMPLGRPROLEASSIGN.NOROLESIDEN=No Roles Identified
+
+/****** VOUCHER **************************************************/
+Finance.SetNo.Processed=Voucher is processed by another user
+Finance.Insert.SaveSuccess=<center><font face="Arial" color="blue" size="3"><b>Voucher Inserted Successfully<b></font></center>
+Finance.Update.UpdateSuccess=<center><font face="Arial" color="blue" size="3"><b>Voucher Updated Successfully<b></font></center>
+Finance.Insert.SubmitSuccess=<center><font face="Arial" color="blue" size="3"><b>Voucher Submitted Successfully<b></font></center>
+Finance.Voucher.NotAnAcctLoc=This is not a valid Accounting Location
+Finance.UnKnown.Administrator=UnKnown Error, Contact System Administrator!!!
+Finance.Voucher.NoPeriodID=No Period Id
+Finance.Voucher.NotValidVouchDate=Error!!!Voucher Date should fall within the period
+Finance.Voucher.NoDocumentLocationFound=No Document Location Found Against This Location
+Finance.Voucher.NoVoucherTypeFound=No Voucher Type Found
+Finance.Voucher.NotValidAcctId=Not a Valid A/c Id
+Finance.Voucher.NotValidOrderId=Not a Valid Order Id
+Finance.Voucher.NotValidSubLedgerId=Not a Valid Subledger Id
+Finance.Voucher.NotValidChargeCode=Not a Valid Charge Id
+Finance.Voucher.NotValidCostCenterCode=Not a Valid CostCenter Id
+Finance.Voucher.NotValidUsiId=Not a Valid USI Id
+Finance.Voucher.Submit=Voucher Submitted Successfully
+Finance.Voucher.NoVoucherId=Voucher Id Could Not Be Generated
+Finance.Voucher.NoVoucherNum=Voucher No Generation Error
+Finance.Voucher.GreaterThanSysDate=Voucher date Is greater than current date
+Finance.Voucher.ConnectionFailure=Connection Failure Please Try Again
+Finance.Voucher.StartGreaterThanSysDate=Start Date Greater Than Sys Date
+Finance.Voucher.EndGreaterThanSysDate=End Date Greater Than Sys Date
+Finance.Voucher.EndGreaterThanStart=Start Date Greater Than End Date
+Finance.Voucher.DateError=Invalid Voucher Date! Vouchers for this date have already been posted!
+Finance.Voucher.pastCalendar=The period belongs to past calendar
+Finance.Voucher.Validate_ONE=Payment advice to contain either vendor or employee
+Finance.Voucher.Validate_TWO=Accounts cannot mix S/L controlled and non S/L controlled accounts
+Finance.Voucher.Validate_THREE=Cannot record receipts for multiple employees or vendors
+Finance.BankPassBook.NoRecExist=No record exists for the particular A/c Id
+Finance.BankPassBook.UniqueCons=Record with same instrument number for this A/c Id already exists
+Finance.Voucher.VoucherTravelInterfaceIAV=Travel advance amount against employee should tally against voucher amount
+Finance.Voucher.VoucherNo=Voucher number is {0}
+Finance.VoucherJS.DeleteRowConfirm=Continue To Delete?
+Finance.Voucher.NotValidTransaction=Values Entered were lost, try after reseting and entering the same entries.
+Finance.Voucher.ViewVoucherURL1=#
+Finance.Voucher.ViewVoucherURL2=&_act=Apply~20Parameters&db=npcil&ac=npcil~40npcil
+Finance.Voucher.BPVValidation_DPP=Direct payment voucher cannot have subledgers
+Finance.Voucher.BPVValidation_TPP=Third party payment voucher can have these ({0}) A/c only
+Finance.Voucher.ValidateGEN=Subledgers are mandatory for general vouchers
+Finance.VoucherJS.DeleteVoucher=Sure, you want to delete the voucher?
+
+/****** TRAVEL MIDDLEWARE**************************************************/
+Finance.TravelTrans.NoCorrespondingLimit=Advance cannot be processed. No corresponding limit has been set
+Finance.TravelTrans.OsAmtExceedsLimits=Advance cannot be processed. Settle advance as outstanding amount exceeds eligible limits
+Finance.TravelTrans.FreqLimitsExceeds=Advance cannot be processed. Number of advance requests exceed eligible limits
+Finance.TravelTrans.RequestDiscontinued=This Advance/Claim request has been discontinued at NPCIL
+Finance.TravelTrans.TravelRequestNo=Request saved successfully. Request no is {0}. Please note the number for future reference
+Finance.TravelTrans.NoTransactionToSave=No Transaction For Saving
+Finance.TravelTrans.NoDepOrderNo=Could not select deputation order number
+Finance.TravelTrans.NoSettlementMode=Could not select settlement mode
+Finance.TravelTrans.NoUnSettledAdvances=There is no unsettled advances
+Finance.TravelTrans.NoRefundDetails=There is no Refund Details
+Finance.TravelTrans.LocNotEqual=Claim to be submitted in base location
+Finance.TravelTrans.BothTypeProcessedError=Request cannot be processed since both types of request have already been availed or currently in process
+Finance.TravelTrans.NoTransferOrderPending=No transfer order pending for the user
+Finance.TravelTrans.AdvInProcess=Please settle the advance against the selected Deputation Order
+Finance.TravelTrans.AdvToBeCancelled=Payment voucher should be cancelled or it should be approved
+/****** TRAVEL JAVASCRIPT**************************************************/
+Finance.TravelJS.HeadEmpty=Head Cannot Be Empty
+Finance.TravelJS.FromDateEmpty=From Date Cannot Be Empty
+Finance.TravelJS.ToDateEmpty=To Date Cannot Be Empty
+Finance.TravelJS.FromLocEmpty=From Location Cannot Be Empty
+Finance.TravelJS.ToLocEmpty=To Location Cannot Be Empty
+Finance.TravelJS.AtLocEmpty=At Location Cannot Be Empty
+Finance.TravelJS.CityEmpty=City Cannot Be Empty
+Finance.TravelJS.AccomEmpty=Accomodation Type Cannot Be Empty
+Finance.TravelJS.RateEmpty=Rate Cannot Be Empty
+Finance.TravelJS.QuantityEmpty=Quantity Cannot Be Empty
+Finance.TravelJS.AmtEmpty=Amount Cannot Be Empty
+Finance.TravelJS.RemarksEmpty=Remarks Cannot Be Empty
+Finance.TravelJS.ClassEmpty=Class Cannot Be Empty
+Finance.TravelJS.NoRowsForDel=No Rows Have Been Selected For Delete
+Finance.TravelJS.TryConfirmAfterDel=Rows Are Marked For Deletion, Try Confirming After Delete
+Finance.TravelJS.UnConfirmedNoSave=UnConfirmed Rows Will Not Be Saved
+Finance.TravelJS.UnConfirmedSaveYesNo=UnConfirmed Rows Found, Closing Will Result In Loss Of Rows, Continue?
+Finance.TravelJS.FDateGreaterThanTDate=From Date Greater Than To Date
+Finance.TravelJS.FDateLessThanPrevTDate=From Date Less Than Previous To Date
+Finance.TravelJS.MakeHeadEmpty=Make Head Empty To Proceed
+Finance.TravelJS.FromTimeEmpty=From Time Cannot Be Empty
+Finance.TravelJS.ToTimeEmpty=To Time Cannot Be Empty
+Finance.TravelJS.ChildWindowOpen=Process all child screens before submitting the page
+Finance.TravelJS.SponsorGlobalCode=FTRSPONSOR$3
+Finance.TravelJS.SponsorFlagMandatory=Sponsor Flag Is Mandatory If Sponsor Detail Is Entered
+Finance.TravelJS.SponsorDetailMandatory=Sponsor Detail Is Mandatory If Sponsor Flag Is Selected
+Finance.TravelJS.DependentSelectionError=Atleast one dependent should be selected to continue
